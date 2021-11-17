@@ -15,6 +15,9 @@ import java.util.Scanner;
 public class Cliente {
     private String tarjetaCred;
     
+    
+    
+    
     public void solicitarServicioTaxi() {
         Scanner sc = new Scanner(System.in);
 

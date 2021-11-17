@@ -18,6 +18,16 @@ public class ServicioComida extends Servicio{
         super(rDesde, rHacia, date, hour, c, vPagar);
          pedido = p;
     }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+    
+    
     
     
 }
