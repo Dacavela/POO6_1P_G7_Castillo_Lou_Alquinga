@@ -6,18 +6,33 @@
 package interfaz;
 import com.mycompany.proyecto1p.*;
 import com.mycompany.proyecto1p.services.*;
+import java.util.Scanner;
 /**
  *
  * @author Davca
  */
 public class SistemaUI {
-
+    private Scanner sc;
+    private Sistema sistema;
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    
+    public SistemaUI() {
+        sc = new Scanner(System.in);
+        sistema = new Sistema();
         // TODO code application logic here
-        
+    }
+    
+    public void presentarLogIn(){
+        System.out.println("Bienvenido ");
+        System.out.print("Usuario: ");
+        String user = sc.nextLine();
+        System.out.print("Contraseña: ");
+        String password = sc.nextLine();
+    }
+
+    public void iniciar(){
         
     }
     

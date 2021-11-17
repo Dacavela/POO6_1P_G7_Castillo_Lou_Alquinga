@@ -11,15 +11,25 @@ package com.mycompany.proyecto1p;
  */
 public class Usuario {
     protected String cedula;
-    protected String nombres;
-    protected String apellidos;
+    protected String nombre;
+    protected String apellido;
     protected String user;
     protected String password;
     protected String celular;
     protected String tipoUsuario;
-    
-    protected int edad; 
 
+    public Usuario(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.user = user;
+        this.password = password;
+        this.celular = celular;
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    
+    
     public String getCedula() {
         return cedula;
     }
@@ -29,19 +39,19 @@ public class Usuario {
     }
 
     public String getNombres() {
-        return nombres;
+        return nombre;
     }
 
     public void setNombres(String nombres) {
-        this.nombres = nombres;
+        this.nombre = nombres;
     }
 
     public String getApellidos() {
-        return apellidos;
+        return apellido;
     }
 
     public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+        this.apellido = apellidos;
     }
 
     public String getUser() {
@@ -76,13 +86,7 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
+    
     
     
     

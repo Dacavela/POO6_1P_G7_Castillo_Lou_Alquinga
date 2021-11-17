@@ -12,8 +12,32 @@ import java.util.Scanner;
  *
  * @author Davca
  */
-public class Cliente {
+public class Cliente extends Usuario{
     private String tarjetaCred;
+    private int edad;
+
+    public Cliente(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario, String tarjetaCred, int edad) {
+        super(cedula, nombre, apellido, user, password, celular, tipoUsuario);
+        this.tarjetaCred = tarjetaCred;
+        this.edad = edad;
+    }
+
+    public String getTarjetaCred() {
+        return tarjetaCred;
+    }
+
+    public void setTarjetaCred(String tarjetaCred) {
+        this.tarjetaCred = tarjetaCred;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    
     
     
     
@@ -57,8 +81,8 @@ public class Cliente {
         
         if (confirmar.equals("S")){
             
-            Conductor c = new Conductor();
-            ServicioTaxi st = new ServicioTaxi(rDesde, rHacia, date, hour, c, vPagar, pViajan);
+            //Conductor c = new Conductor();
+            //ServicioTaxi st = new ServicioTaxi(rDesde, rHacia, date, hour, c, vPagar, pViajan);
         }
     }
     
