@@ -14,11 +14,14 @@ import com.mycompany.proyecto1p.Conductor;
  */
 public class ServicioComida extends Servicio{
     private Pedido pedido;
+    
+    //Constructor ServicioComida que hereda de la clase Servicio
     public ServicioComida(String rDesde, String rHacia, String date, String hour, Conductor c, Double vPagar, Pedido p){
         super(rDesde, rHacia, date, hour, c, vPagar);
          pedido = p;
     }
-
+    
+    //Getters y Setters
     public Pedido getPedido() {
         return pedido;
     }

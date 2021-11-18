@@ -15,7 +15,8 @@ import java.util.Scanner;
 public class Cliente extends Usuario{
     private String tarjetaCred;
     private int edad;
-
+    
+    //Constructo de la clase Cliente que hereda de la clase Usuario
     public Cliente(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario, String tarjetaCred, int edad) {
         super(cedula, nombre, apellido, user, password, celular, tipoUsuario);
         this.tarjetaCred = tarjetaCred;
@@ -85,6 +86,11 @@ public class Cliente extends Usuario{
             //ServicioTaxi st = new ServicioTaxi(rDesde, rHacia, date, hour, c, vPagar, pViajan);
         }
     }
+    
+//    @Override
+//        public String toString(){
+//            return this.cedula+","+this.edad+","+this.tarjetaCred;
+//        }
     
     
 }

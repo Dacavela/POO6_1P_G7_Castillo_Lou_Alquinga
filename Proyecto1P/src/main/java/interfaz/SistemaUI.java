@@ -24,15 +24,45 @@ public class SistemaUI {
         // TODO code application logic here
     }
     
-    public void presentarLogIn(){
-        System.out.println("Bienvenido ");
-        System.out.print("Usuario: ");
+    public String presentarLogIn(){
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("             BIENVENIDO AL SISTEMA");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");        
+        System.out.println("Usuario: ");
         String user = sc.nextLine();
-        System.out.print("Contraseña: ");
+        System.out.println("Contraseña: ");
         String password = sc.nextLine();
+        return (user +"," + password);
     }
 
+    
     public void iniciar(){
+        String log = presentarLogIn();
+        String user = log.split(",")[0];
+        String password = log.split(",")[1];
+        System.out.println(user);
+        System.out.println(password);
+        
+        if(sistema.buscarUsuario(user, password) == null){
+            
+            System.out.println("Ingrese su cedula: ");
+            String cedula = sc.nextLine();
+            System.out.println("Ingrese su nombre: ");
+            String nombre = sc.nextLine();
+            System.out.println("Ingrese su apellido: ");
+            String apellido = sc.nextLine();
+            System.out.println("Ingrese su celular: ");
+            String celular = sc.nextLine();
+            System.out.println("Ingrese su numero de tarjeta de credito: ");
+            String tarjetaCred = sc.nextLine();
+            System.out.println("Ingrese su edad: ");
+            int edad = sc.nextInt();
+            sc.nextLine();
+            Cliente c = new Cliente(cedula,  nombre,  apellido,  user, password,  celular,  "C", tarjetaCred, edad);
+            sistema.agregarCliente(c);
+            System.out.println(sistema.getUsuarios());
+            
+        }
         
     }
     

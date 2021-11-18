@@ -11,6 +11,8 @@ import com.mycompany.proyecto1p.*;
  *
  * @author Davca
  */
+
+//Clase abtracta ya que como tal no es nada sin pasar a ser uno de los tres tipos de servicios que puede contratar un cliente
 public abstract class Servicio {
     protected String rutaDesde;
     protected String rutaHacia;
@@ -20,6 +22,7 @@ public abstract class Servicio {
     protected Double valPagar;
     protected static int idUnico = 0;
     
+    //Constructor de Servicio que 
     public Servicio(String rDesde, String rHacia, String date, String hour, Conductor c, Double vPagar){
         rutaDesde = rDesde;
         rutaHacia = rHacia;
@@ -29,7 +32,8 @@ public abstract class Servicio {
         valPagar = vPagar;
         idUnico +=1;
     }
-
+    
+    //Getters y Setters
     public String getRutaDesde() {
         return rutaDesde;
     }
@@ -85,9 +89,7 @@ public abstract class Servicio {
     public static void setIdUnico(int idUnico) {
         Servicio.idUnico = idUnico;
     }
-
-    
-    
+    //Fin Getters y Setters
     
     
     

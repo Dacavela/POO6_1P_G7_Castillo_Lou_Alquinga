@@ -14,11 +14,13 @@ import com.mycompany.proyecto1p.Conductor;
 public class ServicioTaxi extends Servicio{
     private int personasQueViajan;
     
+    //Constructor ServicioTaxi que hereda de la clase Servicio
     public ServicioTaxi(String rDesde, String rHacia, String date, String hour, Conductor c, Double vPagar, int pViajan){
         super(rDesde, rHacia, date, hour, c, vPagar);
         personasQueViajan = pViajan;
     }
-
+    
+    //Getters y Setters
     public int getPersonasQueViajan() {
         return personasQueViajan;
     }

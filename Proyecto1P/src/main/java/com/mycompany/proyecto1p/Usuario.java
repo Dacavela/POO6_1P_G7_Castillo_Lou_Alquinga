@@ -10,6 +10,7 @@ package com.mycompany.proyecto1p;
  * @author Davca
  */
 public class Usuario {
+    //Atributos protected ya que todos van a ser heredados por Cliente y Conductor
     protected String cedula;
     protected String nombre;
     protected String apellido;
@@ -18,6 +19,7 @@ public class Usuario {
     protected String celular;
     protected String tipoUsuario;
 
+    //Constructor de la clase usuario
     public Usuario(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario) {
         this.cedula = cedula;
         this.nombre = nombre;
@@ -29,7 +31,7 @@ public class Usuario {
     }
 
     
-    
+    //Getters y Setters
     public String getCedula() {
         return cedula;
     }
@@ -85,9 +87,12 @@ public class Usuario {
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
-
+    //Fin Getters y Setters
     
-    
+    @Override
+    public String toString(){
+        return cedula+","+nombre+","+apellido+","+user+","+password+","+celular+","+tipoUsuario;
+    }
     
     
     

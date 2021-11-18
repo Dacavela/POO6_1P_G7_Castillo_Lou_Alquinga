@@ -16,11 +16,13 @@ public class ServicioEncomiendas extends Servicio{
     public int cantidadProductos;
     public TipoEncomiendas tipoEncomienda;
     
+    //Constructor ServicioEncomiendas que hereda de la clase Servicio
     public ServicioEncomiendas(String rDesde, String rHacia, String date, String hour, Conductor c, Double vPagar, int cProductos, TipoEncomiendas tEnc){
         super(rDesde, rHacia, date, hour, c, vPagar);
         cantidadProductos = cProductos;
     }
-
+    
+    //Getters y Setters
     public int getCantidadProductos() {
         return cantidadProductos;
     }
