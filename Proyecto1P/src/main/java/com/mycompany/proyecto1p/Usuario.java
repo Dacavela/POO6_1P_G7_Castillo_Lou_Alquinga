@@ -20,7 +20,7 @@ public class Usuario {
     protected String tipoUsuario;
 
     //Constructor de la clase usuario
-    public Usuario(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario) {
+    protected Usuario(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -40,20 +40,20 @@ public class Usuario {
         this.cedula = cedula;
     }
 
-    public String getNombres() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombre = nombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidos() {
+    public String getApellido() {
         return apellido;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellido = apellidos;
+    public void setApellidos(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getUser() {

@@ -22,6 +22,9 @@ import java.util.List;
  */
 public class Sistema {
     private static List <Usuario> usuarios;
+    private static List <Cliente> clientes;
+    private static List <Conductor> conductores;
+    
 
     public Sistema(){
         usuarios = new ArrayList<>();       
@@ -75,8 +78,11 @@ public class Sistema {
     }
     
     //Metodo estatico para agregar usuarios que hayan sido agregados a usuarios.txt a la  lista de usuarios
-    public static void agregaUsuarioLista(Usuario u) throws IOException {
-        String linea = u.toString();
+    public static void agregaUsuarioLista(Usuario u) throws IOException {           
+            usuarios.add(new Usuario(u.getCedula(), u.getNombre(), u.getApellido(), u.getUser(), u.getPassword(), u.getCelular(), u.getTipoUsuario())); 
+    }
+    
+    public static void agregaUsuarioLista(String linea) throws IOException {
             String[] lineaSeparada = linea.split(",");
             String cedula = lineaSeparada[0];
             String nombre = lineaSeparada[1];
@@ -84,7 +90,8 @@ public class Sistema {
             String user = lineaSeparada[3];
             String password = lineaSeparada[4];
             String celular = lineaSeparada[5];
-            String tipoUsuario = lineaSeparada[6];            
+            String tipoUsuario = lineaSeparada[6];
+            
             usuarios.add(new Usuario(cedula, nombre, apellido, user, password, celular, tipoUsuario)); 
     }
     

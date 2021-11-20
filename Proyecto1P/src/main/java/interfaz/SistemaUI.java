@@ -6,6 +6,8 @@
 package interfaz;
 import com.mycompany.proyecto1p.*;
 import com.mycompany.proyecto1p.services.*;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  *
@@ -36,34 +38,59 @@ public class SistemaUI {
     }
 
     
-    public void iniciar(){
-        String log = presentarLogIn();
-        String user = log.split(",")[0];
-        String password = log.split(",")[1];
-        System.out.println(user);
-        System.out.println(password);
-        
-        if(sistema.buscarUsuario(user, password) == null){
-            
-            System.out.println("Ingrese su cedula: ");
-            String cedula = sc.nextLine();
-            System.out.println("Ingrese su nombre: ");
-            String nombre = sc.nextLine();
-            System.out.println("Ingrese su apellido: ");
-            String apellido = sc.nextLine();
-            System.out.println("Ingrese su celular: ");
-            String celular = sc.nextLine();
-            System.out.println("Ingrese su numero de tarjeta de credito: ");
-            String tarjetaCred = sc.nextLine();
-            System.out.println("Ingrese su edad: ");
-            int edad = sc.nextInt();
-            sc.nextLine();
-            Cliente c = new Cliente(cedula,  nombre,  apellido,  user, password,  celular,  "C", tarjetaCred, edad);
-            sistema.agregarCliente(c);
-            System.out.println(sistema.getUsuarios());
-            
+    public void iniciar() throws IOException {
+        /*Lineas 43 a 46 sirven para que al iniciar sesión agregue a la lista de usuarios 
+        los que ya estén registrados en el archivo usuarios.txt, así no pedirá crear el 
+        usuario cada vez que se corra el programa nuevamente ni duplicará un usuario que 
+        ya haya sido creado en otra iniciación del programa en los archivos de texto*/
+        ArrayList<String> Lista = sistema.LeeFichero("usuarios.txt");
+        for (String linea : Lista) {
+            sistema.agregaUsuarioLista(linea);
         }
-        
+
+        do {
+            String log = presentarLogIn();
+            String user = log.split(",")[0];
+            String password = log.split(",")[1];
+            //System.out.println(user);
+            //System.out.println(password);
+            
+            //Si el usuario no está en la lista de usuarios proporcionada por usuarios.txt pasa a registar al usuario como cliente
+            if (sistema.buscarUsuario(user, password) == null) {
+
+                System.out.println("Ingrese su cedula: ");
+                String cedula = sc.nextLine();
+                System.out.println("Ingrese su nombre: ");
+                String nombre = sc.nextLine();
+                System.out.println("Ingrese su apellido: ");
+                String apellido = sc.nextLine();
+                System.out.println("Ingrese su celular: ");
+                String celular = sc.nextLine();
+                System.out.println("Ingrese su numero de tarjeta de credito: ");
+                String tarjetaCred = sc.nextLine();
+                System.out.println("Ingrese su edad: ");
+                int edad = sc.nextInt();
+                sc.nextLine();
+                Cliente c = new Cliente(cedula, nombre, apellido, user, password, celular, "C", tarjetaCred, edad);
+                sistema.agregarCliente(c);
+                System.out.println(sistema.getUsuarios());
+            
+            }
+            //Si encuentra al usuario en la lista de usuarios procede a ver si el usuario es cliente o conductor 
+            else {
+                Usuario u = sistema.buscarUsuario(user, password);
+                if (u.getTipoUsuario().equals("C")) {
+                    //Hacemos downcasting si es que el usuario es cliente
+                    Cliente c = (Cliente)u;
+                    System.out.println("Bienvenido cliente "+ c.getNombre());
+                    
+                } else if (u.getTipoUsuario().equals("R")){
+                    //Hacemos downcasting si es que el usuario es conductor
+                    Conductor r = (Conductor)u;
+                    System.out.println("Usuario conductor" + r.getNombre());
+                }
+            }
+        } while (1 == 1);
     }
-    
+
 }
