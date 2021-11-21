@@ -65,7 +65,7 @@ public class Cliente extends Usuario{
         int tipoPago = 0;
         Double vPagar = Math.random() * 50;
         do {
-            System.out.printf("Ingresa el número del método de pago que desees:\n1: Efectivo %s\2:Tarjeta %s", vPagar, vPagar * 1.10);
+            System.out.printf("Ingresa el número del método de pago que desees:\n1: Efectivo %s\n2:Tarjeta %s\n", vPagar, vPagar * 1.10);
             tipoPago = sc.nextInt();
             sc.nextLine();
             switch (tipoPago) {
@@ -80,10 +80,10 @@ public class Cliente extends Usuario{
                     System.out.println("Opcion incorrecta, vuelva a intentarlo");
                     break;
             }
-        } while (tipoPago != 1 || tipoPago != 2);
+        } while (tipoPago != 1 && tipoPago != 2);
         
         System.out.println("¿Desea confirmar su viaje? S/N");
-        String confirmar = sc.nextLine();
+        String confirmar = sc.nextLine().toUpperCase();
         
         if (confirmar.equals("S")){
             
