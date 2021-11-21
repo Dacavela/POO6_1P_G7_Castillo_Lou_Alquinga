@@ -36,6 +36,8 @@ public class SistemaUI {
         String user = sc.nextLine();
         System.out.println("Contraseña: ");
         String password = sc.nextLine();
+        //Agregada verificacion
+        
         return (user +"," + password);
     }
 
@@ -118,7 +120,7 @@ public class SistemaUI {
                         
                        
                     }
-                    }while (opcion!= "1" || opcion!= "2" || opcion!= "3" || opcion!= "4");
+                    }while (opcion!= "1" && opcion!= "2" && opcion!= "3" && opcion!= "4");
                     
                 } else if (u.getTipoUsuario().equals("R")){
                     //Creamos un cliente con los atributos dados de la base de datos si es que el usuario es conductor
@@ -130,5 +132,4 @@ public class SistemaUI {
             }
         } while (1 == 1);
     }
-
 }

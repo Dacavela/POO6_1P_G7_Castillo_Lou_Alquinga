@@ -24,7 +24,7 @@ import java.util.List;
 public class Sistema {
     private static List <Usuario> usuarios;
     public Sistema(){
-        usuarios = new ArrayList<>();
+       usuarios = new ArrayList<>();
     }
 
     public static List<Usuario> getUsuarios() {
