@@ -23,14 +23,8 @@ import java.util.List;
  */
 public class Sistema {
     private static List <Usuario> usuarios;
-    
-    
     public Sistema(){
-        usuarios = new ArrayList<>();       
-        
-//        usuarios.add(new Usuario("0923547362","Luis","Mancero","lmancero","qwerty","0983637223","C"));
-//        usuarios.add(new Usuario("0945698598","Marco","Cárdenas","mcarden","abcde","0975342533","C"));
-//        usuarios.add(new Usuario("0986353323","Juan" ,"Gómez","jgome","38373","093727266","R"));
+        usuarios = new ArrayList<>();
     }
 
     public static List<Usuario> getUsuarios() {
