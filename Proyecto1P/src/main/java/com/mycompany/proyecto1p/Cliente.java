@@ -71,9 +71,14 @@ public class Cliente extends Usuario{
             switch (tipoPago) {
                 case 1:
                     System.out.println("Pago en efectivo seleccionado.");
+                    break;
                 case 2:
                     vPagar *= 1.10;
                     System.out.println("Pago con tarjeta seleccionado.");
+                    break;
+                default:
+                    System.out.println("Opcion incorrecta, vuelva a intentarlo");
+                    break;
             }
         } while (tipoPago != 1 || tipoPago != 2);
         

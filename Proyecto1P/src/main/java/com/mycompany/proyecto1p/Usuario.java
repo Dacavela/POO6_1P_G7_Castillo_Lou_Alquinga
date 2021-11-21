@@ -20,7 +20,7 @@ public class Usuario {
     protected String tipoUsuario;
 
     //Constructor de la clase usuario
-    protected Usuario(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario) {
+    public  Usuario(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;

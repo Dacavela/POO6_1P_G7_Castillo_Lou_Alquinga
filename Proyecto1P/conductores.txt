@@ -1,0 +1,4 @@
+codigoUsuario, licencia, estado, codigoVehiculo
+2739,238983,D,23
+3847,293487,O,12
+3474,828737,D,15

@@ -10,21 +10,34 @@ package com.mycompany.proyecto1p;
  * @author Davca
  */
 public class Conductor extends Usuario{
+    private String codigoUsuario;
     private String licencia;
-    private char estado;
-    private int vehiculo;
-    private int edad; 
+    private String estado;
+    private int codigoVehiculo;
+    
+ 
 
     //Constructor de la clase Conductor que hereda de la clase Usuario
-    public Conductor(String licencia, char estado, int vehiculo, int edad, String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario) {
+    public Conductor(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario,String codigoUsuario,String licencia, String estado, int codigoVehiculo) {
         super(cedula, nombre, apellido, user, password, celular, tipoUsuario);
+        this.codigoUsuario = codigoUsuario;
         this.licencia = licencia;
         this.estado = estado;
-        this.vehiculo = vehiculo;
-        this.edad = edad;
+        this.codigoVehiculo = codigoVehiculo;
+
     }
 
     //Getters y Setters
+
+    public String getCodigoUsuario() {
+        return codigoUsuario;
+    }
+
+    public void setCodigoUsuario(String codigoUsuario) {
+        this.codigoUsuario = codigoUsuario;
+    }
+    
+    
     public String getLicencia() {
         return licencia;
     }
@@ -33,28 +46,20 @@ public class Conductor extends Usuario{
         this.licencia = licencia;
     }
 
-    public char getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(char estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public int getVehiculo() {
-        return vehiculo;
+    public int getCodigoVehiculo() {
+        return codigoVehiculo;
     }
 
-    public void setVehiculo(int vehiculo) {
-        this.vehiculo = vehiculo;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setCodigoVehiculo(int vehiculo) {
+        this.codigoVehiculo = vehiculo;
     }
     //Fin Getters y Setters
    

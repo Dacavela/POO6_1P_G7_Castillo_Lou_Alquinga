@@ -49,9 +49,9 @@ public class SistemaUI {
         }
 
         do {
-            String log = presentarLogIn();
-            String user = log.split(",")[0];
-            String password = log.split(",")[1];
+            String[] log = presentarLogIn().split(",");
+            String user = log[0];
+            String password = log[1];
             //System.out.println(user);
             //System.out.println(password);
             
@@ -69,8 +69,10 @@ public class SistemaUI {
                 System.out.println("Ingrese su numero de tarjeta de credito: ");
                 String tarjetaCred = sc.nextLine();
                 System.out.println("Ingrese su edad: ");
+                
                 int edad = sc.nextInt();
                 sc.nextLine();
+                //Procedemos a crear el cliente y agregarlo al sistema, es decir, los archivos usuario.txt y cliente.txt
                 Cliente c = new Cliente(cedula, nombre, apellido, user, password, celular, "C", tarjetaCred, edad);
                 sistema.agregarCliente(c);
                 System.out.println(sistema.getUsuarios());
@@ -80,14 +82,17 @@ public class SistemaUI {
             else {
                 Usuario u = sistema.buscarUsuario(user, password);
                 if (u.getTipoUsuario().equals("C")) {
-                    //Hacemos downcasting si es que el usuario es cliente
-                    Cliente c = (Cliente)u;
-                    System.out.println("Bienvenido cliente "+ c.getNombre());
+                    //Creamos un cliente con los atributos dados de la base de datos si es que el usuario es cliente
+                    Cliente c2 = sistema.buscarCliente(user, password);
+                    System.out.println("Bienvenido cliente "+ c2.getNombre());
+                    //System.out.println(c2);
                     
                 } else if (u.getTipoUsuario().equals("R")){
-                    //Hacemos downcasting si es que el usuario es conductor
-                    Conductor r = (Conductor)u;
-                    System.out.println("Usuario conductor" + r.getNombre());
+                    //Creamos un cliente con los atributos dados de la base de datos si es que el usuario es conductor
+                    Conductor r = sistema.buscarConductor(user, password);
+                    System.out.println("Bienvenido conductor " + r.getNombre());
+                    //System.out.println(r);
+                    
                 }
             }
         } while (1 == 1);
