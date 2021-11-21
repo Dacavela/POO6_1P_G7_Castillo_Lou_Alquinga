@@ -22,10 +22,8 @@ import java.util.List;
  */
 public class Sistema {
     private static List <Usuario> usuarios;
-    private static List <Cliente> clientes;
-    private static List <Conductor> conductores;
     
-
+    
     public Sistema(){
         usuarios = new ArrayList<>();       
         
@@ -82,9 +80,7 @@ public class Sistema {
     public static void agregaUsuarioLista(Usuario u) throws IOException {           
             usuarios.add(new Usuario(u.getCedula(), u.getNombre(), u.getApellido(), u.getUser(), u.getPassword(), u.getCelular(), u.getTipoUsuario())); 
     }
-    public static void agregaClienteLista(Cliente u) throws IOException {           
-            clientes.add(new Cliente(u.getCedula(), u.getNombre(), u.getApellido(), u.getUser(), u.getPassword(), u.getCelular(), u.getTipoUsuario(),u.getTarjetaCred(),u.getEdad())); 
-    }
+   
     
     public static void agregaUsuarioLista(String linea) throws IOException {
             String[] lineaSeparada = linea.split(",");
