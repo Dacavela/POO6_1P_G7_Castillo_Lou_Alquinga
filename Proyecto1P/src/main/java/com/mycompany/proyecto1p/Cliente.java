@@ -14,10 +14,15 @@ import java.util.Scanner;
  */
 public class Cliente extends Usuario{
     private String tarjetaCred;
-    private int edad;
+    private String edad;
+
+    public Cliente() {
+        
+    }
+    
     
     //Constructor de la clase Cliente que hereda de la clase Usuario
-    public Cliente(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario, String tarjetaCred, int edad) {
+    public Cliente(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario, String tarjetaCred, String edad) {
         super(cedula, nombre, apellido, user, password, celular, tipoUsuario);
         this.tarjetaCred = tarjetaCred;
         this.edad = edad;
@@ -31,11 +36,11 @@ public class Cliente extends Usuario{
         this.tarjetaCred = tarjetaCred;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
     
@@ -92,10 +97,10 @@ public class Cliente extends Usuario{
         }
     }
     
-//    @Override
-//        public String toString(){
-//            return this.cedula+","+this.edad+","+this.tarjetaCred;
-//        }
+    
+        public String toString(String a){
+            return this.cedula+","+this.edad+","+this.tarjetaCred;
+        }
     
     
 }

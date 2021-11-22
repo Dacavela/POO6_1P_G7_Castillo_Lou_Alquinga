@@ -29,7 +29,8 @@ public class Usuario {
         this.celular = celular;
         this.tipoUsuario = tipoUsuario;
     }
-
+    public Usuario(){
+    }
     
     //Getters y Setters
     public String getCedula() {
