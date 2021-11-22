@@ -18,8 +18,9 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         // Clase main para ejecutar todo el programa
-        SistemaUI sysui = new SistemaUI();
-        sysui.iniciar();
+        SistemaUI2 sysui = new SistemaUI2();
+        sysui.SistemaUI();
+        
     }
     
 }
