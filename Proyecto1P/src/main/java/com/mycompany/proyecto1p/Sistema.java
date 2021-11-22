@@ -6,6 +6,7 @@
 package com.mycompany.proyecto1p;
 
 import static Utilities.ManejoArchivos.LeeFichero;
+import static Utilities.ManejoArchivos.agregarCliente;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,6 +17,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -54,6 +56,27 @@ public class Sistema {
     }
     
     //Metodo estatico para buscar usuarios en el ArrayList de usuarios
+    
+    public static void nuevoCliente(String user, String password) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese su cedula: ");
+        String cedula = sc.nextLine();
+        System.out.println("Ingrese su nombre: ");
+        String nombre = sc.nextLine();
+        System.out.println("Ingrese su apellido: ");
+        String apellido = sc.nextLine();
+        System.out.println("Ingrese su celular: ");
+        String celular = sc.nextLine();
+        System.out.println("Ingrese su numero de tarjeta de credito: ");
+        String tarjetaCred = sc.nextLine();
+        System.out.println("Ingrese su edad: ");
+        int edad = sc.nextInt();
+        sc.nextLine();
+        //Procedemos a crear el cliente y agregarlo al sistema, es decir, los archivos usuario.txt y cliente.txt
+        agregarCliente(new Cliente(cedula, nombre, apellido, user, password, celular, "C", tarjetaCred, edad));
+        ////System.out.println(sistema.getUsuarios());
+    }
+    
     public  static Usuario buscarUsuario(String user, String password){
         for(Usuario u: usuarios){
             if(u.getUser().equals(user) && u.getPassword().equals(password))

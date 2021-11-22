@@ -61,22 +61,7 @@ public class SistemaUI {
             
             //Si el usuario no está en la lista de usuarios proporcionada por usuarios.txt pasa a registar al usuario como cliente
             if (sistema.buscarUsuario(user, password) == null) {
-                System.out.println("Ingrese su cedula: ");
-                String cedula = sc.nextLine();
-                System.out.println("Ingrese su nombre: ");
-                String nombre = sc.nextLine();
-                System.out.println("Ingrese su apellido: ");
-                String apellido = sc.nextLine();
-                System.out.println("Ingrese su celular: ");
-                String celular = sc.nextLine();
-                System.out.println("Ingrese su numero de tarjeta de credito: ");
-                String tarjetaCred = sc.nextLine();
-                System.out.println("Ingrese su edad: ");
-                int edad = sc.nextInt();
-                sc.nextLine();
-                //Procedemos a crear el cliente y agregarlo al sistema, es decir, los archivos usuario.txt y cliente.txt
-                agregarCliente(new Cliente(cedula, nombre, apellido, user, password, celular, "C", tarjetaCred, edad));
-                ////System.out.println(sistema.getUsuarios());
+                sistema.nuevoCliente(user, password);
             }
             
             //Si encuentra al usuario en la lista de usuarios procede a ver si el usuario es cliente o conductor 
