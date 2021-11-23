@@ -6,6 +6,7 @@
 package com.mycompany.proyecto1p.services;
 
 import com.mycompany.proyecto1p.*;
+import java.util.Scanner;
 
 /**
  *
@@ -19,8 +20,9 @@ public abstract class Servicio {
     protected String fecha;
     protected String hora;
     protected Conductor conductor;
-    protected Double valPagar;
-    protected static int idUnico = 0;
+    protected Double vPagar;
+    protected static int idUnico = 1;
+    Scanner sc = new Scanner(System.in);
     
     //Constructor de Servicio que 
     public Servicio(String rDesde, String rHacia, String date, String hour, Conductor c, Double vPagar){
@@ -29,7 +31,10 @@ public abstract class Servicio {
         fecha = date;
         hora = hour;
         conductor = c;
-        valPagar = vPagar;
+        this.vPagar = vPagar;
+        idUnico +=1;
+    }
+    public Servicio(){
         idUnico +=1;
     }
     
@@ -75,11 +80,11 @@ public abstract class Servicio {
     }
 
     public Double getValPagar() {
-        return valPagar;
+        return vPagar;
     }
 
     public void setValPagar(Double valPagar) {
-        this.valPagar = valPagar;
+        this.vPagar = valPagar;
     }
 
     public static int getIdUnico() {
@@ -91,6 +96,17 @@ public abstract class Servicio {
     }
     //Fin Getters y Setters
     
+    public abstract void mostrarInfoServicio();
+    
+    public double calcularPrecio(){
+        vPagar = 1 + (Math.random() * 49);
+        return vPagar;
+    }
+    
+    public double calcularPrecio(String s){
+        vPagar = (1 + (Math.random() * 49)) *1.10;
+        return vPagar;
+    }
     
     
 }

@@ -1,0 +1,4 @@
+numServicio,nombreCliente,nombreConductor,desde,hasta,fecha,hora,numPasajeros,tipoPago,vPagar
+2,null,Fabricio,quito,gye,22/11,12,3,Tarjeta,36.416889050129605
+3,David,Fabricio,Quito,Guayaquil,12/11/2021,12:39,3,Efectivo,49.70866936568682
+3,David,Fabricio,Tumbaco,Quito,23/11/2021,13,4,Efectivo,1.1784590349031152

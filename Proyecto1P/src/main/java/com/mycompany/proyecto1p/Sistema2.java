@@ -10,6 +10,7 @@ import Utilities.Archivo;
 import static Utilities.Validacion.*;
 import java.util.Scanner;
 
+
 /**
  *
  * @author DhuDu
@@ -17,6 +18,7 @@ import java.util.Scanner;
 public class Sistema2 {
     public Archivo userFile = new Archivo("usuarios.txt");
     public Archivo clientesFile = new Archivo("clientes.txt");
+    public Archivo viajesFile = new Archivo("viajes.txt");
     
     public Cliente user = new Cliente();
     
@@ -24,14 +26,17 @@ public class Sistema2 {
     
     
     
-    public void mostrarInicio(){
+    public String mostrarInicio(){
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("             BIENVENIDO AL SISTEMA");
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");        
         System.out.println("Usuario:");
-        user.setUser(validNameUser(sc));
+        String user1 = (validNameUser(sc));
+        user.setUser(user1);
         System.out.println("Contraseña:");
-        user.setPassword(sc.nextLine());
+        String password = (sc.nextLine());
+        user.setPassword(password);
+        return user1+","+password;
     }
     public String verifyLogin(){
         String verLogin = null;
@@ -87,5 +92,21 @@ public class Sistema2 {
         
         return opcion;
         
+    }
+    
+        public void setearCliente(String linea) {
+            String[] lineaSeparada = linea.split(",");
+            String cedula = lineaSeparada[0];
+            String nombre = lineaSeparada[1];
+            String apellido = lineaSeparada[2];
+            String usuario = lineaSeparada[3];
+            String password = lineaSeparada[4];
+            String celular = lineaSeparada[5];
+            String tipoUsuario = lineaSeparada[6];
+            clientesFile.buscar(cedula, 1);
+            String[] lane = clientesFile.accederLinea().split(",");
+            String edad = lane[1];
+            String tarjeta = lane[2];
+            user = new Cliente(cedula, nombre, apellido, usuario, password, celular, tipoUsuario, tarjeta, edad);    
     }
 }

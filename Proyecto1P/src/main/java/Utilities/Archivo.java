@@ -30,6 +30,7 @@ public class Archivo {
     
     public boolean buscar(String categoria, int elementos){ 
         //boolean bucle;
+        this.contador = 0;
         boolean verify = false;
         String tmpVer;
         File f = new File(direccion);
@@ -77,10 +78,9 @@ public class Archivo {
                     p++;
                 }
                 s1.close();
-
             }catch (FileNotFoundException e){}
         //}
-            
+        
         return linea;
     }
     public void escribir(String cadena){

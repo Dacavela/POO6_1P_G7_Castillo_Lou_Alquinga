@@ -20,7 +20,9 @@ public class ServicioComida extends Servicio{
         super(rDesde, rHacia, date, hour, c, vPagar);
          pedido = p;
     }
+    public ServicioComida(){
     
+    }
     //Getters y Setters
     public Pedido getPedido() {
         return pedido;
@@ -30,7 +32,18 @@ public class ServicioComida extends Servicio{
         this.pedido = pedido;
     }
     
-    
-    
+    @Override
+    public void mostrarInfoServicio(){
+    System.out.println("Ingresa el origen del viaje: ");
+        String rDesde = sc.nextLine();
+
+        System.out.println("Ingresa tu destino: ");
+        String rHacia = sc.nextLine();
+
+        System.out.println("Ingresa la fecha: ");
+        String date = sc.nextLine();
+
+        System.out.println("Ingresa la Hora del viaje: ");
+        String hour = sc.nextLine();}
     
 }
