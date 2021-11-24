@@ -20,7 +20,6 @@ public class Validacion {
         }
         return valUser.toLowerCase();
     }
-    
     public static String validPassword(Scanner sc){
         String vlidPass = sc.nextLine();
         while(vlidPass.length()<4){
@@ -40,8 +39,6 @@ public class Validacion {
         }
         return cedulaValida;
     }
-    
-    
     public static String validarNames(Scanner sc){
         String validName = sc.nextLine().trim();
         while(!(validName.matches("[a-zA-Z]*"))||validName.equals("")){
@@ -90,5 +87,48 @@ public class Validacion {
         return validCC;
     
     }
-    
+    public static String validarFecha(Scanner sc){
+        String validDate = sc.nextLine().trim();
+        while(!validDate.matches("\\\\d{1,2}/\\\\d{1,2}/\\\\d{4}") || validDate.equals("")){
+            System.out.println("Ingrese formato correcto: (dd/mm/yyyy)");
+            validDate = sc.nextLine();
+        }
+        return validDate;
+    }
+    public static String validarHora(Scanner sc){
+        String validHora = sc.nextLine().trim();
+        while(!validHora.matches("^([01]?[0-9]|2[0-3]):[0-5][0-9]$")||validHora.equals("")){
+            System.out.println("Ingrese formato correcto: 24Hrs (hh:mm)");
+            validHora = sc.nextLine();
+        }
+        return validHora;
+    }
+    public static String validarPasajeros(Scanner sc){
+        String validPas = sc.nextLine().trim();
+        Integer ed1;
+        boolean tmpV1 = true;
+        while(tmpV1){
+            while(!(validPas.matches("[0-9]*"))){
+                System.out.println("Ingrese dato numerico:");
+                validPas = sc.nextLine();
+
+            }
+            ed1 = Integer.valueOf(validPas);
+            if(!(ed1<0 && ed1>5)){
+                System.out.println("Pueden viajar hasta 4 personas:");
+                validPas = sc.nextLine();
+                tmpV1 = true;
+        }else{validPas = ed1.toString(); tmpV1=false;}
+        }
+        return validPas;
+    }
+    public static String validarRuta(Scanner sc){
+        String validRuta = sc.nextLine().trim();
+        while(!validRuta.matches("[a-zA-Z0-9 ]*") || validRuta.equals("")){
+            System.out.println("Ingrese Ruta:");
+            validRuta = sc.nextLine();
+        }
+        return validRuta;
+    }
+        
 }

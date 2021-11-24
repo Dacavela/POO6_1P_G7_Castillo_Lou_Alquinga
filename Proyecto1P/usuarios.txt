@@ -6,3 +6,5 @@ cedula,nombre,apellido,user,contraseña,celular,tipoUsuario
 1245678911,Lobo,Animal,lobito,loboferoz,0987456324,C
 1756986935,Lola,Cabezas,qwertyui,holaquehace,0985630100,C
 1725569287,David,Castillo,davca,D1234,0987949669,C
+1750036422,Sofia,Realpe,sofiss10,perropanson,0983654271,C
+0956321470,Karen,Castro,kacasg,bolita2012,0983256634,C

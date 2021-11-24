@@ -13,7 +13,7 @@ import java.util.*;
 public class Archivo {
     private String direccion;
     private int contador = 0;
-    String linea = null;
+    
     public Archivo(String direccion) {
         this.direccion = direccion;
         
@@ -66,8 +66,9 @@ public class Archivo {
         return verify;
     } 
     
-    public String accederLinea(){
-        //if(buscar()==true){
+    public String accederLinea(boolean buscar){
+        String linea = null;
+        if(buscar==true){
             File f1 = new File(direccion);
             Scanner s1;
             try{
@@ -79,9 +80,8 @@ public class Archivo {
                 }
                 s1.close();
             }catch (FileNotFoundException e){}
-        //}
-        
-        return linea;
+            return linea;
+        }else return "1,2,3,4,5,6,C";
     }
     public void escribir(String cadena){
         FileWriter fichero = null;

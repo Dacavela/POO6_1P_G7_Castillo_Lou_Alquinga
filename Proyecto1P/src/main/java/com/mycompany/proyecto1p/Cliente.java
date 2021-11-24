@@ -19,7 +19,7 @@ public class Cliente extends Usuario{
     public ServicioTaxi s1 = new ServicioTaxi();
 
     public Cliente() {
-        
+        this.tipoUsuario = "C";
     }
     
     

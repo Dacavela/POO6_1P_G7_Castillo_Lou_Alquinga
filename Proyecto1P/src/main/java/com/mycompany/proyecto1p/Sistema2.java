@@ -26,7 +26,7 @@ public class Sistema2 {
     
     
     
-    public String mostrarInicio(){
+    public void mostrarInicio(){
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("             BIENVENIDO AL SISTEMA");
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");        
@@ -36,13 +36,13 @@ public class Sistema2 {
         System.out.println("Contraseña:");
         String password = (sc.nextLine());
         user.setPassword(password);
-        return user1+","+password;
+
     }
     public String verifyLogin(){
         String verLogin = null;
         boolean esUser = userFile.buscar(user.getUser(), 4);
-        String[] line = userFile.accederLinea().split(",");
-        userFile.setContador(0);
+        String[] line = userFile.accederLinea(esUser).split(",");
+        
         if(esUser && "C".equals(line[6])){
             if(user.getPassword().equals(line[4])){
                 boolean esCliente = clientesFile.buscar(line[0], 1);
@@ -96,17 +96,17 @@ public class Sistema2 {
     
         public void setearCliente(String linea) {
             String[] lineaSeparada = linea.split(",");
-            String cedula = lineaSeparada[0];
-            String nombre = lineaSeparada[1];
-            String apellido = lineaSeparada[2];
-            String usuario = lineaSeparada[3];
-            String password = lineaSeparada[4];
-            String celular = lineaSeparada[5];
-            String tipoUsuario = lineaSeparada[6];
-            clientesFile.buscar(cedula, 1);
-            String[] lane = clientesFile.accederLinea().split(",");
-            String edad = lane[1];
-            String tarjeta = lane[2];
-            user = new Cliente(cedula, nombre, apellido, usuario, password, celular, tipoUsuario, tarjeta, edad);    
+            user.setCedula(lineaSeparada[0]);
+            user.setNombre(lineaSeparada[1]);
+            user.setApellidos(lineaSeparada[2]);
+            user.setUser(lineaSeparada[3]);
+            user.setPassword(lineaSeparada[4]);
+            user.setCelular(lineaSeparada[5]);
+            user.setTipoUsuario(lineaSeparada[6]);
+            
+            String[] lane = clientesFile.accederLinea(clientesFile.buscar(user.getCedula(), 1)).split(",");
+            user.setEdad(lane[1]);
+            user.setTarjetaCred(lane[2]);
+                
     }
 }

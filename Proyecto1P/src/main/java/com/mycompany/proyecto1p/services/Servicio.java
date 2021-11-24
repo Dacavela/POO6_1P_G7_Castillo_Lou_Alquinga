@@ -21,7 +21,9 @@ public abstract class Servicio {
     protected String hora;
     protected Conductor conductor;
     protected Double vPagar;
-    protected static int idUnico = 1;
+    protected int idUnico = 2000;
+    
+    
     Scanner sc = new Scanner(System.in);
     
     //Constructor de Servicio que 
@@ -32,10 +34,10 @@ public abstract class Servicio {
         hora = hour;
         conductor = c;
         this.vPagar = vPagar;
-        idUnico +=1;
+        
     }
     public Servicio(){
-        idUnico +=1;
+        
     }
     
     //Getters y Setters
@@ -87,24 +89,29 @@ public abstract class Servicio {
         this.vPagar = valPagar;
     }
 
-    public static int getIdUnico() {
+    public int getIdUnico() {
         return idUnico;
     }
 
-    public static void setIdUnico(int idUnico) {
-        Servicio.idUnico = idUnico;
-    }
+//    public static void setIdUnico(int idUnico) {
+//        Servicio.idUnico = idUnico;
+//    }
     //Fin Getters y Setters
     
     public abstract void mostrarInfoServicio();
     
     public double calcularPrecio(){
+        vPagar = 0.00;
         vPagar = 1 + (Math.random() * 49);
+        vPagar = Math.round(vPagar*100.0)/100.0;
         return vPagar;
     }
     
     public double calcularPrecio(String s){
-        vPagar = (1 + (Math.random() * 49)) *1.10;
+        
+        vPagar *= 1.10;
+        vPagar = Math.round(vPagar*100.0)/100.0;
+        idUnico+=1;
         return vPagar;
     }
     

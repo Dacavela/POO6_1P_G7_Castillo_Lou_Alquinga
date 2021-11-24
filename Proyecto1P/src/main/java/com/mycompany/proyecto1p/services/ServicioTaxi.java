@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.proyecto1p.services;
-
+import static Utilities.Validacion.*;
 import com.mycompany.proyecto1p.Cliente;
 import com.mycompany.proyecto1p.Conductor;
 
@@ -38,15 +38,16 @@ public class ServicioTaxi extends Servicio{
     public void mostrarInfoServicio(){
         
         System.out.println("Ingresa el origen del viaje: ");
+        //String dR = validarRuta(sc);
         super.rutaDesde = sc.nextLine();
 
         System.out.println("Ingresa tu destino: ");
         super.rutaHacia = sc.nextLine();
 
-        System.out.println("Ingresa la fecha: ");
+        System.out.println("Ingresa la fecha dd/mm/yyyy: ");
         super.fecha = sc.nextLine();
 
-        System.out.println("Ingresa la Hora del viaje: ");
+        System.out.println("Ingresa la Hora del viaje 24Hrs (hh:mm): ");
         super.hora = sc.nextLine();
         
         System.out.println("¿Cuántas personas viajarán?: ");

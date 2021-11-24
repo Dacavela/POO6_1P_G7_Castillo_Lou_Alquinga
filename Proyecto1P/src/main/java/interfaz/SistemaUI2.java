@@ -23,9 +23,15 @@ public class SistemaUI2 {
         
         Scanner sc = new Scanner(System.in);
         Sistema2 s1 = new Sistema2();
-        String[] l1 = s1.mostrarInicio().split(",");
-        String usuarioo = l1[0];
-        String contra = l1[1];
+        
+        System.out.println("Ruta");
+        String r = validarFecha(sc);
+        System.out.println(r);
+        
+        
+        s1.mostrarInicio();
+//        String usuarioo = l1[0];
+//        String contra = l1[1];
         String login = s1.verifyLogin();
         
         while (true) {
@@ -78,10 +84,10 @@ public class SistemaUI2 {
             }
             
             if (login.equals("AccesoCliente")) {
-               s1.userFile.buscar(usuarioo, 1);
-               s1.setearCliente(s1.userFile.accederLinea());
+               
+               s1.setearCliente(s1.userFile.accederLinea(s1.userFile.buscar(s1.user.getUser(), 4)));
                System.out.println(s1.user.getNombre());
-                String opcion;
+               String opcion;
                     do{
                         System.out.println("Elija una opción: ");
                         opcion = s1.mostrarInfoCliente();
@@ -93,16 +99,17 @@ public class SistemaUI2 {
                                 serv1.mostrarInfoServicio();
                                 String tipoPago;
                                 do {
-                                    System.out.println("Ingresa el número del método de pago que desee\n1: Efectivo\n2: Tarjeta");
+                                    System.out.println("Ingresa el número del método de pago que desee\n1: Efectivo: $"+serv1.calcularPrecio()
+                                            +"\n2: Tarjeta: $"+serv1.calcularPrecio("s"));
                                     tipoPago = sc.nextLine();
                                     switch (tipoPago) {
                                         case "1":
                                             System.out.println("Pago en efectivo seleccionado.");
-                                            System.out.println(serv1.calcularPrecio());  
+                                            
                                             tipoPago = "Efectivo";
                                             break;
                                         case "2":
-                                            System.out.println(serv1.calcularPrecio("s"));
+                                            
                                             System.out.println("Pago con tarjeta seleccionado.");
                                             tipoPago = "Tarjeta";
                                             break;
@@ -114,8 +121,9 @@ public class SistemaUI2 {
                                 
                                 
                                 System.out.println("¿Desea confirmar su viaje? S/N");                                
+                                
                                 if (s1.user.confirmarServicio(sc.nextLine().toUpperCase())){
-                                    s1.viajesFile.escribir(serv1.toString(s1.user, tipoPago));
+                                    s1.viajesFile.escribir(serv1.toString(s1.user, tipoPago.toUpperCase()));
                                 }
                                 
                                 login = s1.verifyLogin();
