@@ -18,7 +18,13 @@ public class Archivo {
         this.direccion = direccion;
         
     }
-
+    public void setDireccion(String direccion){
+        this.direccion = direccion;
+    }
+    
+    public String getDireccion(){
+        return direccion;
+    }
     public void setContador(int contador) {
         this.contador = contador;
     }
@@ -75,7 +81,7 @@ public class Archivo {
                 s1.close();
             }catch (FileNotFoundException e){}
             return linea;
-        }else return "1,2,3,4,5,6,C";
+        }else return "noexiste,2,3,4,5,6,C";
     }
     public void escribir(String cadena){
         FileWriter fichero = null;
@@ -99,14 +105,59 @@ public class Archivo {
         }
         
     }
-    public void buscarVehiculo(){
+    public String[] buscarVehiculo(String filedireccion,String disponibilidad, String tipoVeh){
         
+        boolean verify = true;
+        String[] linea = {"1","2","3","hola"};
+        String[] cond = null;
+        File f = new File(filedireccion);
+        Scanner s;
+        int i = 0;
+        try{
+            
+            s = new Scanner(f);
+            
+            while (s.hasNextLine()&& verify) {
+                String[] linea_0 = s.nextLine().split(",");
+                System.out.println("Primer bucle"+(i++));
+                
+                
+                
+                cond = accederLinea(buscar(linea_0[0], 4)).split(",");
+                System.out.println(linea_0[4]+"+"+cond[3]);
+                if((linea_0[4].equals(tipoVeh))&&(cond[2].equals(disponibilidad))){
+                    System.out.println("Segundo bucle"+(i++));
+                    System.out.println(linea_0[4]+"+"+cond[3]+"+"+cond[1]);
+                    linea = linea_0;
+                    verify = false;
+                    
+                }else verify = true;
+                
+                
+                
+            }
+            s.close();
+        }catch (FileNotFoundException e){e.printStackTrace();}
+        return linea;
     }
 
-    public void buscarDriver(String disponibilidad){
+    public String[] buscarDriver(String disponibilidad, String tipoVehiculo){
+        boolean acceso = true;
+        String [] busquedaAuto = null;
+        String[] conductor = null;
+        while(acceso){
+            busquedaAuto = buscarVehiculo("vehículos.txt",disponibilidad, tipoVehiculo);
+            
+            conductor = accederLinea(buscar(busquedaAuto[0], 4)).split(",");
+            System.out.println(conductor[2]);
+            if(conductor[2].equals(disponibilidad) ){
+                acceso = false;
+                break;
+            }if(conductor[0].equals("noexiste")){acceso = false;}
+        }
 //        boolean existDrive = buscar(disponibilidad,3);
 //        String[] lin1 = accederLinea(existDrive).split(",");
 //        return lin1;
-        
+        return conductor;
     }
 }
