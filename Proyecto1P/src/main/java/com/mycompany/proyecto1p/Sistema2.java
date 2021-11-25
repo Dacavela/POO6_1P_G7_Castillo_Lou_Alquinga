@@ -8,6 +8,8 @@ package com.mycompany.proyecto1p;
 
 import Utilities.Archivo;
 import static Utilities.Validacion.*;
+import com.mycompany.proyecto1p.services.Servicio;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -25,10 +27,16 @@ public class Sistema2 {
     public Conductor driver = new Conductor();
     public Vehiculo veh = new Vehiculo();
     public Scanner sc = new Scanner(System.in);
+    public static ArrayList<Servicio> services;
     
+    
+    public ArrayList<Servicio> listaServices(){
+        return services = new ArrayList<>();
+    }
     
     //metodos sistema 2
     public void mostrarInicio(){
+        
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("             BIENVENIDO AL SISTEMA");
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");        
@@ -122,20 +130,23 @@ public class Sistema2 {
         }
         return true;
     }
-    public void elegirConductor(String disponibilidad, String tipoVehi){
+    public void elegirConductor(String disponibilidad, String tipoVehi) {
         boolean ver = true;
-        while(ver){
-        //buscamos un conductor disponible conductor.txt
-        String[] co = conductoreFile.accederLinea(conductoreFile.buscar(disponibilidad, 3)).split(",");
-        String[] ve = vehiculosFile.accederLinea(vehiculosFile.buscar(co[3], 1)).split(",");
-        
-            if(ve.equals("tipoVehi")){
-                
-            
-            
+        while (ver) {
+            //buscamos un conductor disponible conductor.txt
+            String[] co = conductoreFile.accederLinea(conductoreFile.buscar(disponibilidad, 3)).split(",");
+            String[] ve = vehiculosFile.accederLinea(vehiculosFile.buscar(co[3], 1)).split(",");
+
+            if (ve.equals("tipoVehi")) {
+
+            }
         }
-        }
-        }
+    }
+    
+    //Metodo estatico para agregar usuarios que hayan sido agregados a usuarios.txt a la  lista de usuarios
+    public static void agregaServicioLista(Servicio s){           
+            services.add(s); 
+    }
         
         
         

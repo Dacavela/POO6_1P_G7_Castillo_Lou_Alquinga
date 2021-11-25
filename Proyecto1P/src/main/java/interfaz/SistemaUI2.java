@@ -23,6 +23,7 @@ public class SistemaUI2 {
         
         Scanner sc = new Scanner(System.in);
         Sistema2 s1 = new Sistema2();
+        s1.listaServices();
         s1.mostrarInicio();
         String login = s1.verifyLogin();
         
@@ -89,54 +90,36 @@ public class SistemaUI2 {
                                 ServicioTaxi serv1 = s1.user.s1;
                                 
                                 serv1.mostrarInfoServicio();
-                                String tipoPago;
-                                do {
-                                    System.out.println("Ingresa el número del método de pago que desee\n1: Efectivo: $"+serv1.calcularPrecio()
-                                            +"\n2: Tarjeta: $"+serv1.calcularPrecio("s"));
-                                    tipoPago = sc.nextLine();
-                                    switch (tipoPago) {
-                                        case "1":
-                                            System.out.println("Pago en efectivo seleccionado.");
-                                            
-                                            tipoPago = "Efectivo";
-                                            break;
-                                        case "2":
-                                            
-                                            System.out.println("Pago con tarjeta seleccionado.");
-                                            tipoPago = "Tarjeta";
-                                            break;
-                                        default:
-                                            System.out.println("Opcion incorrecta, vuelva a intentarlo");
-                                            break;
-                                    }
-                                } while (!tipoPago.equals("Efectivo") && !tipoPago.equals("Tarjeta"));
+                                String tipoPago=serv1.tipoPago();
                                 
                                 
                                 System.out.println("¿Desea confirmar su viaje? S/N");                                
                                 
                                 if (s1.user.confirmarServicio(validarConfirmacion(sc))){
-                                    
-                                    
+                                    Servicio.setIdUnico(serv1.getIdUnico()+1);
                                     s1.viajesFile.escribir(serv1.toString(s1.user, tipoPago.toUpperCase(), s1.driver));
                                 }
-                                
+                                //Agregamos el servicio a la lista de servicios
+                                s1.agregaServicioLista(serv1);
+//                                System.out.
                                 login = s1.verifyLogin();
-                                
-                                
-                                
-                                
                                 break;
                             case "2":
                                 System.out.println("Solicitando comida a domicilio");
-                        login = s1.verifyLogin();
+                                ServicioEncomiendas serv2 = s1.user.s2;
+                                serv2.mostrarInfoServicio();
+                                
+                                
+                                s1.agregaServicioLista(serv2);
+                                login = s1.verifyLogin();
                                 break;
                             case "3":
                                 System.out.println("Solicitando entrega encomienda");
-                    login = s1.verifyLogin();
+                                login = s1.verifyLogin();
                                 break;
                             case "4":
                                 System.out.println("Consultando servicios");
-                    login = s1.verifyLogin();
+                                login = s1.verifyLogin();
                                 break;
                             default:
                                 System.out.println("Ingreso incorrecto: ");

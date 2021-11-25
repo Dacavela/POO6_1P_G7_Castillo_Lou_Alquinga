@@ -39,7 +39,7 @@ public class ServicioTaxi extends Servicio{
         
         System.out.println("Ingresa el origen del viaje: ");
         //String dR = validarRuta(sc);
-        super. rutaDesde = validarRuta(sc);
+        super.rutaDesde = validarRuta(sc);
 
         System.out.println("Ingresa tu destino: ");
         super.rutaHacia = validarRuta(sc);

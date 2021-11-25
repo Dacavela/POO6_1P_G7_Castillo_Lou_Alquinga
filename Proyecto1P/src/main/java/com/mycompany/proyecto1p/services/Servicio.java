@@ -21,7 +21,7 @@ public abstract class Servicio {
     protected String hora;
     protected Conductor conductor;
     protected Double vPagar;
-    protected int idUnico = 2000;
+    protected static int idUnico = 2000;
     
     
     Scanner sc = new Scanner(System.in);
@@ -34,6 +34,7 @@ public abstract class Servicio {
         hora = hour;
         conductor = c;
         this.vPagar = vPagar;
+        
         
     }
     public Servicio(){
@@ -93,6 +94,11 @@ public abstract class Servicio {
         return idUnico;
     }
 
+    public static void setIdUnico(int idUnico) {
+        Servicio.idUnico = idUnico;
+    }
+    
+
 //    public static void setIdUnico(int idUnico) {
 //        Servicio.idUnico = idUnico;
 //    }
@@ -111,8 +117,33 @@ public abstract class Servicio {
         
         vPagar *= 1.10;
         vPagar = Math.round(vPagar*100.0)/100.0;
-        idUnico+=1;
+
         return vPagar;
+    }
+    
+    public String tipoPago(){
+       String tipoPago;
+        do {
+            System.out.println("Ingresa el número del método de pago que desee\n1: Efectivo: $"+calcularPrecio()
+                    +"\n2: Tarjeta: $"+calcularPrecio("s"));
+            tipoPago = sc.nextLine();
+            switch (tipoPago) {
+                case "1":
+                    System.out.println("Pago en efectivo seleccionado.");
+
+                    tipoPago = "Efectivo";
+                    break;
+                case "2":
+
+                    System.out.println("Pago con tarjeta seleccionado.");
+                    tipoPago = "Tarjeta";
+                    break;
+                default:
+                    System.out.println("Opcion incorrecta, vuelva a intentarlo");
+                    break;
+            }
+        } while (!tipoPago.equals("Efectivo") && !tipoPago.equals("Tarjeta"));
+        return tipoPago;
     }
     
     

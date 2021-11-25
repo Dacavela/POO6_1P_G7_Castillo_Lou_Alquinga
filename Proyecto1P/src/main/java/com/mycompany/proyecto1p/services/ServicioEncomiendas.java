@@ -45,15 +45,15 @@ public class ServicioEncomiendas extends Servicio{
     @Override
     public void mostrarInfoServicio(){
     System.out.println("Ingresa el origen del viaje: ");
-        String rDesde = sc.nextLine();
+        rutaDesde = sc.nextLine();
 
         System.out.println("Ingresa tu destino: ");
-        String rHacia = sc.nextLine();
+        rutaHacia = sc.nextLine();
 
         System.out.println("Ingresa la fecha: ");
-        String date = sc.nextLine();
+        fecha = sc.nextLine();
 
         System.out.println("Ingresa la Hora del viaje: ");
-        String hour = sc.nextLine();}
+        hora = sc.nextLine();}
     
 }

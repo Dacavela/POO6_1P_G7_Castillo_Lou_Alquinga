@@ -1,11 +1,2 @@
 numServicio,nombreCliente,nombreConductor,desde,hasta,fecha,hora,numPasajeros,tipoPago,vPagar
-2,null,Fabricio,quito,gye,22/11,12,3,Tarjeta,36.416889050129605
-3,David,Fabricio,Quito,Guayaquil,12/11/2021,12:39,3,Efectivo,49.70866936568682
-3,David,Fabricio,Tumbaco,Quito,23/11/2021,13,4,Efectivo,1.1784590349031152
-3,Sofia,Fabricio,Quitumbe,Tumbaco,23/11/2021,23:30,2,Tarjeta,20.287697710958934
-2,Luis,Fabricio,Sur,Norte,16/12/2021,23:00,3,Efectivo,11.7
-2,Luis,Fabricio,uio,gye,08/08/08,08:08,1,Tarjeta,3.63
-3,Luis,Fabricio,tum,casa,08/08/08,08:08,2,Efectivo,30.94
-2001,Luis,Fabricio,uio,gye,08/08/08,08:08,4,Tarjeta,54.35
-2002,Luis,Fabricio,tum,casa,08/08/08,08:08,3,Efectivo,39.0
-2001,Luis,null,tumbaco,casa,7/8/2021,23:00,4,EFECTIVO,28.46
+2003,David,null,tres,cuatro,01/01/2021,00:00,3,TARJETA,42.69
