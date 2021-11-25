@@ -21,11 +21,11 @@ public class Validacion {
         return valUser.toLowerCase();
     }
     public static String validPassword(Scanner sc){
-        String vlidPass = sc.nextLine();
-        while(vlidPass.length()<4){
-            System.out.println("Contraseña debe tener 4 caracteres mínimo");
-            vlidPass = sc.nextLine();
-        }
+        String vlidPass = sc.nextLine().trim();
+        while(vlidPass.length()<4 || vlidPass.contains(",") ){
+            System.out.println("Contraseña no debe tener [ , ] y 4 caracteres mínimo\n(Espacios al inicio o al final seran suprimidos)\nIngrese contraseña valida:");
+            vlidPass = sc.nextLine().trim();
+        }System.out.println("Su nueva contraseña es:"+vlidPass);
         return vlidPass;
     }
     public static String validarCedula(Scanner sc){
@@ -35,7 +35,7 @@ public class Validacion {
         while(!(cedulaValida.matches("[0-9]{1,10}")&&cedulaValida.length()==10) || cedulaValida.equals("")){
             
             System.out.println("Ingrese una cedula Valida:");
-            cedulaValida = sc.nextLine();
+            cedulaValida = sc.nextLine().trim();
         }
         return cedulaValida;
     }
@@ -43,7 +43,7 @@ public class Validacion {
         String validName = sc.nextLine().trim();
         while(!(validName.matches("[a-zA-Z]*"))||validName.equals("")){
             System.out.println("Ingrese dato valido:");
-            validName = sc.nextLine();
+            validName = sc.nextLine().trim();
         }
         return validName;
     }
@@ -53,7 +53,7 @@ public class Validacion {
         while(!(cllValido.matches("[0-9]{1,10}")&&cllValido.length()==10&&cllValido.startsWith("09")) || cllValido.equals("")){
 
             System.out.println("Ingrese celular valido:");
-            cllValido = sc.nextLine();
+            cllValido = sc.nextLine().trim();
     }
         return cllValido;}
     public static String validarEdad(Scanner sc){
@@ -63,7 +63,7 @@ public class Validacion {
         while(tmpV){
             while(!(validEdad.matches("[0-9]{2}"))){
                 System.out.println("Ingrese Edad Valida:");
-                validEdad = sc.nextLine();
+                validEdad = sc.nextLine().trim();
 
             }
             ed = Integer.valueOf(validEdad);
@@ -82,14 +82,14 @@ public class Validacion {
         while(!(validCC.matches("[0-9]{13,19}") && (13<= validCC.length() && validCC.length()<=19) )  ){
             
             System.out.println("Ingrese una Tarjeta Valida:");
-            validCC = sc.nextLine();
+            validCC = sc.nextLine().trim();
         }
         return validCC;
     
     }
     public static String validarFecha(Scanner sc){
         String validDate = sc.nextLine().trim();
-        while(!validDate.matches("\\\\d{1,2}/\\\\d{1,2}/\\\\d{4}") || validDate.equals("")){
+        while(!validDate.matches("\\d{1,2}/\\d{1,2}/\\d{4}") || validDate.equals("")){
             System.out.println("Ingrese formato correcto: (dd/mm/yyyy)");
             validDate = sc.nextLine();
         }
@@ -108,13 +108,13 @@ public class Validacion {
         Integer ed1;
         boolean tmpV1 = true;
         while(tmpV1){
-            while(!(validPas.matches("[0-9]*"))){
+            while(!(validPas.matches("[0-9]*"))||validPas.equals("")){
                 System.out.println("Ingrese dato numerico:");
                 validPas = sc.nextLine();
 
             }
             ed1 = Integer.valueOf(validPas);
-            if(!(ed1<0 && ed1>5)){
+            if(!(ed1>0 && ed1<5)){
                 System.out.println("Pueden viajar hasta 4 personas:");
                 validPas = sc.nextLine();
                 tmpV1 = true;
@@ -124,11 +124,17 @@ public class Validacion {
     }
     public static String validarRuta(Scanner sc){
         String validRuta = sc.nextLine().trim();
-        while(!validRuta.matches("[a-zA-Z0-9 ]*") || validRuta.equals("")){
-            System.out.println("Ingrese Ruta:");
-            validRuta = sc.nextLine();
+        while(validRuta.contains(",") || validRuta.equals("") ||validRuta.matches("[ ]*")){
+            System.out.println("RUTA no debe contener ',' ni estar vacio\nIngrese Ruta:");
+            validRuta = sc.nextLine().trim();
         }
         return validRuta;
     }
-        
+    public static String validarConfirmacion(Scanner sc){
+        String validCon = sc.nextLine().trim();
+        while(!validCon.matches("(?i)(s|n){1}")  || validCon.equals("") || validCon.matches("[ ]*")){
+            System.out.println("Opcion no valida\n¿Desea confirmar su viaje? S/N");
+            validCon = sc.nextLine().trim();
+        }return validCon;
+    }   
 }

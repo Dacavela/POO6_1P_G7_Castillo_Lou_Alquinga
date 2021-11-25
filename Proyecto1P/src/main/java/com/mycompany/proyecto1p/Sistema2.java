@@ -19,13 +19,15 @@ public class Sistema2 {
     public Archivo userFile = new Archivo("usuarios.txt");
     public Archivo clientesFile = new Archivo("clientes.txt");
     public Archivo viajesFile = new Archivo("viajes.txt");
-    
+    public Archivo vehiculosFile = new Archivo("vehículos.txt");
+    public Archivo conductoreFile = new Archivo("conductores.txt");
     public Cliente user = new Cliente();
-    
+    public Conductor driver = new Conductor();
+    public Vehiculo veh = new Vehiculo();
     public Scanner sc = new Scanner(System.in);
     
     
-    
+    //metodos sistema 2
     public void mostrarInicio(){
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("             BIENVENIDO AL SISTEMA");
@@ -93,20 +95,48 @@ public class Sistema2 {
         return opcion;
         
     }
-    
-        public void setearCliente(String linea) {
-            String[] lineaSeparada = linea.split(",");
-            user.setCedula(lineaSeparada[0]);
-            user.setNombre(lineaSeparada[1]);
-            user.setApellidos(lineaSeparada[2]);
-            user.setUser(lineaSeparada[3]);
-            user.setPassword(lineaSeparada[4]);
-            user.setCelular(lineaSeparada[5]);
-            user.setTipoUsuario(lineaSeparada[6]);
-            
-            String[] lane = clientesFile.accederLinea(clientesFile.buscar(user.getCedula(), 1)).split(",");
-            user.setEdad(lane[1]);
-            user.setTarjetaCred(lane[2]);
-                
-    }
+    public void setearCliente(String linea) {
+        String[] lineaSeparada = linea.split(",");
+        user.setCedula(lineaSeparada[0]);
+        user.setNombre(lineaSeparada[1]);
+        user.setApellidos(lineaSeparada[2]);
+        user.setUser(lineaSeparada[3]);
+        user.setPassword(lineaSeparada[4]);
+        user.setCelular(lineaSeparada[5]);
+        user.setTipoUsuario(lineaSeparada[6]);
+
+        String[] lane = clientesFile.accederLinea(clientesFile.buscar(user.getCedula(), 1)).split(",");
+        user.setEdad(lane[1]);
+        user.setTarjetaCred(lane[2]);
+
 }
+    public boolean mostrarInfoDriver(){
+        System.out.println("+++++++ MENU CONDUCTOR ++++++++"
+                +        "\n*                              *\n"
+                +          "+++++++++++++++++++++++++++++++");
+        System.out.println("1. Consultar Servicio Asignado\nEscoja una opsion: ");
+        String op = sc.nextLine().trim();
+        while(!op.equals("1")||op.equals("")){
+            System.out.println("Ingrese opcion valida: ");
+            op = sc.nextLine().trim();
+        }
+        return true;
+    }
+    public void elegirConductor(String disponibilidad, String tipoVehi){
+        boolean ver = true;
+        while(ver){
+        //buscamos un conductor disponible conductor.txt
+        String[] co = conductoreFile.accederLinea(conductoreFile.buscar(disponibilidad, 3)).split(",");
+        String[] ve = vehiculosFile.accederLinea(vehiculosFile.buscar(co[3], 1)).split(",");
+        
+            if(ve.equals("tipoVehi")){
+                
+            
+            
+        }
+        }
+        }
+        
+        
+        
+    }

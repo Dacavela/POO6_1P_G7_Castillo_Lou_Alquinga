@@ -6,7 +6,7 @@
 package com.mycompany.proyecto1p;
 
 import com.mycompany.proyecto1p.services.*;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 /**
  *
@@ -47,6 +47,7 @@ public class Cliente extends Usuario{
     }
     
     public boolean confirmarServicio(String s){
+        
         return s.toUpperCase().equals("S");
     }
     

@@ -16,7 +16,8 @@ public class Conductor extends Usuario{
     private int codigoVehiculo;
     
  
-
+    public Conductor(){
+    }
     //Constructor de la clase Conductor que hereda de la clase Usuario
     public Conductor(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario,String codigoUsuario,String licencia, String estado, int codigoVehiculo) {
         super(cedula, nombre, apellido, user, password, celular, tipoUsuario);

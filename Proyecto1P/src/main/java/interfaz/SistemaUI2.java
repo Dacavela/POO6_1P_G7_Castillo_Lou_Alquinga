@@ -23,15 +23,7 @@ public class SistemaUI2 {
         
         Scanner sc = new Scanner(System.in);
         Sistema2 s1 = new Sistema2();
-        
-        System.out.println("Ruta");
-        String r = validarFecha(sc);
-        System.out.println(r);
-        
-        
         s1.mostrarInicio();
-//        String usuarioo = l1[0];
-//        String contra = l1[1];
         String login = s1.verifyLogin();
         
         while (true) {
@@ -122,11 +114,17 @@ public class SistemaUI2 {
                                 
                                 System.out.println("¿Desea confirmar su viaje? S/N");                                
                                 
-                                if (s1.user.confirmarServicio(sc.nextLine().toUpperCase())){
-                                    s1.viajesFile.escribir(serv1.toString(s1.user, tipoPago.toUpperCase()));
+                                if (s1.user.confirmarServicio(validarConfirmacion(sc))){
+                                    
+                                    
+                                    s1.viajesFile.escribir(serv1.toString(s1.user, tipoPago.toUpperCase(), s1.driver));
                                 }
                                 
                                 login = s1.verifyLogin();
+                                
+                                
+                                
+                                
                                 break;
                             case "2":
                                 System.out.println("Solicitando comida a domicilio");
@@ -148,7 +146,7 @@ public class SistemaUI2 {
             }
             
             if (login.equals("AccesoConductor")) {
-                System.out.println("Mostrar opciones conductor");
+                s1.mostrarInfoDriver();
                 s1.mostrarInicio(); 
             }
         

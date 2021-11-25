@@ -8,3 +8,4 @@ numServicio,nombreCliente,nombreConductor,desde,hasta,fecha,hora,numPasajeros,ti
 3,Luis,Fabricio,tum,casa,08/08/08,08:08,2,Efectivo,30.94
 2001,Luis,Fabricio,uio,gye,08/08/08,08:08,4,Tarjeta,54.35
 2002,Luis,Fabricio,tum,casa,08/08/08,08:08,3,Efectivo,39.0
+2001,Luis,null,tumbaco,casa,7/8/2021,23:00,4,EFECTIVO,28.46

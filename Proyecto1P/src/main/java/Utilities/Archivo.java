@@ -27,7 +27,7 @@ public class Archivo {
         return contador;
     }
     
-    
+    //metodos para manejar datos provenientes de archivos txt
     public boolean buscar(String categoria, int elementos){ 
         //boolean bucle;
         this.contador = 0;
@@ -47,11 +47,7 @@ public class Archivo {
                 sl.useDelimiter(",");
                 
                 for(int i=0;i<elementos-1;i++){
-                    
-                    sl.next();
-                    
-               
-                }
+                    sl.next();}
                 tmpVer= sl.next();
                 this.contador++;
                 if(tmpVer.equals(categoria)){
@@ -61,11 +57,9 @@ public class Archivo {
                 }else{verify = false;}
             }
             s.close();
-            
         }catch (FileNotFoundException e){e.printStackTrace();}
         return verify;
-    } 
-    
+    } //
     public String accederLinea(boolean buscar){
         String linea = null;
         if(buscar==true){
@@ -105,5 +99,14 @@ public class Archivo {
         }
         
     }
-    
+    public void buscarVehiculo(){
+        
+    }
+
+    public void buscarDriver(String disponibilidad){
+//        boolean existDrive = buscar(disponibilidad,3);
+//        String[] lin1 = accederLinea(existDrive).split(",");
+//        return lin1;
+        
+    }
 }
