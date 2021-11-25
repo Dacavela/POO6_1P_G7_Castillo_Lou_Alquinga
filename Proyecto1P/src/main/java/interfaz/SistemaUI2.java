@@ -79,7 +79,7 @@ public class SistemaUI2 {
             if (login.equals("AccesoCliente")) {
                
                s1.setearCliente(s1.userFile.accederLinea(s1.userFile.buscar(s1.user.getUser(), 4)));
-               System.out.println(s1.user.getNombre());
+               //System.out.println(s1.user.getNombre());
                String opcion;
                     do{
                         System.out.println("Elija una opción: ");
@@ -98,23 +98,40 @@ public class SistemaUI2 {
                                 if (s1.user.confirmarServicio(validarConfirmacion(sc))){
                                     Servicio.setIdUnico(serv1.getIdUnico()+1);
                                     s1.viajesFile.escribir(serv1.toString(s1.user, tipoPago.toUpperCase(), s1.driver));
+                                    s1.agregaServicioLista(serv1);
                                 }
                                 //Agregamos el servicio a la lista de servicios
-                                s1.agregaServicioLista(serv1);
-//                                System.out.
+                                
+                                System.out.println(s1.getServices());
                                 login = s1.verifyLogin();
                                 break;
                             case "2":
-                                System.out.println("Solicitando comida a domicilio");
-                                ServicioEncomiendas serv2 = s1.user.s2;
-                                serv2.mostrarInfoServicio();
+                                System.out.println("Solicitando entrega de encomienda");
+                                ServicioEncomiendas serv3 = s1.user.s3;
+                                serv3.mostrarInfoServicio();
+                                String tipoPago3 = serv3.tipoPago();
                                 
+                                System.out.println("¿Desea confirmar su viaje? S/N");                                
                                 
-                                s1.agregaServicioLista(serv2);
+                                if (s1.user.confirmarServicio(validarConfirmacion(sc))){
+                                    Servicio.setIdUnico(serv3.getIdUnico()+1);
+                                    s1.encomiendasFile.escribir(serv3.toString(s1.user, tipoPago3.toUpperCase(), s1.driver));
+                                    s1.agregaServicioLista(serv3);
+                                }
                                 login = s1.verifyLogin();
                                 break;
                             case "3":
-                                System.out.println("Solicitando entrega encomienda");
+                                
+                                
+                                System.out.println("Solicitando comida a domicilio");
+                                ServicioComida serv2 = s1.user.s2;
+                                serv2.mostrarInfoServicio();
+                                String tipoPago2=serv2.tipoPago();
+                                
+                                
+                                s1.agregaServicioLista(serv2);
+                                System.out.println(s1.getServices());
+                                
                                 login = s1.verifyLogin();
                                 break;
                             case "4":

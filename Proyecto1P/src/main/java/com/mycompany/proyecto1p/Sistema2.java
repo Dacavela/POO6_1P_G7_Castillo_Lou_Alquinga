@@ -23,6 +23,7 @@ public class Sistema2 {
     public Archivo viajesFile = new Archivo("viajes.txt");
     public Archivo vehiculosFile = new Archivo("vehículos.txt");
     public Archivo conductoreFile = new Archivo("conductores.txt");
+    public Archivo encomiendasFile = new Archivo("encomiendas.txt");
     public Cliente user = new Cliente();
     public Conductor driver = new Conductor();
     public Vehiculo veh = new Vehiculo();
@@ -33,6 +34,15 @@ public class Sistema2 {
     public ArrayList<Servicio> listaServices(){
         return services = new ArrayList<>();
     }
+
+    public static ArrayList<Servicio> getServices() {
+        return services;
+    }
+
+    public static void setServices(ArrayList<Servicio> services) {
+        Sistema2.services = services;
+    }
+    
     
     //metodos sistema 2
     public void mostrarInicio(){
@@ -87,8 +97,8 @@ public class Sistema2 {
         
         
         System.out.println("1. Solicitar servicio de taxi");
-        System.out.println("2. Solicitar comida a domicilio");
-        System.out.println("3. Solicitar entrega encomienda");
+        System.out.println("2. Solicitar entrega encomienda");
+        System.out.println("3. Solicitar comida a domicilio");
         System.out.println("4. Consultar servicios");
         System.out.println("Escoja una opcion:");
         opcion = sc.nextLine();
@@ -144,7 +154,7 @@ public class Sistema2 {
     }
     
     //Metodo estatico para agregar usuarios que hayan sido agregados a usuarios.txt a la  lista de usuarios
-    public static void agregaServicioLista(Servicio s){           
+    public void agregaServicioLista(Servicio s){           
             services.add(s); 
     }
         

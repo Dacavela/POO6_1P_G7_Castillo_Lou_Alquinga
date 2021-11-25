@@ -17,7 +17,8 @@ public class Cliente extends Usuario{
     private String edad;
     String confirmar;
     public ServicioTaxi s1 = new ServicioTaxi();
-    public ServicioEncomiendas s2 = new ServicioEncomiendas();
+    public ServicioComida s2 = new ServicioComida();
+    public ServicioEncomiendas s3 = new ServicioEncomiendas();
     
 
     public Cliente() {

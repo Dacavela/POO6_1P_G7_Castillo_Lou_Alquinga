@@ -1,2 +1,2 @@
 numServicio,nombreCliente,nombreConductor,desde,hasta,fecha,hora,numPasajeros,tipoPago,vPagar
-2003,David,null,tres,cuatro,01/01/2021,00:00,3,TARJETA,42.69
+2003,David,null,Tumbaco,Cumbayork,25/11/2021,15:00,2,EFECTIVO,34.91

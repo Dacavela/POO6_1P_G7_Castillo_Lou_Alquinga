@@ -9,6 +9,9 @@ package Utilities;
  *
  * @author DhuDu
  */
+import static Utilities.TipoEncomiendas.DOCUMENTOS;
+import static Utilities.TipoEncomiendas.MEDICAMENTOS;
+import static Utilities.TipoEncomiendas.ROPA;
 import java.util.Scanner;
 public class Validacion {
     //Validacion de entradas por teclado para el correcto funcionamiento. 
@@ -130,6 +133,51 @@ public class Validacion {
         }
         return validRuta;
     }
+    public static TipoEncomiendas validarEncomienda(Scanner sc){
+        TipoEncomiendas tipo = null;
+        //MEDICAMENTOS,DOCUMENTOS,ROPA;
+        String entrada;
+        do{
+            entrada = sc.nextLine();
+            switch(entrada){
+                    case "1":
+                        tipo = MEDICAMENTOS;
+                        break;
+                    case "2":
+                        tipo = DOCUMENTOS;
+                        break;
+                    case "3":
+                        tipo = ROPA;
+                        break;
+                    default: 
+                        System.out.printf("Ingrese un número del 1 al 3:\n1. Medicamentos\n2. Documentos\n3. Ropa\n");
+                        break;
+            } 
+        }while(!entrada.equals("1") && !entrada.equals("2") && !entrada.equals("3"));
+        return tipo;
+    }
+    
+    public static String validarCantidadProductos(Scanner sc){
+        String validCant = sc.nextLine().trim();
+        Integer cant;
+        boolean tmpV = true;
+        while(tmpV){
+            while(!(validCant.matches("[0-9]{2}")) && !(validCant.matches("[0-9]{1}"))){
+                System.out.println("Ingrese cantidad valida:");
+                validCant = sc.nextLine().trim();
+
+            }
+            cant = Integer.valueOf(validCant);
+            if(!(cant<100 && cant>0)){
+                System.out.println("Ingrese cantidad valida entre 0 y 100:");
+                validCant = sc.nextLine();
+                tmpV = true;
+        }else{validCant = cant.toString(); tmpV=false;}
+        }
+        return validCant;
+    }
+    
+    
     public static String validarConfirmacion(Scanner sc){
         String validCon = sc.nextLine().trim();
         while(!validCon.matches("(?i)(s|n){1}")  || validCon.equals("") || validCon.matches("[ ]*")){
