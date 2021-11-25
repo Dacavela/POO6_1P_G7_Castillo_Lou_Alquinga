@@ -130,21 +130,21 @@ public class Sistema2 {
         }
         return true;
     }
-    public void elegirConductor(String disponibilidad, String tipoVehi) {
-        boolean ver = true;
-        while (ver) {
-            //buscamos un conductor disponible conductor.txt
-            String[] co = conductoreFile.accederLinea(conductoreFile.buscar(disponibilidad, 3)).split(",");
-            String[] ve = vehiculosFile.accederLinea(vehiculosFile.buscar(co[3], 1)).split(",");
-
-            if (ve.equals("tipoVehi")) {
-
-            }
-        }
-    }
+//    public void elegirConductor(String disponibilidad, String tipoVehi) {
+//        boolean ver = true;
+//        while (ver) {
+//            //buscamos un conductor disponible conductor.txt
+//            String[] co = conductoreFile.accederLinea(conductoreFile.buscar(disponibilidad, 3)).split(",");
+//            String[] ve = vehiculosFile.accederLinea(vehiculosFile.buscar(co[3], 1)).split(",");
+//
+//            if (ve.equals("tipoVehi")) {
+//
+//            }
+//        }
+//    }
     
     //Metodo estatico para agregar usuarios que hayan sido agregados a usuarios.txt a la  lista de usuarios
-    public static void agregaServicioLista(Servicio s){           
+    public void agregaServicioLista(Servicio s){           
             services.add(s); 
     }
         
