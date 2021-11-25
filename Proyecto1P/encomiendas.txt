@@ -1,4 +1,1 @@
 numeroServicio,nombreCliente,nombreConductor,desde,hasta,fecha,hora,tipoEncomiendas,cantidadProductos,tipoPago,valorPagar
-2001,David,null,gye,uio,22/22/2021,22:22,DOCUMENTOS,3,TARJETA,33.65
-2002,David,null,Quito,Cuenca,22/21/2021,22:22,ROPA,4,EFECTIVO,14.41
-2001,David,null,GYE,UIO,22/22/2021,22:22,ROPA,4,TARJETA,6.51

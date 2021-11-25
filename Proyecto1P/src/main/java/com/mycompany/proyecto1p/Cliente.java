@@ -19,7 +19,7 @@ public class Cliente extends Usuario{
     public ServicioTaxi s1 = new ServicioTaxi();
     public ServicioComida s2 = new ServicioComida();
     public ServicioEncomiendas s3 = new ServicioEncomiendas();
-    
+    public Vehiculo v1 = new Vehiculo();
 
     public Cliente() {
         this.tipoUsuario = "C";

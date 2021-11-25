@@ -13,11 +13,12 @@ import java.util.*;
 public class Archivo {
     private String direccion;
     private int contador = 0;
+    private ArrayList<String> conductores;
     
     public Archivo(String direccion) {
         this.direccion = direccion;
-        
     }
+    
     public void setDireccion(String direccion){
         this.direccion = direccion;
     }
@@ -32,6 +33,16 @@ public class Archivo {
     public int getContador() {
         return contador;
     }
+
+    public ArrayList<String> getConductores() {
+        return conductores;
+    }
+
+    public void setConductores(ArrayList<String> conductores) {
+        this.conductores = conductores;
+    }
+
+  
     
     //metodos para manejar datos provenientes de archivos txt
     public boolean buscar(String categoria, int elementos){ 
@@ -66,6 +77,7 @@ public class Archivo {
         }catch (FileNotFoundException e){e.printStackTrace();}
         return verify;
     } //
+    
     public String accederLinea(boolean buscar){
         String linea = null;
         if(buscar==true){
@@ -75,6 +87,7 @@ public class Archivo {
                 s1 = new Scanner(f1);
                 int p=0;
                 while ( p<this.contador) {
+                    
                     linea = s1.nextLine();   
                     p++;
                 }
@@ -105,6 +118,7 @@ public class Archivo {
         }
         
     }
+    
     public String[] buscarVehiculo(String filedireccion,String disponibilidad, String tipoVeh){
         
         boolean verify = true;
@@ -132,9 +146,6 @@ public class Archivo {
                     verify = false;
                     
                 }else verify = true;
-                
-                
-                
             }
             s.close();
         }catch (FileNotFoundException e){e.printStackTrace();}
@@ -160,4 +171,55 @@ public class Archivo {
 //        return lin1;
         return conductor;
     }
+    
+    public void reemplazarLineaConductores(String cedula, boolean buscar) {
+        conductores = new ArrayList<>();
+        String linea;
+        if (buscar == true) {
+            File f1 = new File("conductores.txt");
+            Scanner s1;
+            try {
+                s1 = new Scanner(f1);
+
+                while (s1.hasNextLine()) {
+                    linea = s1.nextLine();
+                    String[] lineaSeparada = linea.split(",");
+                    if (lineaSeparada[0].equals(cedula)) {
+                        lineaSeparada[2] = "O";
+                        String lineaUnida = lineaSeparada[0] + "," + lineaSeparada[1] + "," + lineaSeparada[2] + "," + lineaSeparada[3];
+                        conductores.add(lineaUnida);
+                    } else {
+                        conductores.add(linea);
+                    }
+                }
+                s1.close();
+            } catch (FileNotFoundException e) {
+            }
+            
+            FileWriter fichero = null;
+            PrintWriter pw = null;
+            try {
+                fichero = new FileWriter("conductores.txt");
+                pw = new PrintWriter(fichero);
+                pw.print(conductores.subList(0, 1).toString().replace("[", "").replace("]", ""));
+                for (String linea1: conductores.subList(1, conductores.size())){
+                    pw.print("\n"+ linea1);
+                }
+            } catch (IOException e) {
+            } finally {
+                try {
+                    // Nuevamente aprovechamos el finally para 
+                    // asegurarnos que se cierra el fichero.
+                    if (null != fichero) {
+                        fichero.close();
+                    }
+                } catch (IOException e2) {
+                }
+            }
+
+        }
+    }
+    
+    
+    
 }

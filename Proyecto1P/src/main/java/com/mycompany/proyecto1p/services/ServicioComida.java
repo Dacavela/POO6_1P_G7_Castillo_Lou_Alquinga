@@ -6,6 +6,9 @@
 package com.mycompany.proyecto1p.services;
 
 import Utilities.Pedido;
+import static Utilities.Validacion.validarFecha;
+import static Utilities.Validacion.validarHora;
+import static Utilities.Validacion.validarRuta;
 import com.mycompany.proyecto1p.Conductor;
 
 /**
@@ -34,16 +37,19 @@ public class ServicioComida extends Servicio{
     
     @Override
     public void mostrarInfoServicio(){
-    System.out.println("Ingresa el origen del viaje: ");
-        String rDesde = sc.nextLine();
+        System.out.println("Ingresa el origen de tu encomienda: ");
+        super.rutaDesde = validarRuta(sc);
 
-        System.out.println("Ingresa tu destino: ");
-        String rHacia = sc.nextLine();
+        System.out.println("Ingresa el destino de tu encomienda: ");
+        super.rutaHacia = validarRuta(sc);
 
-        System.out.println("Ingresa la fecha: ");
-        String date = sc.nextLine();
+        System.out.println("Ingresa la fecha dd/mm/yyyy: ");
+        super.fecha = validarFecha(sc);
 
-        System.out.println("Ingresa la Hora del viaje: ");
-        String hour = sc.nextLine();}
+        System.out.println("Ingresa la Hora de la encomienda 24Hrs (hh:mm): ");
+        super.hora = validarHora(sc);
     
+        
+        
+    }
 }

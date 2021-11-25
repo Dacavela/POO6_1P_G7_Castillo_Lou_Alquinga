@@ -13,13 +13,13 @@ public class Conductor extends Usuario{
     private String codigoUsuario;
     private String licencia;
     private String estado;
-    private int codigoVehiculo;
+    private String codigoVehiculo;
     
  
     public Conductor(){
     }
     //Constructor de la clase Conductor que hereda de la clase Usuario
-    public Conductor(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario,String codigoUsuario,String licencia, String estado, int codigoVehiculo) {
+    public Conductor(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario,String codigoUsuario,String licencia, String estado, String codigoVehiculo) {
         super(cedula, nombre, apellido, user, password, celular, tipoUsuario);
         this.codigoUsuario = codigoUsuario;
         this.licencia = licencia;
@@ -55,11 +55,11 @@ public class Conductor extends Usuario{
         this.estado = estado;
     }
 
-    public int getCodigoVehiculo() {
+    public String getCodigoVehiculo() {
         return codigoVehiculo;
     }
 
-    public void setCodigoVehiculo(int vehiculo) {
+    public void setCodigoVehiculo(String vehiculo) {
         this.codigoVehiculo = vehiculo;
     }
     //Fin Getters y Setters

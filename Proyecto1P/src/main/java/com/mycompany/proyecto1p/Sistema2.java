@@ -128,6 +128,31 @@ public class Sistema2 {
         user.setTarjetaCred(lane[2]);
 
 }
+    
+    public void setearVehiculo(String[] linea){
+        veh.setCodV(linea [0]);
+        veh.setPlaca(linea [1]);
+        veh.setModelo(linea [2]);
+        veh.setMarca(linea [3]);
+        veh.setTipo(linea [4]);
+    }
+    
+    public void setearConductor(String[] linea, String lineaUser){
+        String[] lineaSeparada = lineaUser.split(",");
+        driver.setCedula(lineaSeparada[0]);
+        driver.setNombre(lineaSeparada[1]);
+        driver.setApellidos(lineaSeparada[2]);
+        driver.setUser(lineaSeparada[3]);
+        driver.setPassword(lineaSeparada[4]);
+        driver.setCelular(lineaSeparada[5]);
+        driver.setTipoUsuario(lineaSeparada[6]);
+        
+        driver.setCodigoUsuario(linea [0]);
+        driver.setLicencia(linea [1]);
+        driver.setEstado(linea [2]);
+        driver.setCodigoVehiculo(linea [3]);
+    }
+    
     public boolean mostrarInfoDriver(){
         System.out.println("+++++++ MENU CONDUCTOR ++++++++"
                 +        "\n*                              *\n"

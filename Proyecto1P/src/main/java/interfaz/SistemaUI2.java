@@ -97,6 +97,10 @@ public class SistemaUI2 {
                                 
                                 if (s1.user.confirmarServicio(validarConfirmacion(sc))){
                                     Servicio.setIdUnico(serv1.getIdUnico()+1);
+                                    String[] lineaConductor = s1.conductoreFile.buscarDriver("D","A");
+                                    s1.setearConductor(lineaConductor,s1.userFile.accederLinea(s1.userFile.buscar(lineaConductor[0], 1)));
+                                    
+                                    
                                     s1.viajesFile.escribir(serv1.toString(s1.user, tipoPago.toUpperCase(), s1.driver));
                                     s1.agregaServicioLista(serv1);
                                 }
@@ -115,14 +119,16 @@ public class SistemaUI2 {
                                 
                                 if (s1.user.confirmarServicio(validarConfirmacion(sc))){
                                     Servicio.setIdUnico(serv3.getIdUnico()+1);
+                                    String[] lineaConductor = s1.conductoreFile.buscarDriver("D","M");
+                                    s1.setearConductor(lineaConductor,s1.userFile.accederLinea(s1.userFile.buscar(lineaConductor[0], 1)));
+                                    
                                     s1.encomiendasFile.escribir(serv3.toString(s1.user, tipoPago3.toUpperCase(), s1.driver));
+                                    //System.out.println(s1.driver.getNombre());
                                     s1.agregaServicioLista(serv3);
                                 }
                                 login = s1.verifyLogin();
                                 break;
                             case "3":
-                                
-                                
                                 System.out.println("Solicitando comida a domicilio");
                                 ServicioComida serv2 = s1.user.s2;
                                 serv2.mostrarInfoServicio();

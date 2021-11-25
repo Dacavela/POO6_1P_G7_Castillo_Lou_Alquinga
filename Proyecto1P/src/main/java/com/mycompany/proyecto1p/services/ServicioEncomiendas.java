@@ -51,8 +51,7 @@ public class ServicioEncomiendas extends Servicio{
     
     @Override
     public void mostrarInfoServicio(){
-    System.out.println("Ingresa el origen de tu encomienda: ");
-        //String dR = validarRuta(sc);
+        System.out.println("Ingresa el origen de tu encomienda: ");
         super.rutaDesde = validarRuta(sc);
 
         System.out.println("Ingresa el destino de tu encomienda: ");
