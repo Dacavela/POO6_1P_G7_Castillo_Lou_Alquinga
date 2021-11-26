@@ -5,7 +5,7 @@
  */
 package com.mycompany.proyecto1p.services;
 
-import Utilities.Pedido;
+import Restaurante.Pedido;
 import static Utilities.Validacion.validarFecha;
 import static Utilities.Validacion.validarHora;
 import static Utilities.Validacion.validarRuta;

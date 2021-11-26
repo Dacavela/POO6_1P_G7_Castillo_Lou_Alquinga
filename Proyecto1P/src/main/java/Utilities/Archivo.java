@@ -94,7 +94,7 @@ public class Archivo {
                 s1.close();
             }catch (FileNotFoundException e){}
             return linea;
-        }else return "noexiste,2,3,4,5,6,C";
+        }else return "noexiste,noexiste,noexiste,noexiste,noexiste,noexiste,C";
     }
     public void escribir(String cadena){
         FileWriter fichero = null;
@@ -132,16 +132,10 @@ public class Archivo {
             s = new Scanner(f);
             
             while (s.hasNextLine()&& verify) {
-                String[] linea_0 = s.nextLine().split(",");
-                System.out.println("Primer bucle"+(i++));
-                
-                
-                
+                String[] linea_0 = s.nextLine().split(",");                
                 cond = accederLinea(buscar(linea_0[0], 4)).split(",");
-                System.out.println(linea_0[4]+"+"+cond[3]);
+                
                 if((linea_0[4].equals(tipoVeh))&&(cond[2].equals(disponibilidad))){
-                    System.out.println("Segundo bucle"+(i++));
-                    System.out.println(linea_0[4]+"+"+cond[3]+"+"+cond[1]);
                     linea = linea_0;
                     verify = false;
                     
@@ -172,52 +166,50 @@ public class Archivo {
         return conductor;
     }
     
-    public void reemplazarLineaConductores(String cedula, boolean buscar) {
+    public void reemplazarLineaConductores(String cedula) {
         conductores = new ArrayList<>();
         String linea;
-        if (buscar == true) {
-            File f1 = new File("conductores.txt");
-            Scanner s1;
-            try {
-                s1 = new Scanner(f1);
+        File f1 = new File("conductores.txt");
+        Scanner s1;
+        try {
+            s1 = new Scanner(f1);
 
-                while (s1.hasNextLine()) {
-                    linea = s1.nextLine();
-                    String[] lineaSeparada = linea.split(",");
-                    if (lineaSeparada[0].equals(cedula)) {
-                        lineaSeparada[2] = "O";
-                        String lineaUnida = lineaSeparada[0] + "," + lineaSeparada[1] + "," + lineaSeparada[2] + "," + lineaSeparada[3];
-                        conductores.add(lineaUnida);
-                    } else {
-                        conductores.add(linea);
-                    }
-                }
-                s1.close();
-            } catch (FileNotFoundException e) {
-            }
-            
-            FileWriter fichero = null;
-            PrintWriter pw = null;
-            try {
-                fichero = new FileWriter("conductores.txt");
-                pw = new PrintWriter(fichero);
-                pw.print(conductores.subList(0, 1).toString().replace("[", "").replace("]", ""));
-                for (String linea1: conductores.subList(1, conductores.size())){
-                    pw.print("\n"+ linea1);
-                }
-            } catch (IOException e) {
-            } finally {
-                try {
-                    // Nuevamente aprovechamos el finally para 
-                    // asegurarnos que se cierra el fichero.
-                    if (null != fichero) {
-                        fichero.close();
-                    }
-                } catch (IOException e2) {
+            while (s1.hasNextLine()) {
+                linea = s1.nextLine();
+                String[] lineaSeparada = linea.split(",");
+                if (lineaSeparada[0].equals(cedula)) {
+                    lineaSeparada[2] = "O";
+                    String lineaUnida = lineaSeparada[0] + "," + lineaSeparada[1] + "," + lineaSeparada[2] + "," + lineaSeparada[3];
+                    conductores.add(lineaUnida);
+                } else {
+                    conductores.add(linea);
                 }
             }
-
+            s1.close();
+        } catch (FileNotFoundException e) {
         }
+
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        try {
+            fichero = new FileWriter("conductores.txt");
+            pw = new PrintWriter(fichero);
+            pw.print(conductores.subList(0, 1).toString().replace("[", "").replace("]", ""));
+            for (String linea1 : conductores.subList(1, conductores.size())) {
+                pw.print("\n" + linea1);
+            }
+        } catch (IOException e) {
+        } finally {
+            try {
+                // Nuevamente aprovechamos el finally para 
+                // asegurarnos que se cierra el fichero.
+                if (null != fichero) {
+                    fichero.close();
+                }
+            } catch (IOException e2) {
+            }
+        }
+
     }
     
     

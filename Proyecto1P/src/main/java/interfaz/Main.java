@@ -27,7 +27,7 @@ public class Main {
 //        String [] verifi = v2.buscarDriver("O","M");
 //        System.out.println(verifi[0]);
 // Clase main para ejecutar todo el programa
-        v2.reemplazarLineaConductores("1750036422", true);
+        //v2.reemplazarLineaConductores("1750036422");
         SistemaUI2 sysui = new SistemaUI2();
         sysui.SistemaUI();
         
