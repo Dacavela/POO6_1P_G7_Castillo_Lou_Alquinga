@@ -35,26 +35,48 @@ public class ServicioTaxi extends Servicio{
     }
     
     //@Override
-    public void mostrarInfoServicio(){
+    public boolean mostrarInfoServicio(){
+        String cancelar = null;
+        boolean permanecer = false;
         
         System.out.println("Ingresa el origen del viaje: ");
-        //String dR = validarRuta(sc);
-        super.rutaDesde = validarRuta(sc);
+        cancelar = validarRuta(sc);
+        if(cancelar.equals("cancelar")) {
+            return permanecer = true;
+        }
+        super.rutaDesde = cancelar;
+        
 
         System.out.println("Ingresa tu destino: ");
-        super.rutaHacia = validarRuta(sc);
+        cancelar = validarRuta(sc);
+        if(cancelar.equals("cancelar")) {
+            return permanecer = true;
+        }
+        super.rutaHacia = cancelar;
 
         System.out.println("Ingresa la fecha dd/mm/yyyy: ");
-        super.fecha = validarFecha(sc);
+        cancelar = validarFecha(sc);
+        if(cancelar.equals("cancelar")) {
+            return permanecer = true;
+        }
+        super.fecha = cancelar;
+        
 
         System.out.println("Ingresa la Hora del viaje 24Hrs (hh:mm): ");
-        super.hora = validarHora(sc);
+        cancelar = validarHora(sc);
+        if(cancelar.equals("cancelar")) {
+            return permanecer = true;
+        }
+        super.hora = cancelar;
         
         System.out.println("¿Cuántas personas viajarán?: ");
-        this.personasQueViajan = validarPasajeros(sc);
-     
-       //Falta poner el conductor 
-        
+        cancelar = validarPasajeros(sc);
+        if(cancelar.equals("cancelar")) {
+            return permanecer = true;
+        }
+        this.personasQueViajan = cancelar;
+      
+        return permanecer;
     }
     
     

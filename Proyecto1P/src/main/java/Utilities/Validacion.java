@@ -35,6 +35,10 @@ public class Validacion {
         
         String cedulaValida = sc.nextLine().trim();
         
+        if(cedulaValida.equals("cancelar")) {
+            return cedulaValida;
+        }
+        
         while(!(cedulaValida.matches("[0-9]{1,10}")&&cedulaValida.length()==10) || cedulaValida.equals("")){
             
             System.out.println("Ingrese una cedula Valida:");
@@ -44,6 +48,10 @@ public class Validacion {
     }
     public static String validarNames(Scanner sc){
         String validName = sc.nextLine().trim();
+
+        if(validName.equals("cancelar")) {
+            return validName;
+        }
         while(!(validName.matches("[a-zA-Z]*"))||validName.equals("")){
             System.out.println("Ingrese dato valido:");
             validName = sc.nextLine().trim();
@@ -53,6 +61,9 @@ public class Validacion {
     public static String validarCelular(Scanner sc){
         String cllValido = sc.nextLine().trim();
         
+        if(cllValido.equals("cancelar")) {
+            return cllValido;
+        }
         while(!(cllValido.matches("[0-9]{1,10}")&&cllValido.length()==10&&cllValido.startsWith("09")) || cllValido.equals("")){
 
             System.out.println("Ingrese celular valido:");
@@ -61,6 +72,9 @@ public class Validacion {
         return cllValido;}
     public static String validarEdad(Scanner sc){
         String validEdad = sc.nextLine().trim();
+        if(validEdad.equals("cancelar")) {
+            return validEdad;
+        }
         Integer ed;
         boolean tmpV = true;
         while(tmpV){
@@ -79,8 +93,10 @@ public class Validacion {
         return validEdad;
     }
     public static String validarCC(Scanner sc){
-        
         String validCC = sc.nextLine().trim();
+        if(validCC.equals("cancelar")) {
+            return validCC;
+        }
         
         while(!(validCC.matches("[0-9]{13,19}") && (13<= validCC.length() && validCC.length()<=19) )  ){
             
@@ -92,6 +108,9 @@ public class Validacion {
     }
     public static String validarFecha(Scanner sc){
         String validDate = sc.nextLine().trim();
+        if(validDate.equals("cancelar")) {
+            return validDate;
+        }
         while(!validDate.matches("\\d{1,2}/\\d{1,2}/\\d{4}") || validDate.equals("")){
             System.out.println("Ingrese formato correcto: (dd/mm/yyyy)");
             validDate = sc.nextLine();
@@ -127,6 +146,9 @@ public class Validacion {
     }
     public static String validarRuta(Scanner sc){
         String validRuta = sc.nextLine().trim();
+        if(validRuta.equals("cancelar")) {
+            return validRuta;
+        }
         while(validRuta.contains(",") || validRuta.equals("") ||validRuta.matches("[ ]*")){
             System.out.println("RUTA no debe contener ',' ni estar vacio\nIngrese Ruta:");
             validRuta = sc.nextLine().trim();
@@ -185,16 +207,16 @@ public class Validacion {
             validCon = sc.nextLine().trim();
         }return validCon;
     }   
+
     public static String validarRestaurante(Scanner sc){
-        String validRes = sc.nextLine().toLowerCase().trim();
+        String validRes = sc.nextLine().trim();
         if(validRes.toLowerCase().equals("cancelar")){
             return validRes;
         }
         while(!validRes.matches("[a-zA-Z ]*") || validRes.equals("")){
             System.out.println("Ingrese un restaurante de la lista");
-            validRes = sc.nextLine().toLowerCase().trim();  }
+            validRes = sc.nextLine().trim();  }
     return validRes;
     }
-    
     
 }

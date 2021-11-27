@@ -80,8 +80,9 @@ public class Sistema2 {
                 verLogin = "AccesoConductor";
             }else{verLogin = "ConductorWrongPassword";System.out.println(verLogin);}
         }if(!esUser){
+            
             verLogin = "NoExiste";
-            System.out.println("---Registrando nuevo usuario---");
+
         }
         
         
