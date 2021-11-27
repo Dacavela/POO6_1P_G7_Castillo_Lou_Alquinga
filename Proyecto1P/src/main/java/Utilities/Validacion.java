@@ -144,6 +144,7 @@ public class Validacion {
         }
         return validPas;
     }
+    
     public static String validarRuta(Scanner sc){
         String validRuta = sc.nextLine().trim();
         if(validRuta.equals("cancelar")) {
@@ -157,6 +158,7 @@ public class Validacion {
     }
     public static TipoEncomiendas validarEncomienda(Scanner sc){
         TipoEncomiendas tipo = null;
+        
         //MEDICAMENTOS,DOCUMENTOS,ROPA;
         String entrada;
         do{
@@ -182,6 +184,9 @@ public class Validacion {
     public static String validarCantidadProductos(Scanner sc){
         String validCant = sc.nextLine().trim();
         Integer cant;
+        if(validCant.equals("cancelar")) {
+            return validCant;
+        }
         boolean tmpV = true;
         while(tmpV){
             while(!(validCant.matches("[0-9]{2}")) && !(validCant.matches("[0-9]{1}"))){

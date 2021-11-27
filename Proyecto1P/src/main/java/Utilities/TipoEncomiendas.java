@@ -10,5 +10,5 @@ package Utilities;
  * @author Davca
  */
 public enum TipoEncomiendas {
-    MEDICAMENTOS,DOCUMENTOS,ROPA;
+    MEDICAMENTOS,DOCUMENTOS,ROPA,CANCELAR;
 }
