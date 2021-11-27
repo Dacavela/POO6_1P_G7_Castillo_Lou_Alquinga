@@ -15,10 +15,10 @@ import com.mycompany.proyecto1p.services.*;
  *
  * @author Davca
  */
-public class Cliente extends Usuario{
+public  class Cliente extends Usuario{
     private String tarjetaCred;
     private String edad;
-    String confirmar;
+    public String confirmar;
     public ServicioTaxi s1 = new ServicioTaxi();
     public ServicioComida s2 = new ServicioComida();
     public ServicioEncomiendas s3 = new ServicioEncomiendas();

@@ -9,7 +9,7 @@ package com.mycompany.proyecto1p;
  *
  * @author Davca
  */
-public class Usuario {
+public abstract class Usuario {
     //Atributos protected ya que todos van a ser heredados por Cliente y Conductor
     protected String cedula;
     protected String nombre;

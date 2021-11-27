@@ -5,3 +5,4 @@ numServicio,nombreCliente,nombreConductor,desde,hasta,fecha,hora,numPasajeros,ti
 9562427,David,Luis,qweqweqwe,qweqweqwe,7/7/7777,7:10,4,TARJETA,5.63
 9562428,David,Juan,qweqweq,qweqweq,7/7/7777,7:10,4,TARJETA,3.76
 2357,David,noexiste,utytuyt,uytuytu,7/7/7777,7:10,4,TARJETA,38.68
+12281,David,noexiste,Quito,Guayaquil,01/12/2021,05:05,3,EFECTIVO,51.58
