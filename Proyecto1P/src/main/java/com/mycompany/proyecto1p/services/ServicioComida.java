@@ -24,6 +24,7 @@ public class ServicioComida extends Servicio{
     private Archivo restaFile = new Archivo("restaurantes.txt");
     private Archivo menuFile = new Archivo("menu.txt");
     private ArrayList<String> listaRestaurante;
+    private ArrayList<Menu> listaMenu;
     //private Restaurante local = new Restaurante();
     
     //Constructor ServicioComida que hereda de la clase Servicio
@@ -43,8 +44,18 @@ public class ServicioComida extends Servicio{
         this.pedido = pedido;
     }
     
-    @Override
-    public void mostrarInfoServicio(){
+//    public void mostrarMenu(Restaurante r1){
+//        for(Restaurante r : restaurantes){
+//            if(!resCho.equals(r.getNombre().toLowerCase())){
+//                System.out.println("Ingrese Restaurante en la Lista:");
+//                resCho = validarRestaurante(sc).toLowerCase();
+//            }
+//        }
+//    
+//    
+//    
+//    }
+    public Restaurante mostrarInfoServicio(){
         System.out.println("Ingresa el origen de tu encomienda: ");
         super.rutaDesde = validarRuta(sc);
 
@@ -60,7 +71,7 @@ public class ServicioComida extends Servicio{
         
         try
         {
-            listaRestaurante = restaFile.leerFichero("restaurantes.txt");
+            listaRestaurante = restaFile.leerFichero("retaurantes.txt");
         } catch (IOException ex)
         {
             Logger.getLogger(ServicioComida.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,15 +80,35 @@ public class ServicioComida extends Servicio{
         for(String l1: listaRestaurante){
             restaurantes.add(new Restaurante(l1.split(",")[0], l1.split(",")[1]));
         }
+        
         for(Restaurante r : restaurantes){
-            System.out.println(r.getNombre());
+            System.out.println("-. "+r.getNombre());
             
         }
         System.out.println("Elija un restaurante:");
         String resCho = validarRestaurante(sc);
+        boolean tr = true;
+        while(tr){
+            System.out.println("Entra primer bucle");
+            for(Restaurante r : restaurantes){
+                System.out.println(r.getNombre().toLowerCase());
+                if(resCho.equals(r.getNombre().toLowerCase())){
+                    tr = false;
+                    return r;
+
+                }
+              
+            
+        }
+            System.out.println("Ingrese Restaurante en la Lista:");
+            resCho = validarRestaurante(sc);  
+        }
+        return null;
+        
+        
     }
 
-    
-    
-    
 }
+    
+    
+

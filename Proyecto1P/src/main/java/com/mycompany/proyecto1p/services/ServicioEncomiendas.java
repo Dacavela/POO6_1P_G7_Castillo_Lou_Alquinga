@@ -49,7 +49,7 @@ public class ServicioEncomiendas extends Servicio{
         this.tipoEncomienda = tipoEncomienda;
     }
     
-    @Override
+    
     public void mostrarInfoServicio(){
         System.out.println("Ingresa el origen de tu encomienda: ");
         super.rutaDesde = validarRuta(sc);

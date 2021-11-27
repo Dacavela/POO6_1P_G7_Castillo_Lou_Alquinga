@@ -104,7 +104,7 @@ public abstract class Servicio {
 //    }
     //Fin Getters y Setters
     
-    public abstract void mostrarInfoServicio();
+    //public abstract void mostrarInfoServicio();
     
     public double calcularPrecio(){
         vPagar = 0.00;

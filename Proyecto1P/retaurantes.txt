@@ -1,1 +1,4 @@
 codigoRestaurante,nombreRestaurante
+123,Doña Rosa
+321,KFC
+213,Bolones

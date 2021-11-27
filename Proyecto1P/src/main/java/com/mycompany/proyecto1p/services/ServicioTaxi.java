@@ -34,7 +34,7 @@ public class ServicioTaxi extends Servicio{
         this.personasQueViajan = personasQueViajan;
     }
     
-    @Override
+    //@Override
     public void mostrarInfoServicio(){
         
         System.out.println("Ingresa el origen del viaje: ");
