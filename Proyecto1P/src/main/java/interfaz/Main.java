@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package interfaz;
-import static Utilities.Validacion.*;
-import Utilities.Archivo;
+//import static Utilities.Validacion.*;
+//import Utilities.Archivo;
 import java.io.IOException;
-import com.mycompany.proyecto1p.services.ServicioComida;
-import Restaurante.Restaurante;
+//import com.mycompany.proyecto1p.services.ServicioComida;
+//import Restaurante.Restaurante;
 /**
  *
  * @author Davca
@@ -19,6 +19,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
+
 //        Archivo v2 = new Archivo("conductores.txt");
 //        Archivo v = new Archivo("vehículos.txt");
 //        ServicioComida c1 = new ServicioComida();
@@ -34,6 +35,7 @@ public class Main {
 //        System.out.println(verifi[0]);
 // Clase main para ejecutar todo el programa
         //v2.reemplazarLineaConductores("1750036422");
+
         SistemaUI2 sysui = new SistemaUI2();
         sysui.SistemaUI();
         

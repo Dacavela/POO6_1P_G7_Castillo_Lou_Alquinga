@@ -29,45 +29,16 @@ public class SistemaUI2 {
         
         while (true) {
 
-            if (login.equals("NoExiste")) {//si el usuario no existe se escribe en el archivo usuarios.txt
+            boolean cancelar = false;
 
-                System.out.println("Ingrese Cedula:");
-                String id = validarCedula(sc);
-                while (s1.userFile.buscar(id, 1)) {
-                    System.out.println("----Cedula ya existente----\nIngrese Cedula:");
-                    id = validarCedula(sc);
+            if (login.equals("NoExiste")) {
+                System.out.println("---Registrando nuevo usuario---");//si el usuario no existe se escribe en el archivo usuarios.txt
+                cancelar = s1.user.crearNewUsuario(sc);
+                if(cancelar == true) {
+                    s1.mostrarInicio();
+                    login = s1.verifyLogin();
+                    
                 }
-                s1.userFile.setContador(0);
-
-                s1.user.setCedula(id);
-                System.out.println("Ingrese Nombre");
-                s1.user.setNombre(validarNames(sc));
-                System.out.println("Ingrese Apellido");
-                s1.user.setApellidos(validarNames(sc));
-                System.out.println("Ingrese Celular");
-                String cel = validarCelular(sc);
-                while (s1.userFile.buscar(cel, 6)) {
-                    System.out.println("----Celular ya existente----\nIngrese Celular:");
-                    cel = validarCelular(sc);
-                }
-                s1.userFile.setContador(0);
-                s1.user.setCelular(cel);
-
-                System.out.println("Ingrese Edad:");
-                s1.user.setEdad(validarEdad(sc));
-
-                System.out.println("Ingrese Tarjeta de Credito:");
-                s1.user.setTarjetaCred(validarCC(sc));
-
-                System.out.println("------Establecer contraseña------\nIngrese nueva contraseña: ");
-                s1.user.setPassword(validPassword(sc));
-
-                s1.user.setTipoUsuario("C");
-                s1.userFile.escribir(s1.user.toString());
-                s1.clientesFile.escribir(s1.user.toString("a"));
-
-                login = s1.verifyLogin();
-
             }
             
             while (login.equals("ClienteWrongPassword") || login.equals("ConductorWrongPassword")) {
