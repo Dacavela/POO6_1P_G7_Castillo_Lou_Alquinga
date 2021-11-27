@@ -5,11 +5,14 @@
  */
 package com.mycompany.proyecto1p.services;
 
-import Restaurante.Pedido;
-import static Utilities.Validacion.validarFecha;
-import static Utilities.Validacion.validarHora;
-import static Utilities.Validacion.validarRuta;
+import Restaurante.*;
+import java.util.*;
+import static Utilities.Validacion.*;
+import Utilities.Archivo;
 import com.mycompany.proyecto1p.Conductor;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,6 +20,11 @@ import com.mycompany.proyecto1p.Conductor;
  */
 public class ServicioComida extends Servicio{
     private Pedido pedido;
+    private ArrayList<Restaurante>restaurantes = new ArrayList<Restaurante>();
+    private Archivo restaFile = new Archivo("restaurantes.txt");
+    private Archivo menuFile = new Archivo("menu.txt");
+    private ArrayList<String> listaRestaurante;
+    //private Restaurante local = new Restaurante();
     
     //Constructor ServicioComida que hereda de la clase Servicio
     public ServicioComida(String rDesde, String rHacia, String date, String hour, Conductor c, Double vPagar, Pedido p){
@@ -48,8 +56,28 @@ public class ServicioComida extends Servicio{
 
         System.out.println("Ingresa la Hora de la encomienda 24Hrs (hh:mm): ");
         super.hora = validarHora(sc);
-    
+        System.out.println("----Lista de Restaurantes---");
         
+        try
+        {
+            listaRestaurante = restaFile.leerFichero("restaurantes.txt");
+        } catch (IOException ex)
+        {
+            Logger.getLogger(ServicioComida.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        for(String l1: listaRestaurante){
+            restaurantes.add(new Restaurante(l1.split(",")[0], l1.split(",")[1]));
+        }
+        for(Restaurante r : restaurantes){
+            System.out.println(r.getNombre());
+            
+        }
+        System.out.println("Elija un restaurante:");
+        String resCho = validarRestaurante(sc);
     }
+
+    
+    
+    
 }

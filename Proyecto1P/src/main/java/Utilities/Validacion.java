@@ -185,4 +185,16 @@ public class Validacion {
             validCon = sc.nextLine().trim();
         }return validCon;
     }   
+    public static String validarRestaurante(Scanner sc){
+        String validRes = sc.nextLine().trim();
+        if(validRes.toLowerCase().equals("cancelar")){
+            return validRes;
+        }
+        while(!validRes.matches("[a-zA-Z ]*") || validRes.equals("")){
+            System.out.println("Ingrese un restaurante de la lista");
+            validRes = sc.nextLine().trim();  }
+    return validRes;
+    }
+    
+    
 }
