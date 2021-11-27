@@ -202,6 +202,9 @@ public class Validacion {
     
     public static String validarConfirmacion(Scanner sc){
         String validCon = sc.nextLine().trim();
+        if(validCon.equals("cancelar")){
+            return validCon;
+        }
         while(!validCon.matches("(?i)(s|n){1}")  || validCon.equals("") || validCon.matches("[ ]*")){
             System.out.println("Opcion no valida\n¿Desea confirmar su viaje? S/N");
             validCon = sc.nextLine().trim();

@@ -21,7 +21,7 @@ public abstract class Servicio {
     protected String hora;
     protected Conductor conductor;
     protected Double vPagar;
-    protected static int idUnico = 2000;
+    protected static int idUnico = (int) Math.round(Math.random()*20000.0);
     
     
     Scanner sc = new Scanner(System.in);

@@ -156,7 +156,7 @@ public class Archivo {
             busquedaAuto = buscarVehiculo("vehículos.txt",disponibilidad, tipoVehiculo);
             
             conductor = accederLinea(buscar(busquedaAuto[0], 4)).split(",");
-            System.out.println(conductor[2]);
+            
             if(conductor[2].equals(disponibilidad) ){
                 acceso = false;
                 break;

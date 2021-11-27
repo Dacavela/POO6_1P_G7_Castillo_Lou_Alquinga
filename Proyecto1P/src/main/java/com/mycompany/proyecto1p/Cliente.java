@@ -59,9 +59,9 @@ public class Cliente extends Usuario{
         return s.toUpperCase().equals("S");
     }
     
-    public void solicitarServicioTaxi() {
-        s1.mostrarInfoServicio();
-    }
+//    public void solicitarServicioTaxi() {
+//        s1.mostrarInfoServicio();
+//    }
     
         public String toString(String a){
             return this.cedula+","+this.edad+","+this.tarjetaCred;

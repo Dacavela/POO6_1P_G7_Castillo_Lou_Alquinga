@@ -60,21 +60,21 @@ public class SistemaUI2 {
                                 System.out.println("Solicitando servicio de taxi");
                                 ServicioTaxi serv1 = s1.user.s1;
                                 
-                                serv1.mostrarInfoServicio();
-                                String tipoPago=serv1.tipoPago();
+                                cancelar = serv1.mostrarInfoServicio(s1);
+//                                String tipoPago=serv1.tipoPago();
                                 
                                 
-                                System.out.println("¿Desea confirmar su viaje? S/N");                                
-                                
-                                if (s1.user.confirmarServicio(validarConfirmacion(sc))){
-                                    Servicio.setIdUnico(serv1.getIdUnico()+1);
-                                    String[] lineaConductor = s1.conductoreFile.buscarDriver("D","A");
-                                    s1.setearConductor(lineaConductor,s1.userFile.accederLinea(s1.userFile.buscar(lineaConductor[0], 1)));
-                                    s1.conductoreFile.reemplazarLineaConductores(s1.driver.getCedula());
-                                    
-                                    s1.viajesFile.escribir(serv1.toString(s1.user, tipoPago.toUpperCase(), s1.driver));
-                                    s1.agregaServicioLista(serv1);
-                                }
+//                                System.out.println("¿Desea confirmar su viaje? S/N");                                
+//                                //cancelar
+//                                if (s1.user.confirmarServicio(validarConfirmacion(sc))){
+//                                    Servicio.setIdUnico(serv1.getIdUnico()+1);
+//                                    String[] lineaConductor = s1.conductoreFile.buscarDriver("D","A");
+//                                    s1.setearConductor(lineaConductor,s1.userFile.accederLinea(s1.userFile.buscar(lineaConductor[0], 1)));
+//                                    s1.conductoreFile.reemplazarLineaConductores(s1.driver.getCedula());
+//                                    
+//                                    s1.viajesFile.escribir(serv1.toString(s1.user, tipoPago.toUpperCase(), s1.driver));
+//                                    s1.agregaServicioLista(serv1);
+//                                }
                                 //Agregamos el servicio a la lista de servicios
                                 
                                 //System.out.println(s1.getServices());

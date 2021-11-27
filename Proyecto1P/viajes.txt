@@ -1,3 +1,7 @@
 numServicio,nombreCliente,nombreConductor,desde,hasta,fecha,hora,numPasajeros,tipoPago,vPagar
 2001,David,Luis,uio,gye,22/22/2222,22:22,2,TARJETA,14.95
 2003,David,noexiste,casita,casota,22/22/2021,22:25,2,EFECTIVO,10.96
+2001,David,Luis,Quito,GuayaKill,27/11/2021,13:00,4,TARJETA,16.54
+9562427,David,Luis,qweqweqwe,qweqweqwe,7/7/7777,7:10,4,TARJETA,5.63
+9562428,David,Juan,qweqweq,qweqweq,7/7/7777,7:10,4,TARJETA,3.76
+2357,David,noexiste,utytuyt,uytuytu,7/7/7777,7:10,4,TARJETA,38.68

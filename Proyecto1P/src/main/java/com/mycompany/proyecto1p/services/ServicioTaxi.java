@@ -7,7 +7,7 @@ package com.mycompany.proyecto1p.services;
 import static Utilities.Validacion.*;
 import com.mycompany.proyecto1p.Cliente;
 import com.mycompany.proyecto1p.Conductor;
-
+import com.mycompany.proyecto1p.Sistema2;
 /**
  *
  * @author Davca
@@ -35,7 +35,7 @@ public class ServicioTaxi extends Servicio{
     }
     
     //@Override
-    public boolean mostrarInfoServicio(){
+    public boolean mostrarInfoServicio(Sistema2 s1){
         String cancelar = null;
         boolean permanecer = false;
         
@@ -75,8 +75,24 @@ public class ServicioTaxi extends Servicio{
             return permanecer = true;
         }
         this.personasQueViajan = cancelar;
-      
-        return permanecer;
+        System.out.println("¿Desea confirmar su viaje? S/N");                                
+        //cancelar
+        cancelar = validarConfirmacion(sc);
+        
+        if(cancelar.equals("cancelar")){
+            return permanecer = true;
+        
+        }
+        if(s1.user.confirmarServicio(cancelar)){
+            Servicio.setIdUnico(this.getIdUnico()+1);
+            String[] lineaConductor = s1.conductoreFile.buscarDriver("D","A");
+            s1.setearConductor(lineaConductor,s1.userFile.accederLinea(s1.userFile.buscar(lineaConductor[0], 1)));
+            s1.conductoreFile.reemplazarLineaConductores(s1.driver.getCedula());
+
+            s1.viajesFile.escribir(this.toString(s1.user, tipoPago().toUpperCase(), s1.driver));
+            s1.agregaServicioLista(this);
+        }
+        return permanecer =true;
     }
     
     
