@@ -89,7 +89,7 @@ public class ServicioComida extends Servicio{
         String resCho = validarRestaurante(sc);
         boolean tr = true;
         while(tr){
-            System.out.println("Entra primer bucle");
+            
             for(Restaurante r : restaurantes){
                 System.out.println(r.getNombre().toLowerCase());
                 if(resCho.equals(r.getNombre().toLowerCase())){
@@ -97,8 +97,6 @@ public class ServicioComida extends Servicio{
                     return r;
 
                 }
-              
-            
         }
             System.out.println("Ingrese Restaurante en la Lista:");
             resCho = validarRestaurante(sc);  
