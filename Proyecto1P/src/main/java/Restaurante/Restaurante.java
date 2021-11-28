@@ -9,18 +9,22 @@ package Restaurante;
  *
  * @author Davca
  */
+//Clase creada para instanciar restaurantes, clase padre de Menu(mejor dicho platos) y abuela de Pedido
 public class Restaurante {
+    //Solo tiene el nombre del restaurante y su codigo
     private String codigo;
     private String nombre;
-
+    
+    //Constructor sin parámetros para instanciar la clase servicioComida un pedido vacio
     public Restaurante() {
     }
-
+    //Constructor con parametros ya que en servicioComida instanciaremos platos para agregarlos a una lista de platos del menu del restaurante elegido
     public Restaurante(String codigo, String nombre) {
         this.codigo = codigo;
         this.nombre = nombre;
     }
 
+    //Getters y Setters
     public String getCodigo() {
         return codigo;
     }
@@ -36,5 +40,6 @@ public class Restaurante {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    //Getters y Setters final
    
 }

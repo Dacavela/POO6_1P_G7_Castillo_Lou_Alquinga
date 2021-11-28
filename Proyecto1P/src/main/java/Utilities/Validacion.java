@@ -13,8 +13,12 @@ import static Utilities.TipoEncomiendas.DOCUMENTOS;
 import static Utilities.TipoEncomiendas.MEDICAMENTOS;
 import static Utilities.TipoEncomiendas.ROPA;
 import java.util.Scanner;
+
+//Esta clase es muy importante, sirve para validar que el usuario no asesine el programa. Puede mejorarse aun mas para realizar otro tipo de validaciones, pero para iniciar hace su trabajo basico
 public class Validacion {
-    //Validacion de entradas por teclado para el correcto funcionamiento. 
+    //Nota: Todas estas validaciones reciben un Scanner y algunas sirven para cancelar e ir al menu principal.
+    
+    //Validacion de entradas por teclado para el correcto funcionamiento, esta sirve para el nombre de usuario o entradas similares
     public static String validNameUser(Scanner sc){
         String valUser = sc.nextLine();
         while( !(valUser.matches("[a-zA-Z0-9]*"))||(valUser.length()<5 || valUser.equals(""))){
@@ -23,6 +27,8 @@ public class Validacion {
         }
         return valUser.toLowerCase();
     }
+    
+    //Validacion para la contraseña, para que sea de 4 o más numeros o letras y que no contenga comas.
     public static String validPassword(Scanner sc){
         String vlidPass = sc.nextLine().trim();
         while(vlidPass.length()<4 || vlidPass.contains(",") ){
@@ -31,6 +37,8 @@ public class Validacion {
         }System.out.println("Su nueva contraseña es:"+vlidPass);
         return vlidPass;
     }
+    
+    //Validacion para la cedula, para que solo contenga 10 numeros y que no sea un espacio vacio
     public static String validarCedula(Scanner sc){
         
         String cedulaValida = sc.nextLine().trim();
@@ -46,6 +54,8 @@ public class Validacion {
         }
         return cedulaValida;
     }
+    
+    //Validacion para nombres de personas, para que solo contenga letras y no sea vacio.
     public static String validarNames(Scanner sc){
         String validName = sc.nextLine().trim();
 
@@ -58,6 +68,8 @@ public class Validacion {
         }
         return validName;
     }
+    
+    //Validacion de celulares, para que contenga 10 numeros, inicie con 09 y no sea vacio.
     public static String validarCelular(Scanner sc){
         String cllValido = sc.nextLine().trim();
         
@@ -69,7 +81,10 @@ public class Validacion {
             System.out.println("Ingrese celular valido:");
             cllValido = sc.nextLine().trim();
     }
-        return cllValido;}
+        return cllValido;
+    }
+    
+    //Validacion para la edad, solo pueden entrar personas mayores a 11 y menores de 100
     public static String validarEdad(Scanner sc){
         String validEdad = sc.nextLine().trim();
         if(validEdad.equals("cancelar")) {
@@ -92,6 +107,8 @@ public class Validacion {
         }
         return validEdad;
     }
+    
+    //Validacion para validar tarjetas de credito, pueden tener de 13 a 19 digitos.
     public static String validarCC(Scanner sc){
         String validCC = sc.nextLine().trim();
         if(validCC.equals("cancelar")) {
@@ -106,6 +123,8 @@ public class Validacion {
         return validCC;
     
     }
+    
+    //Validacion para la fehca, para que se ingrese solo de la forma DD/MM/AAAA
     public static String validarFecha(Scanner sc){
         String validDate = sc.nextLine().trim();
         if(validDate.equals("cancelar")) {
@@ -117,6 +136,8 @@ public class Validacion {
         }
         return validDate;
     }
+    
+    //Validacion de la hora para que se ingrese de manera hh:mm
     public static String validarHora(Scanner sc){
         String validHora = sc.nextLine().trim();
         while(!validHora.matches("^([01]?[0-9]|2[0-3]):[0-5][0-9]$")||validHora.equals("")){
@@ -125,6 +146,8 @@ public class Validacion {
         }
         return validHora;
     }
+    
+    //Validacion de pasajeros, solo pueden entrar hasta 4 pasajeros en un auto, ya que no disponemos de autos de mas asientos
     public static String validarPasajeros(Scanner sc){
         String validPas = sc.nextLine().trim();
         Integer ed1;
@@ -145,6 +168,7 @@ public class Validacion {
         return validPas;
     }
     
+    //Validacion de la ruta para que no contenga comas ni sea un espacio vacio.
     public static String validarRuta(Scanner sc){
         String validRuta = sc.nextLine().trim();
         if(validRuta.equals("cancelar")) {
@@ -156,6 +180,8 @@ public class Validacion {
         }
         return validRuta;
     }
+    
+    //Vlidacion de encomiendas que retorna un objeto de TipoEncomiendas
     public static TipoEncomiendas validarEncomienda(Scanner sc){
         TipoEncomiendas tipo = null;
         
@@ -181,6 +207,7 @@ public class Validacion {
         return tipo;
     }
     
+    //Validacion de la cantidad de productos para que en las encomiendas ingresen de 1 a 99 objetos, no mas porque no entran en una moto :)
     public static String validarCantidadProductos(Scanner sc){
         String validCant = sc.nextLine().trim();
         Integer cant;
@@ -204,7 +231,7 @@ public class Validacion {
         return validCant;
     }
     
-    
+    //Validacion de la confirmacion, para que ingresen solo S o N mayuscula o minuscula.
     public static String validarConfirmacion(Scanner sc){
         String validCon = sc.nextLine().trim();
         if(validCon.equals("cancelar")){
@@ -216,6 +243,7 @@ public class Validacion {
         }return validCon;
     }   
 
+    //Validacion de restaurantes para que ingresen solo letras y no sea igual a espacios.
     public static String validarRestaurante(Scanner sc){
         String validRes = sc.nextLine().trim();
         if(validRes.toLowerCase().equals("cancelar")){
@@ -226,5 +254,4 @@ public class Validacion {
             validRes = sc.nextLine().trim();  }
     return validRes;
     }
-    
 }

@@ -11,15 +11,19 @@ import java.util.*;
  *
  * @author DhuDu
  */
+//Clase creada para ingresar a archivos, leerlos, escribir en ellos y buscar dentro de
 public class Archivo {
+    //Tenemos una direccion para usarala en los metodos
+    //Un contador para las clases buscar y accederLinea, inicia en 0 y sirve para encontrar lineas en un fichero y retornarlas
+    //El arrayList es para 
     private String direccion;
     private int contador = 0;
-    private ArrayList<String> conductores;
+    //private ArrayList<String> conductores;
     
     public Archivo(String direccion) {
         this.direccion = direccion;
     }
-    
+    //Getters y Setters
     public void setDireccion(String direccion){
         this.direccion = direccion;
     }
@@ -35,17 +39,17 @@ public class Archivo {
         return contador;
     }
 
-    public ArrayList<String> getConductores() {
-        return conductores;
-    }
-
-    public void setConductores(ArrayList<String> conductores) {
-        this.conductores = conductores;
-    }
-
+//    public ArrayList<String> getConductores() {
+//        return conductores;
+//    }
+//
+//    public void setConductores(ArrayList<String> conductores) {
+//        this.conductores = conductores;
+//    }
+    //Getters y Setters Finale
   
     
-    //metodos para manejar datos provenientes de archivos txt
+    //metodo que busca si existe un dato dentro de la linea de un archivo y devuelve true o false si es que esta en una linea, suma el contador hasta el numero de la linea
     public boolean buscar(String categoria, int elementos){ 
         //boolean bucle;
         this.contador = 0;
@@ -79,6 +83,8 @@ public class Archivo {
         return verify;
     } //
     
+    
+    //Metodo que accede a una linea, usa el contador sacado en buscar para acceder a la linea y devuelve la linea.
     public String accederLinea(boolean buscar){
         String linea = null;
         if(buscar==true){
@@ -98,6 +104,8 @@ public class Archivo {
         }else return "noexiste,noexiste,noexiste,noexiste,noexiste,noexiste,C";
     }
     
+    
+    //Metodo que escribe en la ultima linea de un fichero.
     public void escribir(String cadena){
         FileWriter fichero = null;
         PrintWriter pw = null;
@@ -121,6 +129,9 @@ public class Archivo {
         
     }
     
+    
+    //Metodo que busca un vehiculo en un archivo, revisa si el conductor esta disponible u ocupado y el tipo de vehiculo
+    //devuelve una lista de strings con los datos del vehiculo en cuestion.
     public String[] buscarVehiculo(String filedireccion,String disponibilidad, String tipoVeh){
         
         boolean verify = true;
@@ -148,6 +159,8 @@ public class Archivo {
         return linea;
     }
 
+    //metodo que busca un conductor ocupado y por su tipo de vehiculo, este metodo va de la mano/asociado al metodo anterior
+    //Retorna una lista de strings con los datos del conductor, sirve para instanciar un conductor
     public String[] buscarDriver(String disponibilidad, String tipoVehiculo){
         boolean acceso = true;
         String [] busquedaAuto = null;
@@ -168,8 +181,10 @@ public class Archivo {
         return conductor;
     }
     
+    //Metodo que sirve para reemplazar a un conductor de disponible a ocupado, como solo nos pidieron ese cambio de estado no se ha hecho de ocupado a disponible.
     public void reemplazarLineaConductores(String cedula) {
-        conductores = new ArrayList<>();
+        
+        ArrayList<String> conductores = new ArrayList<>();
         String linea;
         File f1 = new File("conductores.txt");
         Scanner s1;
@@ -213,7 +228,10 @@ public class Archivo {
         }
 
     }
+    
+
     //metodo copiado de sistema linea 41
+    //Este metodo recoge todo un fichero, lo separa por lineas y devuelve un ArrayList de strings de cada linea del fichero.
     public ArrayList<String> leerFichero(String nombrearchivo) throws IOException {
         ArrayList<String> lineas = new ArrayList<>();
         File archivo = null;
@@ -248,6 +266,10 @@ public class Archivo {
         }
         return lineas;
     }
+    
+    
+    /*Metodo muy similar al anterior, pero que en vez de devolver todas las lineas del fichero devuelve las lineas del fichero de menus que
+    coincidan con el codigo del restaurante ingresado como parametro*/
     public ArrayList<String> buscarMenu(String codRes) throws IOException {
         ArrayList<String> lineas = new ArrayList<>();
         File archivo = null;
@@ -284,5 +306,4 @@ public class Archivo {
         }
         return lineas;
     }
-    
 }

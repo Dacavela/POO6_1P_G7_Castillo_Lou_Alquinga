@@ -1,10 +1,10 @@
 codigoRestaurante,nombrePlato,Precio
-123,Caldo de Pata,2
-123,Caldo de bola,2
-123,Ceviche mixto pequeño,3
-123,Ceviche mixto grande,5
-321,Bucket de Pollo,15
+123,Caldo de bola,2.5
+123,Caldo de pollo,2.5
+123,Caldo de pata,2.5
+123,Seco de pollo,2.5
 321,Hamburguesa de Pollo,5
+321,Bucket de pollo,15
 321,Twister de pollo,4
 213,Bolon de queso,2
 213,Bolon de chicharron,2

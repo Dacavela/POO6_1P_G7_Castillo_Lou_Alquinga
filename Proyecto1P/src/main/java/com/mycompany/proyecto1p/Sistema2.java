@@ -18,22 +18,36 @@ import java.util.Scanner;
  * @author DhuDu
  */
 public class Sistema2 {
-    public final Archivo userFile = new Archivo("usuarios.txt");
-    public final Archivo clientesFile = new Archivo("clientes.txt");
-    public final Archivo viajesFile = new Archivo("viajes.txt");
-    public final Archivo vehiculosFile = new Archivo("vehículos.txt");
-    public final Archivo conductoreFile = new Archivo("conductores.txt");
-    public final Archivo encomiendasFile = new Archivo("encomiendas.txt");
-    public final Archivo deliveryFile  = new Archivo("delivery.txt");
-    public final Archivo pedidosFile  = new Archivo("pedidos.txt");
+    //La clase que mueve todo, es el sistema que se encarga de realizar casi todos los metodos que asocian las clases, instancian clases y demas
+    //De entre los atributos de instancia tenemos todos los archivos que se usarán ya instanciados y que serán la mayoría de ellos llamados por medio de un getter para abrir dichos archivos.
+    private final Archivo userFile = new Archivo("usuarios.txt");
+    private final Archivo clientesFile = new Archivo("clientes.txt");
+    private final Archivo viajesFile = new Archivo("viajes.txt");
+    private final Archivo vehiculosFile = new Archivo("vehículos.txt");
+    private final Archivo conductoreFile = new Archivo("conductores.txt");
+    private final Archivo encomiendasFile = new Archivo("encomiendas.txt");
+    private final Archivo deliveryFile  = new Archivo("delivery.txt");
+    private final Archivo pedidosFile  = new Archivo("pedidos.txt");
+    /*Tenemos un cliente (user) que nos sirve para instanciar un nuevo cliente 
+    cada que iniciamos sesion y tratarlo como objeto, lo mismo con el conductor driver y con el vehiculo veh*/
     private Cliente user = new Cliente();
     private Conductor driver = new Conductor();
     private Vehiculo veh = new Vehiculo();
+    //el scanner nos sirve para ingresar datos por teclado
     public Scanner sc = new Scanner(System.in);
-    public static  ArrayList<Servicio> services;
+    //este arrayList sirve para tener una lista de los servicios creados, para mostrar los servicios de un conductor o cliente.
+    private static  ArrayList<Servicio> services;
     
-    
-    public ArrayList<Servicio> listaServices(){
+    //Getters and setters
+    public Archivo getDeliveryFile(){    
+        return deliveryFile;
+    }
+
+    public Archivo getPedidosFile() {
+        return pedidosFile;
+    }
+
+    public ArrayList<Servicio> listaServices() {
         return services = new ArrayList<>();
     }
 
@@ -49,24 +63,17 @@ public class Sistema2 {
         return userFile;
     }
 
-
-
     public Archivo getClientesFile() {
         return clientesFile;
     }
-
-
 
     public Archivo getViajesFile() {
         return viajesFile;
     }
 
-
-
     public Archivo getVehiculosFile() {
         return vehiculosFile;
     }
-
 
     public Archivo getConductoreFile() {
         return conductoreFile;
@@ -75,7 +82,6 @@ public class Sistema2 {
     public Archivo getEncomiendasFile() {
         return encomiendasFile;
     }
-
 
     public Cliente getUser() {
         return user;
@@ -101,7 +107,10 @@ public class Sistema2 {
         this.veh = veh;
     }
         
+    //Getters y setters finale
+    
     //metodos sistema 2
+    //Metodo que muestra el inicio y pide usuario y contraseña
     public void mostrarInicio(){
         
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
@@ -115,37 +124,38 @@ public class Sistema2 {
         user.setPassword(password);
 
     }
-    public String verifyLogin(){
+    //Metodo que verifica el login del usuario
+    public String verifyLogin() {
         String verLogin = null;
         boolean esUser = userFile.buscar(user.getUser(), 4);
         String[] line = userFile.accederLinea(esUser).split(",");
-        
-        if(esUser && "C".equals(line[6])){
-            if(user.getPassword().equals(line[4])){
-                boolean esCliente = clientesFile.buscar(line[0], 1);
-                if(esCliente){
-                    verLogin = "AccesoCliente";
-                    
-                }
-            }else{
-                verLogin = "ClienteWrongPassword";
-                System.out.println(verLogin);}            
-            
-            
-        }if(esUser && "R".equals(line[6])){
-            if(user.getPassword().equals(line[4])){
-                verLogin = "AccesoConductor";
-            }else{verLogin = "ConductorWrongPassword";System.out.println(verLogin);}
-        }if(!esUser){
-            
-            verLogin = "NoExiste";
 
+        if (esUser && "C".equals(line[6])) {
+            if (user.getPassword().equals(line[4])) {
+                boolean esCliente = clientesFile.buscar(line[0], 1);
+                if (esCliente) {
+                    verLogin = "AccesoCliente";
+                }
+            } else {
+                verLogin = "ClienteWrongPassword";
+                System.out.println(verLogin);
+            }
         }
-        
-        
-        
+        if (esUser && "R".equals(line[6])) {
+            if (user.getPassword().equals(line[4])) {
+                verLogin = "AccesoConductor";
+            } else {
+                verLogin = "ConductorWrongPassword";
+                System.out.println(verLogin);
+            }
+        }
+        if (!esUser) {
+            verLogin = "NoExiste";
+        }
         return verLogin;
     }
+    
+    //Metodo que muestra el menu del cliente y pide el ingreso de un numero
     public String mostrarInfoCliente(){
         String opcion;
         //Scanner opt = new Scanner(System.in);
@@ -171,6 +181,7 @@ public class Sistema2 {
         return opcion;
         
     }
+    //Metodo para setear el cliente, para instanciarlo cada vez que un usuario entra al sistema
     public void setearCliente(String linea) {
         String[] lineaSeparada = linea.split(",");
         user.setCedula(lineaSeparada[0]);
@@ -180,13 +191,13 @@ public class Sistema2 {
         user.setPassword(lineaSeparada[4]);
         user.setCelular(lineaSeparada[5]);
         user.setTipoUsuario(lineaSeparada[6]);
-
         String[] lane = clientesFile.accederLinea(clientesFile.buscar(user.getCedula(), 1)).split(",");
         user.setEdad(lane[1]);
         user.setTarjetaCred(lane[2]);
 
 }
     
+    //Metod
     public void setearVehiculo(String[] linea){
         veh.setCodV(linea [0]);
         veh.setPlaca(linea [1]);

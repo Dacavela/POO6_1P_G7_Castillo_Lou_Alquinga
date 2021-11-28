@@ -10,14 +10,16 @@ package com.mycompany.proyecto1p;
  * @author Davca
  */
 public class Conductor extends Usuario{
+    //Clase conductor que tiene 4 atributos aparte de los de usuario, el codigoUsuario, la licencia, el estado y el codigovehiculo
     private String codigoUsuario;
     private String licencia;
     private String estado;
     private String codigoVehiculo;
     
- 
+    //Constructor sin parametros
     public Conductor(){
     }
+    
     //Constructor de la clase Conductor que hereda de la clase Usuario
     public Conductor(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario,String codigoUsuario,String licencia, String estado, String codigoVehiculo) {
         super(cedula, nombre, apellido, user, password, celular, tipoUsuario);

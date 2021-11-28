@@ -22,8 +22,6 @@ import java.util.logging.Logger;
  */
 public class ServicioComida extends Servicio{
     private Pedido pedido = new Pedido();
-    private ArrayList<Restaurante>restaurantes = new ArrayList<Restaurante>();
-    private ArrayList<Menu>menus = new ArrayList<>();
     private final Archivo restaFile = new Archivo("restaurantes.txt");
     private final Archivo menuFile = new Archivo("menu.txt");
     private ArrayList<String> listaRestaurante;
@@ -48,6 +46,9 @@ public class ServicioComida extends Servicio{
     }
     
     public boolean mostrarInfoServicio(Sistema2 s1) {
+        ArrayList<Restaurante>restaurantes = new ArrayList<Restaurante>();
+        ArrayList<Menu>menus = new ArrayList<>();
+        
         String cancelar = null;
         boolean permanecer = false;
 
@@ -95,7 +96,7 @@ public class ServicioComida extends Servicio{
         for (Restaurante r : restaurantes) {
             System.out.println("-. " + r.getNombre());
         }
-        Restaurante r1 = seleccionarRestaurante();
+        Restaurante r1 = seleccionarRestaurante(restaurantes);
 
         try {
             listaMenu = menuFile.leerFichero("menus.txt");
@@ -108,7 +109,7 @@ public class ServicioComida extends Servicio{
                 menus.add(new Menu(r1.getCodigo(), r1.getNombre(), l1.split(",")[1], Double.valueOf(l1.split(",")[2])));
             }
         }
-        pedido.setPlatos(seleccionarMenu());
+        pedido.setPlatos(seleccionarMenu(menus));
          String tipopago = tipoPago();
         System.out.println("¿Desea confirmar su viaje? S/N");                                
         //cancelar
@@ -120,12 +121,13 @@ public class ServicioComida extends Servicio{
         }
         if(s1.getUser().confirmarServicio(cancelar)){
             Servicio.setIdUnico(this.getIdUnico()+1);
-            String[] lineaConductor = s1.conductoreFile.buscarDriver("D","M");
-            s1.setearConductor(lineaConductor,s1.userFile.accederLinea(s1.userFile.buscar(lineaConductor[0], 1)));
-            s1.conductoreFile.reemplazarLineaConductores(s1.getDriver().getCedula());
-            s1.deliveryFile.escribir(this.toString(s1.getUser(), tipopago.toUpperCase(), s1.getDriver()));
+            pedido.setNumeroPedido(pedido.getNumeroPedido()+1);
+            String[] lineaConductor = s1.getConductoreFile().buscarDriver("D","M");
+            s1.setearConductor(lineaConductor,s1.getUserFile().accederLinea(s1.getUserFile().buscar(lineaConductor[0], 1)));
+            s1.getConductoreFile().reemplazarLineaConductores(s1.getDriver().getCedula());
+            s1.getDeliveryFile().escribir(this.toString(s1.getUser(), tipopago.toUpperCase(), s1.getDriver()));
             for (Menu m: pedido.getPlatos()){
-                s1.pedidosFile.escribir(pedido.toString(m));
+                s1.getPedidosFile().escribir(pedido.toString(m));
             }
             s1.agregaServicioLista(this);
         }
@@ -134,7 +136,7 @@ public class ServicioComida extends Servicio{
     
     
     
-    public Restaurante seleccionarRestaurante(){
+    public Restaurante seleccionarRestaurante(ArrayList<Restaurante> restaurantes){
         System.out.println("Elija un restaurante:");
         String resCho = validarRestaurante(sc);
         boolean tr = true;
@@ -152,7 +154,7 @@ public class ServicioComida extends Servicio{
         return null;
     }
     
-    public ArrayList seleccionarMenu(){
+    public ArrayList seleccionarMenu(ArrayList<Menu> menus){
         int eleccion = 1999999999;
         ArrayList<Menu> platosPed = new ArrayList<>();
         vPagar =0.0;
@@ -166,7 +168,7 @@ public class ServicioComida extends Servicio{
             eleccion = sc.nextInt();
             sc.nextLine();
             Menu platoElegido = null;
-            if (eleccion!=0){
+            if (eleccion!=0 && eleccion<con){
                 platoElegido = menus.get(eleccion-1);
                 platosPed.add(platoElegido);
                 vPagar += platoElegido.getPrecio();

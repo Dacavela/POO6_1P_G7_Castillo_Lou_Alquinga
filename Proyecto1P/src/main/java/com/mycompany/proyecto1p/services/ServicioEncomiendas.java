@@ -112,11 +112,11 @@ public class ServicioEncomiendas extends Servicio{
         }
         if(s1.getUser().confirmarServicio(cancelar)){
             Servicio.setIdUnico(this.getIdUnico()+1);
-            String[] lineaConductor = s1.conductoreFile.buscarDriver("D","M");
-            s1.setearConductor(lineaConductor,s1.userFile.accederLinea(s1.userFile.buscar(lineaConductor[0], 1)));
-            s1.conductoreFile.reemplazarLineaConductores(s1.getDriver().getCedula());
+            String[] lineaConductor = s1.getConductoreFile().buscarDriver("D","M");
+            s1.setearConductor(lineaConductor,s1.getUserFile().accederLinea(s1.getUserFile().buscar(lineaConductor[0], 1)));
+            s1.getConductoreFile().reemplazarLineaConductores(s1.getDriver().getCedula());
 
-            s1.encomiendasFile.escribir(this.toString(s1.getUser(), tipopago.toUpperCase(), s1.getDriver()));
+            s1.getEncomiendasFile().escribir(this.toString(s1.getUser(), tipopago.toUpperCase(), s1.getDriver()));
             s1.agregaServicioLista(this);
         }
         return permanecer =true;

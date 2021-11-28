@@ -49,7 +49,7 @@ public class SistemaUI2 {
             
             if (login.equals("AccesoCliente")) {
                
-               s1.setearCliente(s1.userFile.accederLinea(s1.userFile.buscar(s1.getUser().getUser(), 4)));
+               s1.setearCliente(s1.getUserFile().accederLinea(s1.getUserFile().buscar(s1.getUser().getUser(), 4)));
                //System.out.println(s1.user.getNombre());
                String opcion;
                     do{

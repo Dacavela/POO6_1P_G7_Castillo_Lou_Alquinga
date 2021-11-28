@@ -11,25 +11,24 @@ import java.util.ArrayList;
  *
  * @author Davca
  */
+//Esta clase extiende de Menu ya que necesita el codigo del restaurante, podria no heredar pero mejor no hacerse lios.
 public class Pedido extends Menu {
+    
+    //El ArrayList de tipo Menu es una lista de platos que utilizaremos para guardar los platos pedidos por el servicioComida
     private ArrayList<Menu> Platos = new ArrayList<Menu>();
+    //El numeroPedido es un static ya que se va a sumar uno cada vez que se instancie un pedido.
     private static int numeroPedido = (int)Math.round(Math.random()*2000.0);
 
-    public Pedido() {
-        numeroPedido++;
+    //Constructor donde se instancia un pedido
+    public Pedido() {    
     }
 
+    //Constructor que recibe parametros
     public Pedido(String codigo, String nombre, String nombrePlato, Double precio) {
         super(codigo, nombre, nombrePlato, precio);
-        numeroPedido++;
     }
 
-    
-    public Pedido(int numeroPedido) {
-        this.numeroPedido = numeroPedido;
-    }
-
-    
+    //Getters y Setters
     public ArrayList<Menu> getPlatos() {
         return Platos;
     }
@@ -44,13 +43,10 @@ public class Pedido extends Menu {
 
     public void setNumeroPedido(int numeroPedido) {
         this.numeroPedido = numeroPedido;
-    }  
-    
-    @Override
-    public String toString(){
-        return Platos.toString();
     }
+    //Fin de getters y Setters
     
+    //Una SobreCarga del metodo toString, no es sobreescritura ya que recibe un parametro, a diferencia del metodo toString de Java     
     public String toString(Menu m){
         return ""+numeroPedido+","+m.toString();
     }
