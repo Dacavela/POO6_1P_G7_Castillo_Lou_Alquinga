@@ -18,16 +18,40 @@ import com.mycompany.proyecto1p.services.*;
 public  class Cliente extends Usuario{
     private String tarjetaCred;
     private String edad;
-    public String confirmar;
-    public ServicioTaxi s1 = new ServicioTaxi();
-    public ServicioComida s2 = new ServicioComida();
-    public ServicioEncomiendas s3 = new ServicioEncomiendas();
+    //public String confirmar;
+    private ServicioTaxi s1 = new ServicioTaxi();
+    private ServicioComida s2 = new ServicioComida();
+    private ServicioEncomiendas s3 = new ServicioEncomiendas();
     public Vehiculo v1 = new Vehiculo();
-    private Archivo userFile = new Archivo("usuarios.txt");
-    private Archivo clientesFile = new Archivo("clientes.txt");
+    private final Archivo userFile = new Archivo("usuarios.txt");
+    private final Archivo clientesFile = new Archivo("clientes.txt");
 
     public Cliente() {
         this.tipoUsuario = "C";
+    }
+
+    public ServicioTaxi getS1() {
+        return s1;
+    }
+
+    public void setS1(ServicioTaxi s1) {
+        this.s1 = s1;
+    }
+
+    public ServicioComida getS2() {
+        return s2;
+    }
+
+    public void setS2(ServicioComida s2) {
+        this.s2 = s2;
+    }
+
+    public ServicioEncomiendas getS3() {
+        return s3;
+    }
+
+    public void setS3(ServicioEncomiendas s3) {
+        this.s3 = s3;
     }
     
     

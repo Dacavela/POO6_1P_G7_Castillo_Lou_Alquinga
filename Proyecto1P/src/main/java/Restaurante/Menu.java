@@ -38,6 +38,9 @@ public class Menu extends Restaurante {
         this.precio = precio;
     }
     
-    
+    @Override
+    public String toString(){
+        return ""+ super.getCodigo()+"," + nombrePlato+"," + precio;
+    }
     
 }

@@ -75,6 +75,7 @@ public class ServicioTaxi extends Servicio{
             return permanecer = true;
         }
         this.personasQueViajan = cancelar;
+        String tipopago = tipoPago();
         System.out.println("¿Desea confirmar su viaje? S/N");                                
         //cancelar
         cancelar = validarConfirmacion(sc);
@@ -83,13 +84,13 @@ public class ServicioTaxi extends Servicio{
             return permanecer = true;
         
         }
-        if(s1.user.confirmarServicio(cancelar)){
+        if(s1.getUser().confirmarServicio(cancelar)){
             Servicio.setIdUnico(this.getIdUnico()+1);
             String[] lineaConductor = s1.conductoreFile.buscarDriver("D","A");
             s1.setearConductor(lineaConductor,s1.userFile.accederLinea(s1.userFile.buscar(lineaConductor[0], 1)));
-            s1.conductoreFile.reemplazarLineaConductores(s1.driver.getCedula());
+            s1.conductoreFile.reemplazarLineaConductores(s1.getDriver().getCedula());
 
-            s1.viajesFile.escribir(this.toString(s1.user, tipoPago().toUpperCase(), s1.driver));
+            s1.viajesFile.escribir(this.toString(s1.getUser(), tipopago.toUpperCase(), s1.getDriver()));
             s1.agregaServicioLista(this);
         }
         return permanecer =true;

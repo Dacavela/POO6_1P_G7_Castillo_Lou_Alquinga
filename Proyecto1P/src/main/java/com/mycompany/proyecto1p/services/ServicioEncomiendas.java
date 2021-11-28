@@ -57,7 +57,7 @@ public class ServicioEncomiendas extends Servicio{
         String cancelar = null;
         boolean permanecer = false;
         
-        System.out.println("Ingresa el origen del viaje: ");
+        System.out.println("Ingresa desde dónde va la encomienda: ");
         cancelar = validarRuta(sc);
         if(cancelar.equals("cancelar")) {
             return permanecer = true;
@@ -65,7 +65,7 @@ public class ServicioEncomiendas extends Servicio{
         super.rutaDesde = cancelar;
         
 
-        System.out.println("Ingresa tu destino: ");
+        System.out.println("Ingresa hacia dónde se dirige: ");
         cancelar = validarRuta(sc);
         if(cancelar.equals("cancelar")) {
             return permanecer = true;
@@ -101,7 +101,7 @@ public class ServicioEncomiendas extends Servicio{
             return permanecer = true;
         }
         this.cantidadProductos = cancelar;
-        
+        String tipopago = tipoPago();
         System.out.println("¿Desea confirmar su viaje? S/N");                                
         //cancelar
         cancelar = validarConfirmacion(sc);
@@ -110,13 +110,13 @@ public class ServicioEncomiendas extends Servicio{
             return permanecer = true;
         
         }
-        if(s1.user.confirmarServicio(cancelar)){
+        if(s1.getUser().confirmarServicio(cancelar)){
             Servicio.setIdUnico(this.getIdUnico()+1);
-            String[] lineaConductor = s1.conductoreFile.buscarDriver("D","A");
+            String[] lineaConductor = s1.conductoreFile.buscarDriver("D","M");
             s1.setearConductor(lineaConductor,s1.userFile.accederLinea(s1.userFile.buscar(lineaConductor[0], 1)));
-            s1.conductoreFile.reemplazarLineaConductores(s1.driver.getCedula());
+            s1.conductoreFile.reemplazarLineaConductores(s1.getDriver().getCedula());
 
-            s1.encomiendasFile.escribir(this.toString(s1.user, tipoPago().toUpperCase(), s1.driver));
+            s1.encomiendasFile.escribir(this.toString(s1.getUser(), tipopago.toUpperCase(), s1.getDriver()));
             s1.agregaServicioLista(this);
         }
         return permanecer =true;

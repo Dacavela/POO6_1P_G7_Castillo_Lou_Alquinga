@@ -18,17 +18,19 @@ import java.util.Scanner;
  * @author DhuDu
  */
 public class Sistema2 {
-    public Archivo userFile = new Archivo("usuarios.txt");
-    public Archivo clientesFile = new Archivo("clientes.txt");
-    public Archivo viajesFile = new Archivo("viajes.txt");
-    public Archivo vehiculosFile = new Archivo("vehículos.txt");
-    public Archivo conductoreFile = new Archivo("conductores.txt");
-    public Archivo encomiendasFile = new Archivo("encomiendas.txt");
-    public Cliente user = new Cliente();
-    public Conductor driver = new Conductor();
-    public Vehiculo veh = new Vehiculo();
+    public final Archivo userFile = new Archivo("usuarios.txt");
+    public final Archivo clientesFile = new Archivo("clientes.txt");
+    public final Archivo viajesFile = new Archivo("viajes.txt");
+    public final Archivo vehiculosFile = new Archivo("vehículos.txt");
+    public final Archivo conductoreFile = new Archivo("conductores.txt");
+    public final Archivo encomiendasFile = new Archivo("encomiendas.txt");
+    public final Archivo deliveryFile  = new Archivo("delivery.txt");
+    public final Archivo pedidosFile  = new Archivo("pedidos.txt");
+    private Cliente user = new Cliente();
+    private Conductor driver = new Conductor();
+    private Vehiculo veh = new Vehiculo();
     public Scanner sc = new Scanner(System.in);
-    public static ArrayList<Servicio> services;
+    public static  ArrayList<Servicio> services;
     
     
     public ArrayList<Servicio> listaServices(){
@@ -42,8 +44,63 @@ public class Sistema2 {
     public static void setServices(ArrayList<Servicio> services) {
         Sistema2.services = services;
     }
-    
-    
+
+    public Archivo getUserFile() {
+        return userFile;
+    }
+
+
+
+    public Archivo getClientesFile() {
+        return clientesFile;
+    }
+
+
+
+    public Archivo getViajesFile() {
+        return viajesFile;
+    }
+
+
+
+    public Archivo getVehiculosFile() {
+        return vehiculosFile;
+    }
+
+
+    public Archivo getConductoreFile() {
+        return conductoreFile;
+    }
+
+    public Archivo getEncomiendasFile() {
+        return encomiendasFile;
+    }
+
+
+    public Cliente getUser() {
+        return user;
+    }
+
+    public void setUser(Cliente user) {
+        this.user = user;
+    }
+
+    public Conductor getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Conductor driver) {
+        this.driver = driver;
+    }
+
+    public Vehiculo getVeh() {
+        return veh;
+    }
+
+    public void setVeh(Vehiculo veh) {
+        this.veh = veh;
+    }
+        
     //metodos sistema 2
     public void mostrarInicio(){
         
