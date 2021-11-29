@@ -9,11 +9,11 @@ import com.mycompany.proyecto1p.*;
 import java.util.Scanner;
 
 /**
- *
- * @author Davca
- */
-
-//Clase abtracta ya que como tal no es nada sin pasar a ser uno de los tres tipos de servicios que puede contratar un cliente
+* Clase abstracta Servicio
+* Clase abtracta ya que como tal no es nada sin pasar a ser uno de los tres tipos de servicios que puede contratar un cliente
+* @author David Castillo
+* @version 1
+*/
 public abstract class Servicio {
     protected String rutaDesde;
     protected String rutaHacia;
@@ -25,8 +25,17 @@ public abstract class Servicio {
     
     
     Scanner sc = new Scanner(System.in);
-    
-    //Constructor de Servicio que 
+
+    /**
+    * Constructor de Servicio 
+    * Constructor con parametros
+     * @param rDesde ruta desde la que se va
+     * @param rHacia la que se dirige
+     * @param date fecha
+     * @param hour hora
+     * @param c conductor asignado para el servicio
+     * @param vPagar valor a pagar
+    */
     public Servicio(String rDesde, String rHacia, String date, String hour, Conductor c, Double vPagar){
         rutaDesde = rDesde;
         rutaHacia = rHacia;
@@ -37,11 +46,18 @@ public abstract class Servicio {
         
         
     }
+    
+    /**
+     * Constructor de Servicio
+     * Constructor sin parametros
+     */
     public Servicio(){
         
     }
     
-    //Getters y Setters
+    /**
+     * Getters y Setters
+    */
     public String getRutaDesde() {
         return rutaDesde;
     }
@@ -105,7 +121,10 @@ public abstract class Servicio {
     //Fin Getters y Setters
     
     //public abstract void mostrarInfoServicio();
-    
+    /**
+     * Metodo para calcular el precio
+     * @return Retorna un valor del valor a pagar
+     */
     public double calcularPrecio(){
         vPagar = 0.00;
         vPagar = 1 + (Math.random() * 49);
@@ -113,6 +132,10 @@ public abstract class Servicio {
         return vPagar;
     }
     
+    /**
+     * Metodo para calcular el precio con tarjeta
+     * @return Retorna un valor del valor a pagar
+     */
     public double calcularPrecio(String s){
         
         vPagar *= 1.10;
@@ -121,6 +144,10 @@ public abstract class Servicio {
         return vPagar;
     }
     
+    /**
+     * Metodo para seleccionar el tipo de pago
+     * @return retorna un string con el tipo de pago elegido
+     */
     public String tipoPago(){
        String tipoPago;
         do {

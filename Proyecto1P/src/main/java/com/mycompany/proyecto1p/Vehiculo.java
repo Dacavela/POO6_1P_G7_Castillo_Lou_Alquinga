@@ -6,8 +6,8 @@
 package com.mycompany.proyecto1p;
 
 /**
- *
- * @author DhuDu
+ * Clase vehiculo donde se instancia vehiculos para cada conductor
+ * @author Luis Alquinga
  */
 public class Vehiculo {
     private String codV;
@@ -16,9 +16,20 @@ public class Vehiculo {
     private String marca;
     private String tipo;
 
+    /**
+     * Constructor sin parametros
+     */
     public Vehiculo() {
     }
 
+    /**
+     * Constructor con parametros
+     * @param codV
+     * @param placa
+     * @param modelo
+     * @param marca
+     * @param tipo 
+     */
     public Vehiculo(String codV, String placa, String modelo, String marca, String tipo) {
         this.codV = codV;
         this.placa = placa;
@@ -26,7 +37,7 @@ public class Vehiculo {
         this.marca = marca;
         this.tipo = tipo;
     }
-
+    
     public String getCodV() {
         return codV;
     }

@@ -17,8 +17,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Davca
+ *Clase servicio, utilizada para crear servicios de delivery
+ * @author David Castillo
+ * @version 1
  */
 public class ServicioComida extends Servicio{
     private Pedido pedido = new Pedido();
@@ -29,15 +30,31 @@ public class ServicioComida extends Servicio{
     private Restaurante r1 = new Restaurante();
     //private Restaurante local = new Restaurante();
     
-    //Constructor ServicioComida que hereda de la clase Servicio
+    //C
+    /**
+    * Constructor de Servicio 
+    * Constructor ServicioComida que hereda de la clase Servicio
+     * @param rDesde ruta desde la que se va
+     * @param rHacia la que se dirige
+     * @param date fecha
+     * @param hour hora
+     * @param c conductor asignado para el servicio
+     * @param vPagar valor a pagar
+     * @param p pedido creado para la clase
+    */
     public ServicioComida(String rDesde, String rHacia, String date, String hour, Conductor c, Double vPagar, Pedido p){
         super(rDesde, rHacia, date, hour, c, vPagar);
          pedido = p;
     }
+    /**
+     * Constructor sin parametros
+     */
     public ServicioComida(){
-    
     }
-    //Getters y Setters
+    
+    /**
+     * Getters y Setters
+    */
     public Pedido getPedido() {
         return pedido;
     }
@@ -46,6 +63,11 @@ public class ServicioComida extends Servicio{
         this.pedido = pedido;
     }
     
+    /**
+     * metodo para mostrar en pantalla el servicio e ir pidiendo la informacion para instanciarlo
+     * @param s1 el sistema para realizar acciones y metodos que son de sistema
+     * @return retorna un booleano usado para ver si se cancela o no el pedido y se regresa al menu
+     */
     public boolean mostrarInfoServicio(Sistema2 s1) {
         ArrayList<Restaurante>restaurantes = new ArrayList<Restaurante>();
         ArrayList<Menu>menus = new ArrayList<>();
@@ -138,7 +160,11 @@ public class ServicioComida extends Servicio{
     }
     
     
-    
+    /**
+     * metodo para elegir un restaurante
+     * @param restaurantes recibe un array de restaurantes para buscar en ellos el seleccionado
+     * @return devuelve un restaurante que se usara en el metodo de de mostrarInfoServicio para generar el pedido
+     */
     public Restaurante seleccionarRestaurante(ArrayList<Restaurante> restaurantes){
         System.out.println("Elija un restaurante:");
         String resCho = validarRestaurante(sc);
@@ -156,7 +182,11 @@ public class ServicioComida extends Servicio{
         }
         return null;
     }
-    
+    /**
+     * Metodo para seleccionar el pedido
+     * @param menus es un array de platos del restaurante
+     * @return retorna un array con la seleccion de platos
+     */
     public ArrayList seleccionarMenu(ArrayList<Menu> menus){
         int eleccion = 1999999999;
         ArrayList<Menu> platosPed = new ArrayList<>();
@@ -180,12 +210,20 @@ public class ServicioComida extends Servicio{
         return platosPed;
     }
     
+    /**
+     * metodo heredado que suma al valor de pago el costo del servicio
+     * @return el valor de pago sin el cargo de tarjeta
+     */
     @Override
     public double calcularPrecio(){
         vPagar += 1 + (Math.random() * 49);
         vPagar = Math.round(vPagar*100.0)/100.0;
         return vPagar;
     }
+    /**
+     * metodo heredado que suma al valor de pago el costo del servicio
+     * @return el valor de pago con tarjeta
+     */
     @Override
     public double calcularPrecio(String s){
         vPagar *= 1.10;
@@ -194,12 +232,23 @@ public class ServicioComida extends Servicio{
         return vPagar;
     }
     
+    /**
+     * metodo toString, no es una sobreescritura porque recibe parametros
+     * @param cli cliente que hace el pedido
+     * @param tipoPago tipo de pago del pedido
+     * @param con conductor encargado del pedido
+     * @return retorna un string deseado con datos del cliente, tipo de pago y conductor.
+     */
     public String toString(Cliente cli, String tipoPago, Conductor con){
         
         return super.idUnico + "," + cli.getNombre() + "," +con.getNombre()
                             + "," + this.rutaDesde + "," + this.rutaHacia +"," + this.fecha 
                             + "," + this.hora + "," + pedido.getNumeroPedido() + "," + tipoPago + "," + this.vPagar;
     }
+    /**
+     * metodo toString, sobreescritura del metodo de java
+     * @return retorna un string deseado
+     */
     @Override
     public String toString(){
         String pedido1 = "reemplazar";

@@ -6,7 +6,7 @@
 package com.mycompany.proyecto1p;
 
 /**
- *
+ *Clase abstracta creada para los usuarios cliente y Conductor
  * @author Davca
  */
 public abstract class Usuario {
@@ -18,8 +18,17 @@ public abstract class Usuario {
     protected String password;
     protected String celular;
     protected String tipoUsuario;
-
-    //Constructor de la clase usuario
+    
+    /**
+     * Constructor de la clase usuario con parametros
+     * @param cedula cedula del usuario
+     * @param nombre nombre del usuario
+     * @param apellido apellido del usuario
+     * @param user usuario
+     * @param password contraseña del usuario
+     * @param celular celular del usuario
+     * @param tipoUsuario el tipo de usuario que es, conductor o cliente
+     */
     public  Usuario(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario) {
         this.cedula = cedula;
         this.nombre = nombre;
@@ -84,12 +93,20 @@ public abstract class Usuario {
     public String getTipoUsuario() {
         return tipoUsuario;
     }
-    public abstract void consultarServicios(Sistema2 s1);
+    
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
     //Fin Getters y Setters
-    
+    /**
+     * Metodo abstracto de consultar servicios que va a ser sobreescrita en cliente y conductor
+     * @param s1 sistema para realizar metodos necesarios del sistema
+     */
+    public abstract void consultarServicios(Sistema2 s1);
+    /**
+     * Override del metodo toString para devolver el ususario por sus atributos
+     * @return 
+     */
     @Override
     public String toString(){
         return cedula+","+nombre+","+apellido+","+user+","+password+","+celular+","+tipoUsuario;

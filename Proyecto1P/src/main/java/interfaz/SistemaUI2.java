@@ -1,24 +1,19 @@
 package interfaz;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author DhuDu
- */
-//import static Utilities.Validacion.*;
 import Utilities.Archivo;
 import com.mycompany.proyecto1p.Sistema2;
 import java.util.Scanner;
 import com.mycompany.proyecto1p.services.*;
-import com.mycompany.proyecto1p.*;
+
+/**
+ *Clase para la interfaz de usuario, creada a base de la version 1
+ * @author Luis Alquinga, David Castillo
+ */
 public class SistemaUI2 {
-    
+
     public Archivo conducFile = new Archivo("conductores.txt");
+    /**
+     * Metodo donde está todo para correr la interfaz de usuario
+     */
     public void SistemaUI() {
         
         

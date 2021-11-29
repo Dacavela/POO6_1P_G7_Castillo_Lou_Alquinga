@@ -14,8 +14,8 @@ import java.util.Scanner;
 
 
 /**
- *
- * @author DhuDu
+ *Clase creada para ejecutar y tener todos los metodos necesarios para que corra todo el programa.
+ * @author Luis Alquinga, David Castillo
  */
 public class Sistema2 {
     //La clase que mueve todo, es el sistema que se encarga de realizar casi todos los metodos que asocian las clases, instancian clases y demas
@@ -39,7 +39,7 @@ public class Sistema2 {
     //este arrayList sirve para tener una lista de los servicios creados, para mostrar los servicios de un conductor o cliente.
     public ArrayList<Servicio> services = new ArrayList<>();;
     
-    //Getters and setters//Getters and setters
+    //Getters and setters
     
     
     public Archivo getRestaurantesFile(){    
@@ -61,10 +61,6 @@ public class Sistema2 {
     public ArrayList<Servicio> getServices() {
         return services;
     }
-
-//    public void setServices(ArrayList<Servicio> services) {
-//        Sistema2.services = services;
-//    }
 
     public Archivo getUserFile() {
         return userFile;
@@ -117,7 +113,10 @@ public class Sistema2 {
     //Getters y setters finale
     
     //metodos sistema 2
-    //Metodo que muestra el inicio y pide usuario y contraseña
+
+    /**
+     * Metodo para mostrar la pantalla de inicio del sistema, tambien pide usuario y contraseña
+     */
     public void mostrarInicio(){
         
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
@@ -132,7 +131,11 @@ public class Sistema2 {
         user.setPassword(password);
 
     }
-    //Metodo que verifica el login del usuario
+    
+    /**
+     * Metodo que verifica el login del usuario
+     * @return retorna un string que dice si existe o no el usuario o permite el acceso al cliente
+     */
     public String verifyLogin() {
         String verLogin = null;
         boolean esUser = userFile.buscar(user.getUser(), 4);
@@ -165,7 +168,11 @@ public class Sistema2 {
         return verLogin;
     }
     
-    //Metodo que muestra el menu del cliente y pide el ingreso de un numero
+
+    /**
+     * Metodo para mostrar el menu del cliente y pedirle una opcion
+     * @return retorna un string con la opcion seleccionada
+     */
     public String mostrarInfoCliente(){
         String opcion;
         //Scanner opt = new Scanner(System.in);
@@ -208,6 +215,10 @@ public class Sistema2 {
 }
     
     //Metod
+    /**
+     * metodo para setear un vehiculo
+     * @param linea linea del archivo de vehiculos
+     */
     public void setearVehiculo(String[] linea){
         veh.setCodV(linea [0]);
         veh.setPlaca(linea [1]);
@@ -216,6 +227,11 @@ public class Sistema2 {
         veh.setTipo(linea [4]);
     }
     
+    /**
+     * Metodo para setear un conductor
+     * @param linea linea del archivo conductor
+     * @param lineaUser linea del archivo de usuarios
+     */
     public void setearConductor(String[] linea, String lineaUser){
         String[] lineaSeparada = lineaUser.split(",");
         driver.setCedula(lineaSeparada[0]);
@@ -232,6 +248,10 @@ public class Sistema2 {
         driver.setCodigoVehiculo(linea [3]);
     }
     
+    /**
+     * Metodo que muestra el menu del conductor y pide una opcion
+     * @return retorna un booleano para saber si debe salir al ingreso de usuario y contraseña o no
+     */
     public boolean mostrarInfoDriver(){
         System.out.println("+++++++ MENU CONDUCTOR ++++++++"
                 +        "\n*                              *\n"
@@ -259,6 +279,10 @@ public class Sistema2 {
 //    }
     
     //Metodo estatico para agregar usuarios que hayan sido agregados a usuarios.txt a la  lista de usuarios
+    /**
+     * Metodo para agregar un servicio a la lista de servicios
+     * @param s 
+     */
     public void agregaServicioLista(Servicio s){           
             services.add(s); 
     }

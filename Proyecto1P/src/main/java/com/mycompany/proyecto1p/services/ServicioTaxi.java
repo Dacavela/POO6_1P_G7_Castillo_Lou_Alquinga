@@ -9,8 +9,9 @@ import com.mycompany.proyecto1p.Cliente;
 import com.mycompany.proyecto1p.Conductor;
 import com.mycompany.proyecto1p.Sistema2;
 /**
- *
- * @author Davca
+ *Clase servicio, utilizada para crear servicios de taxi
+ * @author David Castillo
+ * @version 1
  */
 public class ServicioTaxi extends Servicio{
     private String personasQueViajan;
@@ -34,7 +35,11 @@ public class ServicioTaxi extends Servicio{
         this.personasQueViajan = personasQueViajan;
     }
     
-    //@Override
+    /**
+     * metodo para mostrar en pantalla el servicio e ir pidiendo la informacion para instanciarlo
+     * @param s1 el sistema para realizar acciones y metodos que son de sistema
+     * @return retorna un booleano usado para ver si se cancela o no el pedido y se regresa al menu
+     */
     public boolean mostrarInfoServicio(Sistema2 s1){
         String cancelar = null;
         boolean permanecer = false;
@@ -99,12 +104,23 @@ public class ServicioTaxi extends Servicio{
     }
     
     
+    /**
+     * metodo toString, no es una sobreescritura porque recibe parametros
+     * @param cli cliente que hace el pedido
+     * @param tipoPago tipo de pago del pedido
+     * @param con conductor encargado del pedido
+     * @return retorna un string deseado con datos del cliente, tipo de pago y conductor.
+     */
     public String toString(Cliente cli, String tipoPago, Conductor con){
         
         return super.idUnico + "," + cli.getNombre() + "," +con.getNombre()
                             + "," + this.rutaDesde + "," + this.rutaHacia +"," + this.fecha 
                             + "," + this.hora + "," + this.personasQueViajan + "," + tipoPago + "," + this.vPagar;
     }
+    /**
+     * metodo toString, sobreescritura del metodo de java
+     * @return retorna un string deseado
+     */
     @Override
     public String toString(){
         return "Tipo: Viaje\nCantidad de Pasajeros: "+this.personasQueViajan+"\nFecha: "+this.fecha

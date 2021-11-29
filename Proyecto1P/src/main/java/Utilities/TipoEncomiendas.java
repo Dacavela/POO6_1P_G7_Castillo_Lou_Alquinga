@@ -6,10 +6,15 @@
 package Utilities;
 
 /**
- *
- * @author Davca
- */
-//Objetos Enum para el tipo de encomienda, no hay mucho que decir aqui
+* Clase TipoEncomiendas
+* Clase creada para ingresar a archivos, leerlos, escribir en ellos y buscar dentro de
+* @author David Castillo
+* @version 1
+*/
+//
+        /**
+    * Objetos Enum para el tipo de encomienda, no hay mucho que decir aqui
+    */
 public enum TipoEncomiendas {
     MEDICAMENTOS,DOCUMENTOS,ROPA,cancelar;
 }

@@ -8,10 +8,11 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 /**
- *
- * @author DhuDu
- */
-//Clase creada para ingresar a archivos, leerlos, escribir en ellos y buscar dentro de
+* Clase manejo de Archivos
+* Clase creada para ingresar a archivos, leerlos, escribir en ellos y buscar dentro de
+* @author Luis Alquinga
+* @version 1
+*/
 public class Archivo {
     //Tenemos una direccion para usarala en los metodos
     //Un contador para las clases buscar y accederLinea, inicia en 0 y sirve para encontrar lineas en un fichero y retornarlas
@@ -49,7 +50,15 @@ public class Archivo {
     //Getters y Setters Finale
   
     
-    //metodo que busca si existe un dato dentro de la linea de un archivo y devuelve true o false si es que esta en una linea, suma el contador hasta el numero de la linea
+    //
+        /**
+    * Metodo para buscar en archivos
+    * metodo que busca si existe un dato dentro de la linea de un archivo y devuelve true o false si es que esta en una linea, suma el contador hasta el numero de la linea
+    * @param categoria Este parametro es el valor que se va a buscar.
+    * @param elementos Este parametro es en la posicion que se busca.
+    * @return devuelve un booleano que confirma si se encuentra algo en el fichero.
+    */
+    
     public boolean buscar(String categoria, int elementos){ 
         //boolean bucle;
         this.contador = 0;
@@ -81,10 +90,16 @@ public class Archivo {
             s.close();
         }catch (FileNotFoundException e){e.printStackTrace();}
         return verify;
-    } //
+    } 
     
     
-    //Metodo que accede a una linea, usa el contador sacado en buscar para acceder a la linea y devuelve la linea.
+    //
+        /**
+    * Metodo para acceder a una linea
+    * Metodo que accede a una linea, usa el contador sacado en buscar para acceder a la linea y devuelve la linea. Va de la mano con el metodo buscar
+    * @param buscar Este parametro es un booleano que viene del anterior metodo para acceder a una linea si es que encontró lo buscado.
+    * @return devuelve un string d ela linea 
+    */
     public String accederLinea(boolean buscar){
         String linea = null;
         if(buscar==true){
@@ -105,7 +120,12 @@ public class Archivo {
     }
     
     
-    //Metodo que escribe en la ultima linea de un fichero.
+    //
+    /**
+    * Metodo para escribir en una linea
+    * Metodo que escribe en la ultima linea de un fichero.
+    * @param cadena Este parametro es lo que se va a escribir en esa linea
+    */
     public void escribir(String cadena){
         FileWriter fichero = null;
         PrintWriter pw = null;
@@ -130,8 +150,15 @@ public class Archivo {
     }
     
     
-    //Metodo que busca un vehiculo en un archivo, revisa si el conductor esta disponible u ocupado y el tipo de vehiculo
-    //devuelve una lista de strings con los datos del vehiculo en cuestion.
+    
+    /**
+    * Metodo para  buscar vehiculos en ficheros
+    * Metodo que busca un vehiculo en un archivo, revisa si el conductor esta disponible u ocupado y el tipo de vehiculo devuelve una lista de strings con los datos del vehiculo en cuestion.
+    * @param filedireccion direccion en la que busca
+    * @param disponibilidad parametro de la disponibilidad del conductor
+    * @param tipoVeh tipo de vehiculo del conductor
+    * @return devuelve una lista de strings con la linea del vehiculo
+    */    
     public String[] buscarVehiculo(String filedireccion,String disponibilidad, String tipoVeh){
         
         boolean verify = true;
@@ -158,9 +185,14 @@ public class Archivo {
         }catch (FileNotFoundException e){e.printStackTrace();}
         return linea;
     }
-
-    //metodo que busca un conductor ocupado y por su tipo de vehiculo, este metodo va de la mano/asociado al metodo anterior
-    //Retorna una lista de strings con los datos del conductor, sirve para instanciar un conductor
+    
+    /**
+    * Metodo para buscar un conductor disponible o no
+    * metodo que busca un conductor desocupado y por su tipo de vehiculo, este metodo va de la mano/asociado al metodo anterior
+    * @param disponibilidad parametro de la disponibilidad del conductor
+    * @param tipoVehiculo tipo de vehiculo del conductor
+    * @return Retorna una lista de strings con los datos del conductor, sirve para instanciar un conductor
+    */ 
     public String[] buscarDriver(String disponibilidad, String tipoVehiculo){
         boolean acceso = true;
         String [] busquedaAuto = null;
@@ -181,7 +213,12 @@ public class Archivo {
         return conductor;
     }
     
-    //Metodo que sirve para reemplazar a un conductor de disponible a ocupado, como solo nos pidieron ese cambio de estado no se ha hecho de ocupado a disponible.
+    /**
+    * Metodo para acceder a una linea
+    * Metodo que sirve para reemplazar a un conductor de disponible a ocupado, como solo nos pidieron ese cambio de estado no se ha hecho de ocupado a disponible.
+    * @param cedula parametro de la disponibilidad del conductor
+    * @param idUnico es el idUnico que lo asocia con el pedido
+    */ 
     public void reemplazarLineaConductores(String cedula, int idUnico) {
         
         ArrayList<String> conductores = new ArrayList<>();
@@ -230,9 +267,13 @@ public class Archivo {
 
     }
     
-
-    //metodo copiado de sistema linea 41
-    //Este metodo recoge todo un fichero, lo separa por lineas y devuelve un ArrayList de strings de cada linea del fichero.
+    /**
+    * metodo copiado de sistema linea 41
+    * Este metodo recoge todo un fichero, lo separa por lineas y devuelve un ArrayList de strings de cada linea del fichero.
+    * @param nombrearchivo parametro del nombre del archivo
+    * @return Retorna una lista de strings con los datos del conductor, sirve para instanciar un conductor
+     * @throws java.io.IOException
+    */
     public ArrayList<String> leerFichero(String nombrearchivo) throws IOException {
         ArrayList<String> lineas = new ArrayList<>();
         File archivo = null;
@@ -269,8 +310,14 @@ public class Archivo {
     }
     
     
-    /*Metodo muy similar al anterior, pero que en vez de devolver todas las lineas del fichero devuelve las lineas del fichero de menus que
-    coincidan con el codigo del restaurante ingresado como parametro*/
+    /**
+    * metodo similar al anterior
+    * Metodo muy similar al anterior, pero que en vez de devolver todas las lineas del fichero devuelve las lineas del fichero de menus que
+    coincidan con el codigo del restaurante ingresado como parametro
+    * @param codRes parametro del nombre del restaurante donde va a buscar el menu
+    * @return Retorna una lista de strings con los datos del conductor, sirve para instanciar un conductor
+     * @throws java.io.IOException
+    */
     public ArrayList<String> buscarMenu(String codRes) throws IOException {
         ArrayList<String> lineas = new ArrayList<>();
         File archivo = null;
