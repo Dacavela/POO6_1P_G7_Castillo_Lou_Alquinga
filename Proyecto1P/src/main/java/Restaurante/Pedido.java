@@ -23,10 +23,15 @@ public class Pedido extends Menu {
     public Pedido() {    
     }
 
-    //Constructor que recibe parametros
+    /**Constructor que recibe parametros
+     * @param codigo define el codigo del plato
+     * @param nombre define el nombre del Restaurante
+     * @param nombrePlato define el nombre del plato
+     * @param precio define el precio del plato
+    */
     public Pedido(String codigo, String nombre, String nombrePlato, Double precio) {
         super(codigo, nombre, nombrePlato, precio);
-    }
+    }//Cierre del constructor
 
     //Getters y Setters
     public ArrayList<Menu> getPlatos() {
@@ -46,8 +51,12 @@ public class Pedido extends Menu {
     }
     //Fin de getters y Setters
     
-    //Una SobreCarga del metodo toString, no es sobreescritura ya que recibe un parametro, a diferencia del metodo toString de Java     
+    /**Una SobreCarga del metodo toString, no es sobreescritura ya que 
+    * recibe un parametro, a diferencia del metodo toString de Java     
+    * @param m recibe un menu para poder escribir en pedidos.txt
+    * @return retorna un string igual al formato pedido en el proyecto
+    */
     public String toString(Menu m){
         return ""+numeroPedido+","+m.toString();
-    }
+    }//Cierre del metodo
 }

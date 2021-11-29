@@ -9,11 +9,13 @@ import Utilities.Archivo;
 import com.mycompany.proyecto1p.services.*;
 
 /**
- *
+ * Clase que representa un conductor que es creado a partir de conductores.txt
+ * Clase conductor que tiene 4 atributos aparte de los de usuario, 
+ * el codigoUsuario, la licencia, el estado y el codigovehiculo
  * @author Davca
  */
 public class Conductor extends Usuario{
-    //Clase conductor que tiene 4 atributos aparte de los de usuario, el codigoUsuario, la licencia, el estado y el codigovehiculo
+    //Campos de la clase
     private String codigoUsuario;
     private String licencia;
     private String estado;
@@ -22,11 +24,27 @@ public class Conductor extends Usuario{
     private ServicioEncomiendas servicioEnco = new ServicioEncomiendas();
     private ServicioComida servicioCom = new ServicioComida();
     
-    //Constructor sin parametros
+    /**
+    * Constructor sin parametros
+    */
     public Conductor(){
-    }
+    }//Cierre del Constructor
     
-    //Constructor de la clase Conductor que hereda de la clase Usuario
+    /**
+    * Constructor de la clase Conductor que hereda de la clase Usuario
+    * @param cedula recibe la cedula del usuario
+    * @param nombre recibe el nombre del usuario
+    * @param apellido recibe el apellido del usuario
+    * @param user recibe el nombre de usuario del usuario
+    * @param password recibe la contraseña del usuario
+    * @param celular recibe el celular del usuario
+    * @param tipoUsuario recibe el tipo de Usuario en este caso R
+    * @param codigoUsuario recibe el codigo de Usuario
+    * @param licencia recibe la licencia del usuario 
+    * @param estado recibe si esta disponible D u ocupado O
+    * @param codigoVehiculo recibe el codigo del Vehiculo del usuario
+    * cabe recalcar que el codigo Usuario fue reemplazado por la cedula. 
+    */
     public Conductor(String cedula, String nombre, String apellido, String user, String password, String celular, String tipoUsuario,String codigoUsuario,String licencia, String estado, String codigoVehiculo) {
         super(cedula, nombre, apellido, user, password, celular, tipoUsuario);
         this.codigoUsuario = codigoUsuario;
@@ -34,7 +52,7 @@ public class Conductor extends Usuario{
         this.estado = estado;
         this.codigoVehiculo = codigoVehiculo;
 
-    }
+    }//Cierre del constructor
 
     //Getters y Setters
 
@@ -97,7 +115,17 @@ public class Conductor extends Usuario{
     }
     //Fin Getters y Setters
    
-    
+    /**
+     * Metodo que busca entre los archivos delivery, encomiendas, y viajes segun 
+     * el numero de servicio unico para asignarlo a un conductor
+     * @param conductores es el conductores.txt
+     * @param encomiendas es el archivo encomiendas.txt
+     * @param viajes es el archivo viajes.txt
+     * @param delivery es el archivo delivery.txt
+     * @param restaurantes es el archivo restaurantes.txt
+     * @param pedidos es el archivo pedidos.txt
+     * @return retorna la linea que coincida con el numero de servicio unico en cualquiera de los archivos 
+     */
     public String saberQueServicioMeToco(Archivo conductores, Archivo encomiendas, Archivo viajes, Archivo delivery, Archivo restaurantes, Archivo pedidos){
         String idServicio = conductores.accederLinea(conductores.buscar(this.cedula, 1)).split(",")[4];
         String serAsignado;
@@ -125,12 +153,16 @@ public class Conductor extends Usuario{
             return delivery.accederLinea(true);
         }
         return "No tiene Servicio Asignado";
-        }
+        }//Cierre del metodo
     @Override
+    /**
+     * Metodo que imprime en pantalla el servicio asignado segun el formato PDF
+     * @param s1 recibe un objeto de la clase Sistema 2 ya que ahi se abrieron todos los archivos txt
+     */
     public void consultarServicios(Sistema2 s1){
         System.out.println(saberQueServicioMeToco(s1.getConductoreFile(), s1.getEncomiendasFile(), s1.getViajesFile(), s1.getDeliveryFile(), s1.getRestaurantesFile(), s1.getPedidosFile()));
                 
             
-        }
+        }//Cierre del metodo
     }
     

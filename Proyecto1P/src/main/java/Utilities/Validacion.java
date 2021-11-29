@@ -6,17 +6,24 @@
 package Utilities;
 
 /**
- *
+ *Clase creada para validar todos los datos ingresados por teclado
+ * Esta clase es muy importante, sirve para validar que el usuario no asesine el programa. 
+ * Puede mejorarse aun mas para realizar otro tipo de validaciones, pero para iniciar hace su trabajo basico
+ * Nota: Todas estas validaciones reciben un Scanner y algunas sirven para cancelar e ir al menu principal.
  * @author DhuDu
  */
 import static Utilities.TipoEncomiendas.*;
 import java.util.Scanner;
 
-//Esta clase es muy importante, sirve para validar que el usuario no asesine el programa. Puede mejorarse aun mas para realizar otro tipo de validaciones, pero para iniciar hace su trabajo basico
+
 public class Validacion {
-    //Nota: Todas estas validaciones reciben un Scanner y algunas sirven para cancelar e ir al menu principal.
     
-    //Validacion de entradas por teclado para el correcto funcionamiento, esta sirve para el nombre de usuario o entradas similares
+    /**   
+    * Metodo de Validacion de entradas por teclado para el correcto funcionamiento, 
+    * esta sirve para el nombre de usuario o entradas similares
+    * @param sc define el objeto scanner para ahorrar lineas de codigo
+    * @return  retorna un string que no tenga espacios que no es vacio y que no tiene simbolos
+    */
     public static String validNameUser(Scanner sc){
         String valUser = sc.nextLine().trim();
         while( !(valUser.matches("[a-zA-Z0-9]*"))||(valUser.length()<5 || valUser.equals(""))){
@@ -24,9 +31,12 @@ public class Validacion {
             valUser = sc.nextLine();
         }
         return valUser.toLowerCase();
-    }
-    
-    //Validacion para la contraseña, para que sea de 4 o más numeros o letras y que no contenga comas.
+    }//Cierre del metodo
+    /**
+    //Metodo de Validacion para la contraseña
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string que sea de 4 o más caracteres y que no contenga comas.
+    */
     public static String validPassword(Scanner sc){
         String vlidPass = sc.nextLine().trim();
         while(vlidPass.length()<4 || vlidPass.contains(",") ){
@@ -34,9 +44,11 @@ public class Validacion {
             vlidPass = sc.nextLine().trim();
         }System.out.println("Su nueva contraseña es:"+vlidPass);
         return vlidPass;
-    }
-    
-    //Validacion para la cedula, para que solo contenga 10 numeros y que no sea un espacio vacio
+    }//Cierre del metodo
+    /**Metodo de Validacion para la cedula
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string que sea de tipo numerico y con length 10.
+    */
     public static String validarCedula(Scanner sc){
         
         String cedulaValida = sc.nextLine().trim();
@@ -51,9 +63,11 @@ public class Validacion {
             cedulaValida = sc.nextLine().trim();
         }
         return cedulaValida;
-    }
-    
-    //Validacion para nombres de personas, para que solo contenga letras y no sea vacio.
+    }//Cierre del metodo
+    /**Metodo de Validacion para Nombres y Apellidos
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string que sea de letras sin simbolos.
+    */
     public static String validarNames(Scanner sc){
         String validName = sc.nextLine().trim();
 
@@ -65,9 +79,11 @@ public class Validacion {
             validName = sc.nextLine().trim();
         }
         return validName;
-    }
-    
-    //Validacion de celulares, para que contenga 10 numeros, inicie con 09 y no sea vacio.
+    }//Cierre del metodo
+    /**Metodo de Validacion para Celular
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string que sea de 9 digitos empezando por 09.
+    */
     public static String validarCelular(Scanner sc){
         String cllValido = sc.nextLine().trim();
         
@@ -80,9 +96,11 @@ public class Validacion {
             cllValido = sc.nextLine().trim();
     }
         return cllValido;
-    }
-    
-    //Validacion para la edad, solo pueden entrar personas mayores a 11 y menores de 100
+    }//Cierre del metodo
+    /**Metodo de Validacion para la EDAD
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string que sea de 2 digitos entre 12 y 99 anios.
+    */
     public static String validarEdad(Scanner sc){
         String validEdad = sc.nextLine().trim();
         if(validEdad.equals("cancelar")) {
@@ -104,9 +122,11 @@ public class Validacion {
         }else{validEdad = ed.toString(); tmpV=false;}
         }
         return validEdad;
-    }
-    
-    //Validacion para validar tarjetas de credito, pueden tener de 13 a 19 digitos.
+    }//Cierre del metodo
+    /**Metodo de Validacion para Credit Card
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string de 13 a 19 diitos.
+    */
     public static String validarCC(Scanner sc){
         String validCC = sc.nextLine().trim();
         if(validCC.equals("cancelar")) {
@@ -120,9 +140,11 @@ public class Validacion {
         }
         return validCC;
     
-    }
-    
-    //Validacion para la fehca, para que se ingrese solo de la forma DD/MM/AAAA
+    }//Cierre del metodo
+    /**Metodo de Validacion para Fecha
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string con el formato dd/mm/yyyy.
+    */
     public static String validarFecha(Scanner sc){
         String validDate = sc.nextLine().trim();
         if(validDate.equals("cancelar")) {
@@ -133,9 +155,11 @@ public class Validacion {
             validDate = sc.nextLine();
         }
         return validDate;
-    }
-    
-    //Validacion de la hora para que se ingrese de manera hh:mm
+    }//Cierre del metodo
+    /**Metodo de Validacion Hora
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string con el formato hh:mm maximo 23:59 minimo 00:00.
+    */
     public static String validarHora(Scanner sc){
         String validHora = sc.nextLine().trim();
         if(validHora.equals("cancelar")){return validHora;}
@@ -144,9 +168,11 @@ public class Validacion {
             validHora = sc.nextLine();
         }
         return validHora;
-    }
-    
-    //Validacion de pasajeros, solo pueden entrar hasta 4 pasajeros en un auto, ya que no disponemos de autos de mas asientos
+    }//Cierre del metodo
+    /**Metodo de Validacion para Pasajeros
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string de 1 digito menor igual a 4.
+    */
     public static String validarPasajeros(Scanner sc){
         String validPas = sc.nextLine().trim();
         if(validPas.equals("cancelar")){return validPas;}
@@ -166,9 +192,11 @@ public class Validacion {
         }else{validPas = ed1.toString(); tmpV1=false;}
         }
         return validPas;
-    }
-    
-    //Validacion de la ruta para que no contenga comas ni sea un espacio vacio.
+    }//Cierre del metodo
+    /**Metodo de Validacion para Ruta
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string sin comas que representa la ruta.
+    */
     public static String validarRuta(Scanner sc){
         String validRuta = sc.nextLine().trim();
         if(validRuta.equals("cancelar")) {
@@ -179,9 +207,11 @@ public class Validacion {
             validRuta = sc.nextLine().trim();
         }
         return validRuta;
-    }
-    
-    //Vlidacion de encomiendas que retorna un objeto de TipoEncomiendas
+    }//Cierre del metodo
+    /**Metodo de Validacion para Encomiendas
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un enum de tipoEncomiendas.
+    */
     public static TipoEncomiendas validarEncomienda(Scanner sc){
         TipoEncomiendas tipo = null;
         
@@ -208,9 +238,11 @@ public class Validacion {
             } 
         }while(!entrada.equals("1") && !entrada.equals("2") && !entrada.equals("3") && !entrada.equals("cancelar"));
         return tipo;
-    }
-    
-    //Validacion de la cantidad de productos para que en las encomiendas ingresen de 1 a 99 objetos, no mas porque no entran en una moto :)
+    }//Cierre del metodo
+    /**Metodo de Validacion para Cantidad de Productos
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string de digitos entre 0 y 100.
+    */
     public static String validarCantidadProductos(Scanner sc){
         String validCant = sc.nextLine().trim();
         if(validCant.equals("cancelar")){return validCant;}
@@ -233,9 +265,11 @@ public class Validacion {
         }else{validCant = cant.toString(); tmpV=false;}
         }
         return validCant;
-    }
-    
-    //Validacion de la confirmacion, para que ingresen solo S o N mayuscula o minuscula.
+    }//Cierre del metodo
+    /**Metodo de Validacion para Confirmacion
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string s ó n sin discriminar entre mayuscula o minuscula.
+    */
     public static String validarConfirmacion(Scanner sc){
         String validCon = sc.nextLine().trim();
         if(validCon.equals("cancelar")){
@@ -245,17 +279,19 @@ public class Validacion {
             System.out.println("Opcion no valida\n¿Desea confirmar su viaje? S/N");
             validCon = sc.nextLine().trim();
         }return validCon;
-    }   
-
-    //Validacion de restaurantes para que ingresen solo letras y no sea igual a espacios.
+    }//Cierre del metodo
+    /**Metodo de Validacion para Restaurante
+    * @param sc define el objeto scanner para la entrada por teclado
+    * @return devuelve un string sin comas.
+    */
     public static String validarRestaurante(Scanner sc){
         String validRes = sc.nextLine().trim();
         if(validRes.toLowerCase().equals("cancelar")){
             return validRes;
         }
-        while(!validRes.matches("[a-zA-Z ]*") || validRes.equals("")){
+        while(!validRes.matches("[a-zA-Z0-9 ]*") || validRes.equals("")){
             System.out.println("Ingrese un restaurante de la lista");
             validRes = sc.nextLine().trim();  }
     return validRes;
-    }
+    }//Cierre del metodo
 }
