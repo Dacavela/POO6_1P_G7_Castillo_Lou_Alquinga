@@ -2,12 +2,4 @@ cedula,nombre,apellido,user,contraseña,celular,tipoUsuario
 0923547362,Luis,Mancero,lmancero,qwerty,0983637223,R
 0986353323,Juan,Gómez,jgome,38373,093727266,R
 0945698598,Marco,Cárdenas,mcarden,abcde,0975342533,C
-1234567890,Luis,Alquinga,luis,hola,0987654321,C
-1245678911,Lobo,Animal,lobito,loboferoz,0987456324,R
-1756986935,Lola,Cabezas,qwertyui,holaquehace,0985630100,C
-1725569287,David,Castillo,davca,D1234,0987949669,C
 1750036422,Sofia,Realpe,sofiss10,perropanson,0983654271,R
-0956321470,Karen,Castro,kacasg,bolita2012,0983256634,C
-1713568697,Isabel,Andrade,isabel20,perropanson,0987563241,C
-1725569288,David,Castelo,davasc,Davicho,0987654322,C
-1758965436,Sofia,Sofia,sofia1234,nombreyavalio,0987541220,C

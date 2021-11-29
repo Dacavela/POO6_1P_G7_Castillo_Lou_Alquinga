@@ -122,7 +122,8 @@ public class Sistema2 {
         
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("             BIENVENIDO AL SISTEMA");
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");        
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("Escriba 'cancelar' en cualquier paso para regresar");
         System.out.println("Usuario:");
         String user1 = (validNameUser(sc));
         user.setUser(user1);

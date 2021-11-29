@@ -6,7 +6,7 @@
 package Restaurante;
 
 /**
- *
+ *Clase Menu que será para instanciar los platos de los pedidos de comida.
  * @author Davca
  */
 public class Menu extends Restaurante {

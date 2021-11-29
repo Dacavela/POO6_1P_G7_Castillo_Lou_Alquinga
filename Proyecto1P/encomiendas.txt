@@ -1,2 +1,1 @@
 numeroServicio,nombreCliente,nombreConductor,desde,hasta,fecha,hora,tipoEncomiendas,cantidadProductos,tipoPago,valorPagar
-16336,David,Sofia,prueba3,prueba4,8/8/8888,8:45,DOCUMENTOS,3,EFECTIVO,21.27

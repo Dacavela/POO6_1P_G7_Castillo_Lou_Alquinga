@@ -18,7 +18,7 @@ public class Validacion {
     
     //Validacion de entradas por teclado para el correcto funcionamiento, esta sirve para el nombre de usuario o entradas similares
     public static String validNameUser(Scanner sc){
-        String valUser = sc.nextLine();
+        String valUser = sc.nextLine().trim();
         while( !(valUser.matches("[a-zA-Z0-9]*"))||(valUser.length()<5 || valUser.equals(""))){
             System.out.println("USUARIO NO PUEDE CONTENER ESPACIOS, CARACTERES ESPECIALES O ESTAR VACIO (mas de 5 caracteres).\nUsuario:");
             valUser = sc.nextLine();
