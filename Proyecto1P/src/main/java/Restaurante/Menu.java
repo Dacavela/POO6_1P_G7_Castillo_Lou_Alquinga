@@ -7,24 +7,34 @@ package Restaurante;
 
 /**
  *Clase Menu que será para instanciar los platos de los pedidos de comida.
+ *Extiende de restaurante porque necesitaremos el codigo de restaurante para trabajarlos en conjunto
+ *Esta clase se llama Menu, sin embargo lo que se genera cada vez que generamos una de estas es un plato
  * @author Davca
  */
 public class Menu extends Restaurante {
-    //Extiende de restaurante porque necesitaremos el codigo de restaurante para trabajarlos en conjunto
-    //Esta clase se llama Menu, sin embargo lo que se genera cada vez que generamos una de estas es un plato
+    //Campos de la clase
     private String nombrePlato;
     private Double precio;
     
-    //Constructor sin parámetros para instanciar la clase servicioComida un pedido vacio
+   /**Constructor sin paramteros que sirve para inicializar el menu 
+    *sin la necesidad de que el usuario elija un menu
+    */
     public Menu() {
-    }
-    //Constructor con parametros ya que en servicioComida instanciaremos platos para agregarlos a una lista de platos del menu del restaurante elegido
+    }//Cierre del Constructor
+    
+    /**Constructor con parametros
+    *@param codigo Define el codigo del restaurante
+    *@param nombre Define el nombre del restaurante
+    *@param nombrePlato Define el nombre del Plato que ofrece el Restaurante
+    *@param precio Define el precio del plato que ofrece el restaurante
+    */
     public Menu(String codigo, String nombre, String nombrePlato, Double precio) {
         super(codigo, nombre);
         this.nombrePlato = nombrePlato;
         this.precio = precio;
-    }
-    //Getters y setters
+    }//Cierre del constructor
+    
+    //Getters y Setters
     public String getNombrePlato() {
         return nombrePlato;
     }
@@ -39,10 +49,11 @@ public class Menu extends Restaurante {
 
     public void setPrecio(Double precio) {
         this.precio = precio;
-    }
-    //fin de getters y setters
-    //Override del toString, utilizamos el codigo del restaurante que proviene de la clase padre y el nombre plato y precio
-    //Realizamos este Override para llamarlo en la clase hija Pedido
+    }//fin de getters y setters
+    
+    /**Utilizamos el codigo del restaurante que proviene de la clase padre,el nombre plato y precio
+    *@return retorna el pedido listo para ser agregado a pedidos.txt
+    */
     @Override
     public String toString(){
         return ""+ super.getCodigo()+"," + nombrePlato+"," + precio;
