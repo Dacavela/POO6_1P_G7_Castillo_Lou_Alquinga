@@ -7,12 +7,7 @@ package com.mycompany.proyecto1p.services;
 
 import Utilities.TipoEncomiendas;
 import static Utilities.TipoEncomiendas.*;
-import static Utilities.Validacion.validarCantidadProductos;
-import static Utilities.Validacion.validarConfirmacion;
-import static Utilities.Validacion.validarEncomienda;
-import static Utilities.Validacion.validarFecha;
-import static Utilities.Validacion.validarHora;
-import static Utilities.Validacion.validarRuta;
+import static Utilities.Validacion.*;
 import com.mycompany.proyecto1p.Cliente;
 import com.mycompany.proyecto1p.Conductor;
 import com.mycompany.proyecto1p.Sistema2;
@@ -102,6 +97,7 @@ public class ServicioEncomiendas extends Servicio{
         }
         this.cantidadProductos = cancelar;
         String tipopago = tipoPago();
+        if(tipopago.equals("cancelar")){return permanecer = true;}
         System.out.println("¿Desea confirmar su viaje? S/N");                                
         //cancelar
         cancelar = validarConfirmacion(sc);
@@ -114,8 +110,8 @@ public class ServicioEncomiendas extends Servicio{
             Servicio.setIdUnico(this.getIdUnico()+1);
             String[] lineaConductor = s1.getConductoreFile().buscarDriver("D","M");
             s1.setearConductor(lineaConductor,s1.getUserFile().accederLinea(s1.getUserFile().buscar(lineaConductor[0], 1)));
-            s1.getConductoreFile().reemplazarLineaConductores(s1.getDriver().getCedula());
-
+            s1.getConductoreFile().reemplazarLineaConductores(s1.getDriver().getCedula(),super.getIdUnico());
+            s1.getDriver().setServicioEnco(this);
             s1.getEncomiendasFile().escribir(this.toString(s1.getUser(), tipopago.toUpperCase(), s1.getDriver()));
             s1.agregaServicioLista(this);
         }
@@ -125,10 +121,15 @@ public class ServicioEncomiendas extends Servicio{
     
     public String toString(Cliente cli, String tipoPago, Conductor con){
         
-        return super.idUnico + "," + cli.getNombre() + "," +con.getNombre()
+        return ServicioEncomiendas.idUnico + "," + cli.getNombre() + "," +con.getNombre()
                             + "," + this.rutaDesde + "," + this.rutaHacia +"," + this.fecha 
                             + "," + this.hora + "," + this.tipoEncomienda + "," + this.cantidadProductos + "," + tipoPago + "," + this.vPagar;
     }
-        
+    @Override
+    public String toString(){
+     return "Tipo: Encomienda\n"+"Tipo Encomiensa: "+this.getTipoEncomienda()+"\nCantidad: "
+             +this.cantidadProductos+"\nFecha: "+this.fecha+"\nHora: "+this.hora+"\nDesde: "+this.rutaDesde
+             +"\nHacia: " + this.rutaHacia;
+    }
     
 }

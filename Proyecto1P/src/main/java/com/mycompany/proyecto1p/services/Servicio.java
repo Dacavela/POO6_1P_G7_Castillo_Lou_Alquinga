@@ -126,7 +126,7 @@ public abstract class Servicio {
         do {
             System.out.println("Ingresa el número del método de pago que desee\n1: Efectivo: $"+calcularPrecio()
                     +"\n2: Tarjeta: $"+calcularPrecio("s"));
-            tipoPago = sc.nextLine();
+            tipoPago = sc.nextLine().trim();
             switch (tipoPago) {
                 case "1":
                     System.out.println("Pago en efectivo seleccionado.");
@@ -138,11 +138,14 @@ public abstract class Servicio {
                     System.out.println("Pago con tarjeta seleccionado.");
                     tipoPago = "Tarjeta";
                     break;
+                case "cancelar":
+                    tipoPago= "cancelar";
+                    break;
                 default:
                     System.out.println("Opcion incorrecta, vuelva a intentarlo");
                     break;
             }
-        } while (!tipoPago.equals("Efectivo") && !tipoPago.equals("Tarjeta"));
+        } while (!tipoPago.equals("Efectivo") && !tipoPago.equals("Tarjeta")&&!tipoPago.equals("cancelar") );
         return tipoPago;
     }
     

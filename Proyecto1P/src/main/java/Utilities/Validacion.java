@@ -9,9 +9,7 @@ package Utilities;
  *
  * @author DhuDu
  */
-import static Utilities.TipoEncomiendas.DOCUMENTOS;
-import static Utilities.TipoEncomiendas.MEDICAMENTOS;
-import static Utilities.TipoEncomiendas.ROPA;
+import static Utilities.TipoEncomiendas.*;
 import java.util.Scanner;
 
 //Esta clase es muy importante, sirve para validar que el usuario no asesine el programa. Puede mejorarse aun mas para realizar otro tipo de validaciones, pero para iniciar hace su trabajo basico
@@ -140,6 +138,7 @@ public class Validacion {
     //Validacion de la hora para que se ingrese de manera hh:mm
     public static String validarHora(Scanner sc){
         String validHora = sc.nextLine().trim();
+        if(validHora.equals("cancelar")){return validHora;}
         while(!validHora.matches("^([01]?[0-9]|2[0-3]):[0-5][0-9]$")||validHora.equals("")){
             System.out.println("Ingrese formato correcto: 24Hrs (hh:mm)");
             validHora = sc.nextLine();
@@ -150,6 +149,7 @@ public class Validacion {
     //Validacion de pasajeros, solo pueden entrar hasta 4 pasajeros en un auto, ya que no disponemos de autos de mas asientos
     public static String validarPasajeros(Scanner sc){
         String validPas = sc.nextLine().trim();
+        if(validPas.equals("cancelar")){return validPas;}
         Integer ed1;
         boolean tmpV1 = true;
         while(tmpV1){
@@ -185,7 +185,7 @@ public class Validacion {
     public static TipoEncomiendas validarEncomienda(Scanner sc){
         TipoEncomiendas tipo = null;
         
-        //MEDICAMENTOS,DOCUMENTOS,ROPA;
+        //MEDICAMENTOS,DOCUMENTOS,ROPA, cancelar;
         String entrada;
         do{
             entrada = sc.nextLine();
@@ -199,17 +199,21 @@ public class Validacion {
                     case "3":
                         tipo = ROPA;
                         break;
+                    case"cancelar":
+                        tipo = cancelar;
+                        break;
                     default: 
                         System.out.printf("Ingrese un número del 1 al 3:\n1. Medicamentos\n2. Documentos\n3. Ropa\n");
                         break;
             } 
-        }while(!entrada.equals("1") && !entrada.equals("2") && !entrada.equals("3"));
+        }while(!entrada.equals("1") && !entrada.equals("2") && !entrada.equals("3") && !entrada.equals("cancelar"));
         return tipo;
     }
     
     //Validacion de la cantidad de productos para que en las encomiendas ingresen de 1 a 99 objetos, no mas porque no entran en una moto :)
     public static String validarCantidadProductos(Scanner sc){
         String validCant = sc.nextLine().trim();
+        if(validCant.equals("cancelar")){return validCant;}
         Integer cant;
         if(validCant.equals("cancelar")) {
             return validCant;

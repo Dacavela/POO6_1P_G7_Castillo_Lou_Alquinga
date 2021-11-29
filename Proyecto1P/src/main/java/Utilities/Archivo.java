@@ -182,7 +182,7 @@ public class Archivo {
     }
     
     //Metodo que sirve para reemplazar a un conductor de disponible a ocupado, como solo nos pidieron ese cambio de estado no se ha hecho de ocupado a disponible.
-    public void reemplazarLineaConductores(String cedula) {
+    public void reemplazarLineaConductores(String cedula, int idUnico) {
         
         ArrayList<String> conductores = new ArrayList<>();
         String linea;
@@ -196,7 +196,8 @@ public class Archivo {
                 String[] lineaSeparada = linea.split(",");
                 if (lineaSeparada[0].equals(cedula)) {
                     lineaSeparada[2] = "O";
-                    String lineaUnida = lineaSeparada[0] + "," + lineaSeparada[1] + "," + lineaSeparada[2] + "," + lineaSeparada[3];
+                    lineaSeparada[4]= ""+idUnico;
+                    String lineaUnida = lineaSeparada[0] + "," + lineaSeparada[1] + "," + lineaSeparada[2] + "," + lineaSeparada[3]+","+lineaSeparada[4];
                     conductores.add(lineaUnida);
                 } else {
                     conductores.add(linea);

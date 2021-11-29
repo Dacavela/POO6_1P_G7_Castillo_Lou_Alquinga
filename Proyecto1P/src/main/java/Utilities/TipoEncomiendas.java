@@ -11,5 +11,5 @@ package Utilities;
  */
 //Objetos Enum para el tipo de encomienda, no hay mucho que decir aqui
 public enum TipoEncomiendas {
-    MEDICAMENTOS,DOCUMENTOS,ROPA,CANCELAR;
+    MEDICAMENTOS,DOCUMENTOS,ROPA,cancelar;
 }

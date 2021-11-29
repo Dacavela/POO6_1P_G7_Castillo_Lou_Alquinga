@@ -10,20 +10,21 @@ package interfaz;
  *
  * @author DhuDu
  */
-import static Utilities.Validacion.*;
+//import static Utilities.Validacion.*;
+import Utilities.Archivo;
 import com.mycompany.proyecto1p.Sistema2;
 import java.util.Scanner;
 import com.mycompany.proyecto1p.services.*;
-
+import com.mycompany.proyecto1p.*;
 public class SistemaUI2 {
     
-    
+    public Archivo conducFile = new Archivo("conductores.txt");
     public void SistemaUI() {
         
         
         Scanner sc = new Scanner(System.in);
         Sistema2 s1 = new Sistema2();
-        s1.listaServices();
+        //s1.listaServices();
         s1.mostrarInicio();
         String login = s1.verifyLogin();
         
@@ -53,17 +54,18 @@ public class SistemaUI2 {
                //System.out.println(s1.user.getNombre());
                String opcion;
                     do{
-                        System.out.println("Elija una opción: ");
                         opcion = s1.mostrarInfoCliente();
                         switch (opcion){
                             case "1":
                                 System.out.println("Solicitando servicio de taxi");
                                 ServicioTaxi serv1 = s1.getUser().getS1();                                
                                 cancelar = serv1.mostrarInfoServicio(s1);
+                                
                                 if (cancelar)
                                     System.out.println("Regresando al menu");
-                                //System.out.println(s1.getServices());
+                                
                                 login = s1.verifyLogin();
+                                
                                 break;
                             case "2":
                                 System.out.println("Solicitando entrega de encomienda");
@@ -83,8 +85,15 @@ public class SistemaUI2 {
                                 login = s1.verifyLogin();
                                 break;
                             case "4":
-                                System.out.println("Consultando servicios");
-                                login = s1.verifyLogin();
+                                System.out.println("/**************SERVICIOS SOLICITADOS**************/\n"+
+                                                   "/*                                               */\n");
+                                if(s1.services.isEmpty()){
+                                    System.out.println("No se han solicitado Servicios");
+                                    
+                                }else{
+                                
+                                s1.getUser().consultarServicios(s1);
+                                login = s1.verifyLogin();}
                                 break;
                             default:
                                 System.out.println("Ingreso incorrecto: ");
@@ -94,6 +103,7 @@ public class SistemaUI2 {
             }
             
             if (login.equals("AccesoConductor")) {
+               
                 s1.mostrarInfoDriver();
                 s1.mostrarInicio(); 
             }

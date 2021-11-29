@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.proyecto1p;
+
 import java.util.Scanner;
 import Utilities.Archivo;
 import static Utilities.Validacion.*;
@@ -159,5 +160,24 @@ public class Cliente extends Usuario {
         userFile.escribir(toString());
         clientesFile.escribir(toString("a"));
         return permanecer = false;
+    }
+    @Override
+    public void consultarServicios(Sistema2 s1){
+        for(Servicio ser1: s1.getServices()){
+            if(ser1 instanceof ServicioTaxi){
+                System.out.println("/*************************************************/\n"+
+                                    ((ServicioTaxi) ser1).toString());
+        }
+            if(ser1 instanceof ServicioEncomiendas){
+                System.out.println("/*************************************************/\n"+
+                                    ((ServicioEncomiendas) ser1).toString());
+            }
+            if(ser1 instanceof ServicioComida){
+                System.out.println("/*************************************************/\n"+
+                                    ((ServicioComida) ser1).toString());
+            }
+                
+            
+        }
     }
 }

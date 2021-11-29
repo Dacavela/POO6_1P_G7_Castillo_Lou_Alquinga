@@ -28,6 +28,7 @@ public class Sistema2 {
     private final Archivo encomiendasFile = new Archivo("encomiendas.txt");
     private final Archivo deliveryFile  = new Archivo("delivery.txt");
     private final Archivo pedidosFile  = new Archivo("pedidos.txt");
+    private final Archivo RestaurantesFile  = new Archivo("restaurantes.txt");
     /*Tenemos un cliente (user) que nos sirve para instanciar un nuevo cliente 
     cada que iniciamos sesion y tratarlo como objeto, lo mismo con el conductor driver y con el vehiculo veh*/
     private Cliente user = new Cliente();
@@ -36,10 +37,16 @@ public class Sistema2 {
     //el scanner nos sirve para ingresar datos por teclado
     public Scanner sc = new Scanner(System.in);
     //este arrayList sirve para tener una lista de los servicios creados, para mostrar los servicios de un conductor o cliente.
-    private static  ArrayList<Servicio> services;
+    public ArrayList<Servicio> services = new ArrayList<>();;
     
-    //Getters and setters
-    public Archivo getDeliveryFile(){    
+    //Getters and setters//Getters and setters
+    
+    
+    public Archivo getRestaurantesFile(){    
+        return RestaurantesFile;
+    }
+
+    public Archivo getDeliveryFile() {
         return deliveryFile;
     }
 
@@ -51,13 +58,13 @@ public class Sistema2 {
         return services = new ArrayList<>();
     }
 
-    public static ArrayList<Servicio> getServices() {
+    public ArrayList<Servicio> getServices() {
         return services;
     }
 
-    public static void setServices(ArrayList<Servicio> services) {
-        Sistema2.services = services;
-    }
+//    public void setServices(ArrayList<Servicio> services) {
+//        Sistema2.services = services;
+//    }
 
     public Archivo getUserFile() {
         return userFile;
@@ -144,6 +151,8 @@ public class Sistema2 {
         if (esUser && "R".equals(line[6])) {
             if (user.getPassword().equals(line[4])) {
                 verLogin = "AccesoConductor";
+                String cedula = userFile.accederLinea(userFile.buscar(user.getUser(), 4)).split(",")[0];
+                setearConductor(conductoreFile.accederLinea(conductoreFile.buscar(cedula, 1)).split(","),userFile.accederLinea(esUser));
             } else {
                 verLogin = "ConductorWrongPassword";
                 System.out.println(verLogin);
@@ -232,6 +241,7 @@ public class Sistema2 {
             System.out.println("Ingrese opcion valida: ");
             op = sc.nextLine().trim();
         }
+        driver.consultarServicios(this);
         return true;
     }
 //    public void elegirConductor(String disponibilidad, String tipoVehi) {

@@ -26,6 +26,7 @@ public class ServicioComida extends Servicio{
     private final Archivo menuFile = new Archivo("menu.txt");
     private ArrayList<String> listaRestaurante;
     private ArrayList<String> listaMenu;
+    private Restaurante r1 = new Restaurante();
     //private Restaurante local = new Restaurante();
     
     //Constructor ServicioComida que hereda de la clase Servicio
@@ -96,7 +97,7 @@ public class ServicioComida extends Servicio{
         for (Restaurante r : restaurantes) {
             System.out.println("-. " + r.getNombre());
         }
-        Restaurante r1 = seleccionarRestaurante(restaurantes);
+        r1 = seleccionarRestaurante(restaurantes);
 
         try {
             listaMenu = menuFile.leerFichero("menus.txt");
@@ -110,7 +111,8 @@ public class ServicioComida extends Servicio{
             }
         }
         pedido.setPlatos(seleccionarMenu(menus));
-         String tipopago = tipoPago();
+        String tipopago = tipoPago();
+        if(tipopago.equals("cancelar")){return permanecer = true;}
         System.out.println("¿Desea confirmar su viaje? S/N");                                
         //cancelar
         cancelar = validarConfirmacion(sc);
@@ -124,8 +126,9 @@ public class ServicioComida extends Servicio{
             pedido.setNumeroPedido(pedido.getNumeroPedido()+1);
             String[] lineaConductor = s1.getConductoreFile().buscarDriver("D","M");
             s1.setearConductor(lineaConductor,s1.getUserFile().accederLinea(s1.getUserFile().buscar(lineaConductor[0], 1)));
-            s1.getConductoreFile().reemplazarLineaConductores(s1.getDriver().getCedula());
+            s1.getConductoreFile().reemplazarLineaConductores(s1.getDriver().getCedula(),super.getIdUnico());
             s1.getDeliveryFile().escribir(this.toString(s1.getUser(), tipopago.toUpperCase(), s1.getDriver()));
+            s1.getDriver().setServicioCom(this);
             for (Menu m: pedido.getPlatos()){
                 s1.getPedidosFile().escribir(pedido.toString(m));
             }
@@ -197,5 +200,14 @@ public class ServicioComida extends Servicio{
                             + "," + this.rutaDesde + "," + this.rutaHacia +"," + this.fecha 
                             + "," + this.hora + "," + pedido.getNumeroPedido() + "," + tipoPago + "," + this.vPagar;
     }
-    
+    @Override
+    public String toString(){
+        String pedido1 = "reemplazar";
+        for (Menu m: pedido.getPlatos()){
+                pedido1 = pedido1+", "+m.getNombrePlato();
+            }
+        pedido1 = pedido1.replaceAll("reemplazar, ", "");
+        return "Tipo: Delivery\n"+"Restaurante: "+r1.getNombre()+"\nPedido: "+pedido1+
+                "\nFecha: "+this.fecha+"\nHora: "+this.hora+"\nDesde: "+this.rutaDesde+"\nHasta: "+this.rutaHacia;
+    }
 }

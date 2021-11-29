@@ -10,3 +10,4 @@ cedula,nombre,apellido,user,contraseña,celular,tipoUsuario
 0956321470,Karen,Castro,kacasg,bolita2012,0983256634,C
 1713568697,Isabel,Andrade,isabel20,perropanson,0987563241,C
 1725569288,David,Castelo,davasc,Davicho,0987654322,C
+1758965436,Sofia,Sofia,sofia1234,nombreyavalio,0987541220,C

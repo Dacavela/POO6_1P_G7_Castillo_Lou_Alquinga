@@ -84,7 +84,7 @@ public abstract class Usuario {
     public String getTipoUsuario() {
         return tipoUsuario;
     }
-
+    public abstract void consultarServicios(Sistema2 s1);
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }

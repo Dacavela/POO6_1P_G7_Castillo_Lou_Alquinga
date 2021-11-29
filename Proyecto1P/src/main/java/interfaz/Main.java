@@ -6,6 +6,7 @@
 package interfaz;
 //import static Utilities.Validacion.*;
 //import Utilities.Archivo;
+
 import java.io.IOException;
 //import com.mycompany.proyecto1p.services.ServicioComida;
 //import Restaurante.Restaurante;
@@ -17,12 +18,12 @@ public class Main {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
 
 //        Archivo v2 = new Archivo("conductores.txt");
 //        Archivo v = new Archivo("vehículos.txt");
-//        ServicioComida c1 = new ServicioComida();
 //        Restaurante r1 = new Restaurante();
 //        
 //        r1 = c1.mostrarInfoServicio();
